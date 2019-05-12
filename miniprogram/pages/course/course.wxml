@@ -1,0 +1,30 @@
+<!--pages/course/course.wxml-->
+<!-- banner -->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" data-src="{{item}}" ></image>
+    </swiper-item>
+  </block>
+</swiper>
+<scroll-view scroll-y="true">
+  <view class="detail">
+    <text class="title">{{title}}</text>
+  </view>
+  <view class='separate'></view>
+  <view class='detaile'>
+    <text>{{teacher}}</text>
+  </view>
+
+  <view class="separate"></view>
+  <view class='detail'>
+    <text>{{course_detail}}</text>
+  </view>
+
+  <view class="temp"></view>
+</scroll-view>
+<!-- 底部悬浮栏 -->
+<view class="detail-nav">
+  <button class="button-green" bindtap="favorate" formType="submit">{{isLike?"取消收藏":"收藏"}}</button>
+  <button class="button-red" bindtap="subcribe" formType="submit">{{isadd?"取消课程":"订阅课程"}}</button>
+</view>

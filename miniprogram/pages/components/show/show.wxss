@@ -1,0 +1,2 @@
+/* pages/components/show/show.wxss */
+@import '../../../app.wxss';

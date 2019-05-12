@@ -1,0 +1,18 @@
+<!--pages/message/message.wxml-->
+<view class="container log-list">
+<scroll-view scroll-y style="height:100%;white-space:nowrap;" scroll-into-view="{{toView}}" enable-back-to-top bindscroll="scroll" scroll-with-animation scroll-top="{{scrollTop}}">
+  <view class="list-group" wx:for="{{logs}}" wx:for-item="group" wx:key>
+    <view class="title" id="{{group.title}}">{{group.title}}</view>
+    <block wx:for="{{group.items}}" wx:for-item="user" wx:key="index">
+      <view id="user{{index}}" class="list-group-item">
+      <navigator url='../chatbox/chatbox' hover-class='navigator-hover' style='width:100%'>
+      <image class="icon" src="{{user.avatar}}" lazy-load="true"></image>
+        <text class="log-item">{{user.name}}</text>
+      </navigator>
+        
+      </view>
+    </block>
+  </view>
+</scroll-view>
+
+</view>

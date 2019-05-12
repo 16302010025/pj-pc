@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/home/home",
+    "pages/message/message",
+    "pages/profile/profile",
+    "pages/course/course",
+    "pages/chatbox/chatbox",
+    "pages/favorite/favorite",
+    "pages/edit/edit",
+    "pages/notes/notes",
+    "pages/note/note",
+    "pages/noteEdition/noteEdition"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "精英教育",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "position": "bottom",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "home",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "message",
+        "iconPath": "images/msg.png",
+        "selectedIconPath": "images/msggreen.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "profile",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/mygreen.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

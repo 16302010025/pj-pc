@@ -1,0 +1,60 @@
+.touch-item {
+ font-size: 14px;
+ display: flex;
+ justify-content: space-between;
+ border-bottom:1px solid #ccc;
+ width: 100%;
+ overflow: hidden
+}
+.content {
+ width: 100%;
+ padding: 10px;
+ line-height: 22px;
+ margin:10 0;
+ -webkit-transition: all 0.6s;
+ transition: all 0.6s;
+ -webkit-transform: translateX(90px);
+ transform: translateX(90px);
+ margin-left: -80px;
+border: 1rpx solid transparent;
+}
+.del {
+ background-color: orangered;
+ width: 120px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ -webkit-transform: translateX(90px);
+ transform: translateX(90px);
+ -webkit-transition: all 0.6s;
+ transition: all 0.6s;
+}
+
+.edit{
+background-color: green;
+ width: 120px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ -webkit-transform: translateX(180px);
+ transform: translateX(180px);
+ -webkit-transition: all 0.6s;
+ transition: all 0.6s;
+}
+.touch-move-active .content,
+.touch-move-active .del {
+  -webkit-transform: translateX(0);
+  /* -webkit-transition: 0.8s; */
+ transform: translateX(0);
+ /* transition: 0.8s; */
+}
+.touch-move-active .edit{
+  -webkit-transform: translateX(0);
+  /* -webkit-transition: 0.4s; */
+ transform: translateX(0);
+ /* transition: 0.4s; */
+}
