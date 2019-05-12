@@ -12,7 +12,7 @@
       <!-- 代码优化的话需要在el-menu最后添加router -->
       <el-menu-item index="center">教师工作中心</el-menu-item>
       <el-menu-item index="myclass">我的课程</el-menu-item>
-      <el-menu-item index="students">联系学生</el-menu-item>
+      <el-menu-item index="students">管理学生</el-menu-item>
       <!-- <el-button> -->
       <el-button
         style="float:right;margin-top:10px;margin-right:20px;"
@@ -34,19 +34,21 @@
 import center from '@/components/center'
 import myclass from '@/components/myclass'
 import students from '@/components/students'
+// import chat from '@/components/chat'
 export default {
   components :{
     center,
     myclass,
-    students
+    students,
+    // chat
   },
   name: 'home',
   data() {
     return {
-      activeIndex: 'center',
-      showtime1: true,
+      activeIndex: 'students',
+      showtime1: false,
       showtime2: false,
-      showtime3: false,
+      showtime3: true,
     }
   },
   // 日后代码优化可以重新做，用router

@@ -17,6 +17,11 @@ var routes = [{
   path: '/home',
   name: 'home',
   component: resolve => require(['@/components/homepage'], resolve)
+},
+{
+  path: '/home/chat',
+  name: 'chat',
+  component: resolve => require(['@/components/chat'], resolve)
 }
 ]
 
