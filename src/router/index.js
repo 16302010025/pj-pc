@@ -14,9 +14,9 @@ var routes = [{
   component: resolve => require(['@/components/register'], resolve)
 },
 {
-  path: '/main',
-  name: 'main',
-  component: resolve => require(['@/components/main'], resolve)
+  path: '/home',
+  name: 'home',
+  component: resolve => require(['@/components/homepage'], resolve)
 }
 ]
 
