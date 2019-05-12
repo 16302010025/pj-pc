@@ -1,0 +1,7 @@
+
+<view wx:if='{{showPage}}'>
+  <view class='article-title'>{{title}}</view>
+  <view class='article-content'>
+      <rich-text nodes='{{bodyHtml}}'></rich-text>  
+  </view>
+</view>

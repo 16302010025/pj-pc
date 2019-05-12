@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="" bindtap='viewTap'>
+      <view class="content">
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">标题一</view>
+          <view class="weui-media-box__desc" style='margin-top: 20rpx'>2019-5-1</view>
+        </view>
+      </view>
+      <view class='edit' catchtap='edit' data-index='{{index}}'>编辑</view>
+      <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+
+  </view>
+</view>

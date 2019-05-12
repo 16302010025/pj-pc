@@ -1,0 +1,40 @@
+/* pages/message/message.wxss */
+.log-list {
+  display: flex;
+  flex-direction: column;
+  /* padding-bottom:60rpx; */
+}
+.log-item {
+  margin: 10rpx;
+}
+.title {
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 40rpx;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 1);
+  background: #ccc;
+  margin-top:60rpx;
+}
+.title:first-child {
+  margin-top:0;
+}
+.list-group-item {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 40rpx 0 0 0rpx;
+}
+.list-group-item:last-child {
+  padding-bottom: 60rpx;
+}
+.list-group-item .icon {
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50%;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
