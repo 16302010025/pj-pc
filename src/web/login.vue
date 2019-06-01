@@ -3,16 +3,18 @@
     <p>教师登录界面</p>
     <div style="margin-top: 5px">
       <label for>帐号:</label>
-      <el-input placeholder="用户名" v-model="input" clearable></el-input>
+      <el-input placeholder="用户名  (邮箱/手机号)" v-model="input" clearable></el-input>
     </div>
     <div style="margin-top: 5px">
       <label for>密码:</label>
       <el-input placeholder="请输入密码" v-model="pass" show-password></el-input>
     </div>
     <div style="margin-top: 5px">
-      <el-button @click="login()">登录</el-button>
-      <label for>新用户</label>
-      <el-button @click="register()">注册</el-button>
+      <el-button style="width:200px;margin-top:30px;" type="primary" round @click="login()">登录</el-button>
+      <br>
+      <label>我是新用户</label>
+      <a style="color:blue;" href="http://localhost:8081/#/register">点我注册</a>
+      <!-- <el-button @click="register()">注册</el-button> -->
     </div>
   </div>
 </template>
@@ -29,7 +31,7 @@ export default {
   methods: {
     login() {
       alert("success")
-      this.$router.push('/main')
+      this.$router.push('/home')
     },
     register() {
       this.$router.push('/register')
@@ -43,8 +45,13 @@ export default {
   width: 250px;
 }
 #login {
+  width: 30%;
   margin-top: 10%;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border:1px solid grey;
+  padding-bottom: 20px;
 }
 </style>
 
