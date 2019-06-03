@@ -6,9 +6,9 @@
 
 ![](./education.jpg)
 
-### ER图解
+## ER图解
 
-####student
+###student
 - studentID	 	
 	- **varchar**	   
 	- 微信号取得的id 
@@ -28,7 +28,7 @@
 
 当一个新的学生用户添加进时，需要按照以上添加，id，name，gender不能为空
 
-####teacher
+###teacher
 - teacherID	  
 	-  **int**
 	-  自动增加的整数型，老师的id
@@ -47,7 +47,7 @@
 
 当添加老师时，以上不能为空的必须填入
 
-####course
+###course
 - courseID
 	- int
 	- 课程的id，整数自增
@@ -64,7 +64,7 @@
 
 当添加课程时，老师的id必须传入添加
 
-####chapter
+###chapter
 - chapterID
 	- int
 	- 自增整数，章节的id
@@ -81,7 +81,7 @@
 
 添加章节时，因为是老师创建，所以对应的课程id应该传入
 
-####knowledgepoint
+###knowledgepoint
 - kpID
 	- int
 	- 知识点id，自增整数
@@ -95,7 +95,7 @@
 
 添加知识点，需要传入来自哪一个章节
 
-####progress
+###progress
 - progressID
 	- int
 	- 进程id
@@ -109,7 +109,7 @@
 	- 是否已学，0为未学，1为已学
 该表表示，进度完成情况，就是一个进程里有多个知识点，每个知识点都会记录是否已经学习了
 
-####memo
+###memo
 - memoID
 	- int
 	- 笔记id
@@ -125,7 +125,7 @@
 	- 具体的笔记内容
 笔记的表，以章节课程为单位
 
-####choosecourse
+###choosecourse
 - studentID
 	- varchar
 	- 学生id，来自student
@@ -140,7 +140,7 @@
 
 因为一个学生可以选择多门课程，一门课程可以被多个学生选择，但一个学生与一门课程只会有一个进度
 
-####favorite
+###favorite
 - studentID
 	- varchar
 	- 学生id，来自student
@@ -151,7 +151,7 @@
 	- 主键
 收藏是以章节为单位，一个学生对应一个章节的收藏与否
 
-####paper
+###paper
 - paperID
 	- int
 	- 自增整数，老师创建的小测
@@ -164,7 +164,7 @@
 	- 哪个课程上的paper，来自course
 这样划分是为了能够区分哪个课程创建了小测
 
-####paperexercise
+###paperexercise
 - exerciseID
 	- int
 	- 试题id，来自exercise
@@ -176,7 +176,7 @@
 	
 可以通过试题组装一个测验
 
-####exercise
+###exercise
 - exerciseID
 	- int
 	- 自增整数，题目的id
@@ -203,7 +203,7 @@
 	- int
 	- 谁创建的该题，来自teacher
 
-####dopaper
+###dopaper
 - studentID
 	- varchar
 	- 谁做的，来自student
@@ -248,4 +248,4 @@
 
 其中那些自动生成的后面会根据实际的事务添加新的
 
-sql文件一再resources/database/中
+sql文件已在resources/database/中
