@@ -4,7 +4,7 @@
 - 创建数据库
 - 利用MyBatis生成初始化的dao，entity，mappering文件
 
-![](/education.jpg)
+![](./education.jpg)
 
 ### ER图解
 
