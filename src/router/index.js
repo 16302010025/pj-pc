@@ -9,6 +9,11 @@ var routes = [{
   component: resolve => require(['@/web/login'], resolve)
 },
 {
+  path: '/modify',
+  name: '/modify',
+  component: resolve => require(['@/web/modify'], resolve)
+},
+{
   path: '/register',
   name: 'register',
   component: resolve => require(['@/components/register'], resolve)

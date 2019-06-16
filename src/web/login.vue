@@ -3,7 +3,7 @@
     <p>教师登录界面</p>
     <div style="margin-top: 5px">
       <label for>帐号:</label>
-      <el-input placeholder="用户名  (邮箱/手机号)" v-model="input" clearable></el-input>
+      <el-input placeholder="用户名  (邮箱/手机号)" v-model="input" clearable onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"></el-input>
     </div>
     <div style="margin-top: 5px">
       <label for>密码:</label>
@@ -30,8 +30,27 @@ export default {
   },
   methods: {
     login() {
-      alert("success")
-      this.$router.push('/home')
+      if (this.input === '' || this.pass === '') {
+        alert("请完善信息")
+      } else {
+        // 需要写好url（对应到后端）
+        this.axios.post('/login', {
+          username: this.input,
+          password: this.pass
+        })
+          .then(function (response) {
+            console.log(response);
+            if (response.success === true) {
+              alert("登录成功")
+              this.$router.push('/home')
+            }
+          })
+          .catch(function (error) {
+            alert("服务出错")
+            console.log(error);
+          });
+      }
+
     },
     register() {
       this.$router.push('/register')
@@ -50,8 +69,7 @@ export default {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  border:1px solid grey;
+  border: 1px solid grey;
   padding-bottom: 20px;
 }
 </style>
-

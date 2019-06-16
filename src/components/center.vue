@@ -1,12 +1,17 @@
 <template>
   <div id="center">
-    <p>this is center</p>
-    <el-carousel :interval="5000" arrow="always">
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3>{{ item }}</h3>
-    </el-carousel-item>
-  </el-carousel>
-  <el-calendar v-model="value"></el-calendar>
+    <p class="title">我的课程</p>
+    <div class="allclass">
+      <div class="mysubjects" v-for="item in classes" :key="item" @click="details()">
+        <!-- 本地路径 -->
+        <img id="pic" src="../../static/books.png" alt="">
+        <div>
+          <p class="name">{{item.name}}</p>
+          <p class="textcontent">学生数量：{{item.number}}</p>
+          <p class="textcontent">课程简介：{{item.content}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,30 +20,85 @@ export default {
   name: 'center',
   data() {
     return {
-value: new Date()
+      classes: [
+        { name: '计算机基础', number: 20, content: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
+        { name: '多媒体' },
+        { name: '计算机原理' },
+        { name: '图形学' },
+        { name: '网络技术' },
+      ]
     }
   },
+  mounted: function () {
+    this.getclasses();
+  },
   methods: {
-  
+    details() {
+      alert("课程详情正在努力开发")
+    },
+    getclasses() {
+      this.axios.post('/getclasses', {
+        username: this.input,
+        password: this.pass
+      })
+        .then(function (response) {
+          console.log(response);
+          this.classes = response.classes
+        })
+        .catch(function (error) {
+          // alert("请求失败")
+          console.log(error);
+        });
+    }
   }
 }
 </script>
 
 <style lang="less">
- .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
-  }
-  
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
-</style>
+.title {
+  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: -5px;
 
+  text-align: center;
+  font-family: "League-Gothic", Courier;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 2px #fefcc9, 1px -1px 3px #feec85, -2px -2px 4px #ffae34,
+    2px -4px 5px #ec760c, -2px -6px 6px #cd4606, 0 -8px 7px #973716,
+    1px -9px 8px #451b0e;
+}
+.allclass {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.mysubjects {
+  margin-left: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: 3%;
+  width: 400px;
+  height: 250px;
+  margin-top: 20px;
+  display: flex;
+  cursor: pointer;
+}
+#pic {
+  height: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.textcontent {
+  color: #666666;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-right: 20px;
+}
+</style>
