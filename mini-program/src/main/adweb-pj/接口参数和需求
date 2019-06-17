@@ -1,0 +1,38 @@
+1.登陆接口：
+ /loginAuth method = get
+发送参数 ： String code
+功能需求： 调用官方提供的http接口，即可返回获取的openId、session_key，并使用openid判断数据库中是否已存在该用户信息，不存在则新建一个
+官方API：https://api.weixin.qq.com/sns/jscode2session?    appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_codec参考博客：https://blog.csdn.net/weixin_39927850/article/details/80717822  
+返回数据：openid session_key isExisted
+
+2.获得和完善用户信息的接口：
+/getStu method = get  
+发送参数： openid即学生id
+功能需求：用id取得学生全部个人信息
+返回需求：name ，email，gender，studentNo
+
+/updateStu method = post
+发送参数： openid email name gender studentNo 
+功能需求： 更新个人信息。
+返回参数： true or flase
+
+3.获得学生收藏的chapter
+/getFav method = get
+发生参数： openid
+功能需求：通过学生id查询到对应收藏的章节
+返回参数：一系列的章节及对应的具体信息包括chapterid，courseid，courseName，name（章节名字），decription；
+
+4.课程相关API
+4.1 /getCourse mothod = get
+发送参数：openid
+功能需求：得到学生所选课程
+返回参数： coursename，courseid，decription
+
+4.2 /getAllCourse mothod = get
+发送参数：无
+功能需求：得到全部课程
+返回参数： coursename，courseid，decription
+
+4.3 /getChapter method = get
+发生参数： courseid
+功能需求： 得到course所有章节id，name，decription
