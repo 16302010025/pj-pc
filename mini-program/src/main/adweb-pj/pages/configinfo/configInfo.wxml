@@ -1,0 +1,41 @@
+<!--pages/configInfo/configInfo.wxml-->
+<view class='container'>
+  <!-- style='background-image:url({{bg_image}});' 背景图-->
+  <view class='bg-white padding personalinfo card-shadow'>
+    <view>
+      <view class="solid-bottom text-xl padding bg-t">
+        <text class="text-black text-bold">{{name}}</text>
+      </view>
+      <view class="text-df padding bg-t">
+        <text class="text-black">id:{{id}}</text>
+      </view>
+    </view>
+    <view class="cu-avatar round lg margin-left bg-t" style='background-image:url({{avatar}});'>
+      <view class="cu-tag badge {{gender!='male'?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top other">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 其他
+    </view>
+  </view>
+  <view class='cu-list grid col-3 other'>
+    <view class="cu-item" bindtap='nav'>
+      <view class="cuIcon-favorfill text-orange">
+        <text>收藏</text>
+      </view>
+
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-formfill text-orange">
+        <text>笔记</text>
+      </view>
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-myfill text-orange">
+        <text>个人信息</text>
+      </view>
+    </view>
+  </view>
+</view>
