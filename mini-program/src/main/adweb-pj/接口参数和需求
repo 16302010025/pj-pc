@@ -34,6 +34,11 @@
 功能需求：得到全部课程
 返回参数： coursename，courseid，decription
 
-4.3 /course/getChapter method = get
+4.3 /course/addcourse method = post
+发送参数：stdid courseid
+功能需求： 学生添加课程
+返回参数：success
+
+4.4 /course/getChapter method = get
 发生参数： courseid
 功能需求： 得到course所有章节id，name，decription
