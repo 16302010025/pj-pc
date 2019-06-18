@@ -42,3 +42,8 @@
 4.4 /course/getChapter method = get
 发生参数： courseid
 功能需求： 得到course所有章节id，name，decription
+
+4.5 /course/getkpoint method = get
+发送参数：chapterid
+功能需求：得到对应章节的所有知识点
+返回参数：kpid detail
