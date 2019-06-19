@@ -154,6 +154,6 @@
   </select>
 
   <update id="updatePassword">
-    update teacher set password=#{password} where name = #{usesrname}
+    update teacher set password=#{password} where name = #{name}
   </update>
 </mapper>
