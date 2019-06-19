@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
+
 @SpringBootApplication
 @MapperScan("education.dao")
 public class MiniProgramApplication {
