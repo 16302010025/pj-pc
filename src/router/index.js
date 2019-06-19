@@ -10,7 +10,7 @@ var routes = [{
 },
 {
   path: '/modify',
-  name: '/modify',
+  name: 'modify',
   component: resolve => require(['@/web/modify'], resolve)
 },
 {

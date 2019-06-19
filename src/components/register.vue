@@ -52,6 +52,8 @@ export default {
             if (response.isnew === true) {
               alert("注册成功，马上登录")
               this.$router.push('/')
+            }else {
+              alert("用户名已存在")
             }
           })
           .catch(function (error) {

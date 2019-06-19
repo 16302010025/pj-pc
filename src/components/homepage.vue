@@ -1,11 +1,13 @@
 <template>
   <div id="home">
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-      background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-      <el-menu-item index="center">教师工作中心</el-menu-item>
-      <el-button style="float:right;margin-top:10px;margin-right:20px;" type="warning" @click="logout()">退出登录</el-button>
-      <el-button style="float:right;margin-top:10px;margin-right:20px;" type="info" @click="modify()">修改信息</el-button>
-    </el-menu>
+    <div class="top">
+      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+        background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+        <el-menu-item index="center">教师工作中心</el-menu-item>
+        <el-button style="float:right;margin-top:10px;margin-right:20px;" type="warning" @click="logout()">退出登录</el-button>
+        <el-button style="float:right;margin-top:10px;margin-right:20px;" type="info" @click="modify()">修改信息</el-button>
+      </el-menu>
+    </div>
     <center></center>
   </div>
 </template>
@@ -31,7 +33,7 @@ export default {
     handleSelect(key) {
       console.log(key);
     },
-    modify(){
+    modify() {
       this.$router.push('/modify')
     }
   }
@@ -39,5 +41,4 @@ export default {
 </script>
 
 <style lang="less">
-
 </style>
