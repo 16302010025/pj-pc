@@ -249,3 +249,20 @@
 其中那些自动生成的后面会根据实际的事务添加新的
 
 sql文件已在resources/database/中
+
+2019/6/19修改文件
+数据库修改
+knowledgepoint details=>name
+
+新建表 kpdetail
+id 整数自增主键
+kpID 知识点ID
+description 每个知识点中的小内容，text
+
+memo修改
+coursed 变为 kpID
+
+修改paper
+courseID变为unique
+
+mybatis重新生成然后上传
