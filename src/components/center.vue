@@ -14,9 +14,9 @@
           <!-- 本地路径 -->
           <img id="pic" src="../../static/books.png" alt="">
           <div>
-            <p class="name">{{item.name}}</p>
+            <p class="name">{{item.courseName}}</p>
             <p class="textcontent">学生数量：{{item.number}}</p>
-            <p class="textcontent">课程简介：{{item.content}}</p>
+            <p class="textcontent">课程简介：{{item.discription}}</p>
           </div>
         </div>
       </div>
@@ -38,11 +38,11 @@ export default {
       login: true,
       // 最后把假数据替换
       classes: [
-        { name: '计算机基础', number: 20, content: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
-        { name: '多媒体' },
-        { name: '计算机原理' },
-        { name: '图形学' },
-        { name: '网络技术' },
+        { courseName: '计算机基础', number: 20, discription: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
+        { courseName: '多媒体' },
+        { courseName: '计算机原理' },
+        { courseName: '图形学' },
+        { courseName: '网络技术' },
       ]
     }
   },
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     issue() {
-      this.$router.push('/newsubject')
+      this.$router.push('/newsubject' + "?username=" + this.username)
     },
     details() {
       alert("课程详情正在努力开发中")

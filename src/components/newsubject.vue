@@ -12,7 +12,7 @@
           <el-input placeholder="课程简介" v-model="sub_brief" clearable></el-input>
         </div>
         <div class="buttons">
-          <el-button type="danger" plain @click="cansel()">取消新建</el-button>
+          <el-button type="danger" plain @click="cancel()">取消新建</el-button>
           <el-button type="success" plain @click="newsub()">新建课程</el-button>
         </div>
       </div>
@@ -32,8 +32,17 @@ export default {
     }
   },
   mounted: function () {
+    this.islogin();
   },
   methods: {
+    islogin() {
+      if (this.$cookies.get("username") == undefined){
+        this.$router.push('/')
+      }
+    },
+    cancel() {
+      this.$router.push('/home')
+    },
     newsub() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
@@ -42,14 +51,12 @@ export default {
           username: this.username,
           sub_name: this.sub_name,
           sub_brief: this.sub_brief,
-
         })
           .then(function (response) {
             console.log(response);
-            this.classes = response.classes
+            this.$router.push('/mysubject' + "?subid=" + response.classID)
           })
           .catch(function (error) {
-            // alert("请求失败")
             console.log(error);
           });
       } else {
@@ -66,7 +73,7 @@ export default {
   margin-right: auto;
   width: 50%;
   height: 90vh;
-  border:solid 0.1px rgb(238, 238, 238);
+  border: solid 0.1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
 
