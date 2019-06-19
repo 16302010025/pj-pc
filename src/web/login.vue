@@ -13,7 +13,7 @@
       <el-button style="width:200px;margin-top:30px;" type="primary" round @click="login()">登录</el-button>
       <br>
       <label>我是新用户</label>
-      <a style="color:blue;" href="http://localhost:8081/#/register">点我注册</a>
+      <a style="color:blue; cursor: pointer;" @click="register()">点我注册</a>
       <!-- <el-button @click="register()">注册</el-button> -->
     </div>
   </div>
@@ -29,6 +29,11 @@ export default {
     }
   },
   methods: {
+    // login() {
+    //   alert("登录成功")
+    //   this.$cookies.set("username", this.input, 0)
+    //   this.$router.push('/home')
+    // },
     login() {
       if (this.input === '' || this.pass === '') {
         alert("请完善信息")
@@ -42,6 +47,7 @@ export default {
             console.log(response);
             if (response.success === true) {
               alert("登录成功")
+              this.$cookies.set("username", this.input, 0)
               this.$router.push('/home')
             }
           })
@@ -50,7 +56,6 @@ export default {
             console.log(error);
           });
       }
-
     },
     register() {
       this.$router.push('/register')
