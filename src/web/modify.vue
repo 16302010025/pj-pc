@@ -55,6 +55,7 @@ export default {
               })
                 .then(function (res) {
                   alert("修改成功,请重新登录")
+                  this.$cookies.remove("username")
                   this.$router.push('/login')
                 })
                 .catch(function (err) {
