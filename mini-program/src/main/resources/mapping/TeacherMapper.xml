@@ -149,4 +149,11 @@
     where teacherID = #{teacherid,jdbcType=INTEGER}
   </update>
 
+  <select id="findTeacherByName" resultType="education.entity.Teacher">
+    select * from teacher where name = #{username}
+  </select>
+
+  <update id="updatePassword">
+    update teacher set password=#{password} where name = #{usesrname}
+  </update>
 </mapper>
