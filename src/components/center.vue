@@ -1,5 +1,6 @@
 <template>
   <div id="center">
+    <!-- 做一个是否登录的验证 -->
     <p class="title">我的课程</p>
     <div class="allclass">
       <div class="add" @click="issue()">
@@ -41,7 +42,7 @@ export default {
   },
   methods: {
     issue() {
-      alert("新建课程正在努力开发中")
+      this.$router.push('/newsubject')
     },
     details() {
       alert("课程详情正在努力开发中")

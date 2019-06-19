@@ -24,6 +24,11 @@ var routes = [{
   component: resolve => require(['@/components/homepage'], resolve)
 },
 {
+  path: '/newsubject',
+  name: 'newsubject',
+  component: resolve => require(['@/components/newsubject'], resolve)
+},
+{
   path: '/home/chat',
   name: 'chat',
   component: resolve => require(['@/components/chat'], resolve)
