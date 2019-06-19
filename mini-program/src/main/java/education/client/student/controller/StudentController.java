@@ -3,15 +3,16 @@ package education.client.student.controller;
 import education.client.student.service.StudentService;
 import education.entity.Student;
 import net.minidev.json.JSONObject;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 
 @RestController
 @RequestMapping("user")
 public class StudentController {
-    @Autowired
+    @Resource
     private StudentService studentService;
 
     @PostMapping(value = "loginAuth", produces = "application/json;UTF-8")
@@ -21,7 +22,7 @@ public class StudentController {
         return jsonObject.toJSONString();
     }
     //获得和完善用户信息的接口,用id取得学生全部个人信息
-    @GetMapping(value = "getStu", produces = "application/json;UTF-8")
+    @RequestMapping(value = "getStu", produces = "application/json;UTF-8")
     public String getStu(@RequestParam() String studentid) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("student",studentService.getStudentById(studentid));

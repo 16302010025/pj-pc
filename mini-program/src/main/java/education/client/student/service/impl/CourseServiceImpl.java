@@ -8,15 +8,15 @@ import education.entity.Chapter;
 import education.entity.ChooseCourse;
 import education.entity.Course;
 import education.entity.KnowledgePoint;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService {
-    @Autowired
+    @Resource
     private CourseMapper courseMapper;
     private ChooseCourseMapper chooseCourseMapper;
     private ChapterMapper chapterMapper;
