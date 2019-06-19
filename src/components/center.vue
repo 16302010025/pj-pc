@@ -2,6 +2,12 @@
   <div id="center">
     <p class="title">我的课程</p>
     <div class="allclass">
+      <div class="add" @click="issue()">
+        <div>
+          <p class="issue">发布新课程</p>
+          <img src="../../static/add.jpg" alt="">
+        </div>
+      </div>
       <div class="mysubjects" v-for="item in classes" :key="item" @click="details()">
         <!-- 本地路径 -->
         <img id="pic" src="../../static/books.png" alt="">
@@ -20,6 +26,7 @@ export default {
   name: 'center',
   data() {
     return {
+      // 最后把假数据替换
       classes: [
         { name: '计算机基础', number: 20, content: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
         { name: '多媒体' },
@@ -33,8 +40,11 @@ export default {
     this.getclasses();
   },
   methods: {
+    issue() {
+      alert("新建课程正在努力开发中")
+    },
     details() {
-      alert("课程详情正在努力开发")
+      alert("课程详情正在努力开发中")
     },
     getclasses() {
       this.axios.post('/getclasses', {
@@ -74,6 +84,17 @@ export default {
   justify-content: flex-start;
   flex-wrap: wrap;
 }
+.add {
+  margin-left: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: 3%;
+  width: 400px;
+  height: 250px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
 .mysubjects {
   margin-left: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.1);
@@ -100,5 +121,11 @@ export default {
   -webkit-line-clamp: 3;
   overflow: hidden;
   margin-right: 20px;
+}
+.issue {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
 }
 </style>
