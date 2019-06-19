@@ -17,11 +17,42 @@
 功能需求： 更新个人信息。
 返回参数： true or flase
 
-3.获得学生收藏的chapter
+3.收藏、笔记
+3.1获取收藏
 /course/getFav method = get
 发生参数： openid
 功能需求：通过学生id查询到对应收藏的章节
-返回参数：一系列的章节及对应的具体信息包括chapterid，courseid，courseName，name（章节名字），decription；
+返回参数：一系列的章节及对应的具体信息包括chapterid，courseid，courseName，name（章节名字）；
+
+3.2 添加收藏
+/course/addFav method = post
+发生参数： openid chapterid
+功能需求：通过学生id和章节id添加收藏
+返回参数：status： success or fail；
+
+3.3 删除收藏
+/course/delFav method = post
+发生参数： openid chapterid
+功能需求：通过学生id和章节id删除收藏
+返回参数：status： success or fail；
+
+3.4 获取笔记列表
+/course/getNote method = get
+发生参数： openid
+功能需求：通过学生id查询到对应知识点笔记
+返回参数： 笔记：kpid kpname noteid notedetail ；
+
+3.5 添加笔记
+/course/addNote method = post
+发生参数： openid noteid
+功能需求：学生添加对应知识点笔记
+返回参数： status: success or fail
+
+3.6 删除笔记
+/course/delNote method = post
+发生参数： openid noteid
+功能需求：学生删除对应知识点笔记
+返回参数： status: success or fail
 
 4.课程相关API
 4.1 /course/getCourse mothod = get
@@ -34,10 +65,10 @@
 功能需求：得到全部课程
 返回参数： coursename，courseid，decription
 
-4.3 /course/addcourse method = post
+4.3 /course/addCourse method = post
 发送参数：stdid courseid
 功能需求： 学生添加课程
-返回参数：success
+返回参数：status: success or fail
 
 4.4 /course/getChapter method = get
 发生参数： courseid
@@ -46,4 +77,20 @@
 4.5 /course/getkpoint method = get
 发送参数：chapterid
 功能需求：得到对应章节的所有知识点
-返回参数：kpid detail
+返回参数：kpid kpname
+
+4.6 /course/getKpDetail method = get
+发送参数： kpid
+功能需求：得到知识点对应每条小内容
+返回参数：kpdetail
+
+5.测验相关
+5.1 /course/getPaper method = get
+发送参数： courseid
+功能需求：得到对应课程的测验题
+返回参数：exerciseID exercisedescription exerciseoptions exercisecorrectoption
+
+5.2 /course/submitPaper method = post
+发送参数：stdid exerciseID paperID choose
+功能需求：记录学生做得习题答案
+返回参数：status：success of fail
