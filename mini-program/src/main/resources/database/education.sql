@@ -179,10 +179,9 @@ DROP TABLE IF EXISTS `knowledgepoint`;
 CREATE TABLE `knowledgepoint` (
   `kpID` int(11) NOT NULL AUTO_INCREMENT,
   `chapterID` int(11) NOT NULL,
-  `details` text NOT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`kpID`),
-  KEY `chapterID` (`chapterID`),
-  CONSTRAINT `chapterID` FOREIGN KEY (`chapterID`) REFERENCES `chapter` (`chapterid`)
+  KEY `chapterID` (`chapterID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -196,6 +195,31 @@ LOCK TABLES `knowledgepoint` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `kpdetail`
+--
+
+DROP TABLE IF EXISTS `kpdetail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `kpdetail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kpID` int(11) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `kpdetail_id_uindex` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kpdetail`
+--
+
+LOCK TABLES `kpdetail` WRITE;
+/*!40000 ALTER TABLE `kpdetail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `kpdetail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `memo`
 --
 
@@ -205,13 +229,11 @@ DROP TABLE IF EXISTS `memo`;
 CREATE TABLE `memo` (
   `memoID` int(11) NOT NULL AUTO_INCREMENT,
   `studentID` varchar(255) NOT NULL,
-  `courseID` int(11) NOT NULL,
+  `kpID` int(11) NOT NULL,
   `description` text,
   PRIMARY KEY (`memoID`),
-  KEY `studentID` (`studentID`),
-  KEY `courseID` (`courseID`),
-  CONSTRAINT `courseID` FOREIGN KEY (`courseID`) REFERENCES `course` (`courseid`),
-  CONSTRAINT `studentID` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentid`)
+  KEY `kpID` (`kpID`),
+  KEY `studentID` (`studentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -235,7 +257,8 @@ CREATE TABLE `paper` (
   `paperID` int(11) NOT NULL AUTO_INCREMENT,
   `teacherID` int(11) NOT NULL,
   `courseID` int(11) NOT NULL,
-  PRIMARY KEY (`paperID`)
+  PRIMARY KEY (`paperID`),
+  UNIQUE KEY `paper_courseID_uindex` (`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -359,4 +382,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-03 21:57:23
+-- Dump completed on 2019-06-19 16:30:54
