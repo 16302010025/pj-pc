@@ -69,7 +69,7 @@ public interface CourseMapper {
   @Select("select * from course where courseID = #{courseID}")
   Course findCourseByID(Integer courseID);
 
-  @Select("select chapterID from chapter where chapterID = #{courseID}")
+  @Select("select chapterID from chapter where courseID = #{courseID}")
   List<Integer> findChapterIDByID(Integer courseID);
 
   @Insert("insert into course (courseName, description, teacherID)values ( #{courseName}, #{description},#{teacherID})")
