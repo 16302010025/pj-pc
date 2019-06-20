@@ -2,6 +2,7 @@ package education.dao;
 
 import education.entity.Teacher;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -64,9 +65,12 @@ public interface TeacherMapper {
 
     Teacher findTeacherByName(String username);
 
+    @Select("select * from teacher where teacherID = #{teacherID}")
     Teacher findTeacherByID(Integer teacherID);
+
 
     int updatePassword(@Param("name") String username, @Param("password") String password);
 
+    @Select("select courseID from course where teacherID = #{teacherID}")
     List<Integer> findCourseIDByID(Integer teacherID);
 }
