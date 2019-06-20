@@ -27,4 +27,7 @@ public interface WXCustomMapper {
   int insertDoPaper(@Param("studentID") String studentID, @Param("exerciseID") Integer exerciseID, @Param("paperID")Integer paperID , @Param("choose")Character choose);
 
   List<WXNote> getNote(String studentID);
+
+  @Select("select kpID, name from knowledgepoint where chapterID = #{chapterID}")
+  List<KnowledgePoint> getAllKnowledgePoint(Integer chapterID);
 }
