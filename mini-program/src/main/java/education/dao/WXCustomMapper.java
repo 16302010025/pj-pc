@@ -1,4 +1,4 @@
-package education.dao.wx;
+package education.dao;
 
 import education.entity.*;
 import education.entity.wx.WXCourse;
@@ -13,22 +13,18 @@ import java.util.List;
 @Mapper
 public interface WXCustomMapper {
 
-  @Select("select courseID, courseName, description , name from course natural join (select teacherID, name from teacher)")
   List<WXCourse> getAllCourse();
 
-  @Select("select * from chapter where chapterID = #{courseID}")
+  @Select("select * from chapter where courseID = #{courseID}")
   List<Chapter> getAllChapterByCourseID(@Param("courseID") Integer courseID);
 
   @Select("select * from favorite where studentID = #{studentID}")
   List<Favorite> getFavorite(String studentID);
 
-  @Select("select exerciseID, description, correctOption, optionA, optionB, optionC, optionD from exercise natural join paper where courseID = #{courseID}")
   List<ExerciseWithBLOBs> getPaper(String courseID);
 
   @Insert("insert into dopaper values (#{studentID}, #{exerciseID}, #{paperID}, #{choose})")
   int insertDoPaper(@Param("studentID") String studentID, @Param("exerciseID") Integer exerciseID, @Param("paperID")Integer paperID , @Param("choose")Character choose);
 
-
-  @Select("select kpID, name as kpName, memoID as noteID, description from memo natural join knowledgepoint where studentID = #{studentID}")
   List<WXNote> getNote(String studentID);
 }

@@ -136,4 +136,10 @@
       teacherID = #{teacherid,jdbcType=INTEGER}
     where courseID = #{courseid,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllCourse" resultType="education.entity.wx.WXCourse">
+    select courseID, courseName, description, name
+    from course natural join
+    (select teacherID, name from teacher) t
+  </select>
 </mapper>

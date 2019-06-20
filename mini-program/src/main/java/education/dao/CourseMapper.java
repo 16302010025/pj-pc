@@ -1,6 +1,7 @@
 package education.dao;
 
 import education.entity.Course;
+import education.entity.wx.WXCourse;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -78,4 +79,5 @@ public interface CourseMapper {
   int updateCourse(@Param("courseID") Integer courseID, @Param("courseName") String courseName, @Param("description") String description);
 
 
+  List<WXCourse> getAllCourse();
 }
