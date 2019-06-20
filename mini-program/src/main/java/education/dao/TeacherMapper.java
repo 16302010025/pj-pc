@@ -60,7 +60,7 @@ public interface TeacherMapper {
      */
     int updateByPrimaryKey(Teacher record);
 
-    Teacher   findTeacherByName(String username);
+    Teacher findTeacherByName(String username);
 
     int updatePassword(@Param("name") String username, @Param("password") String password);
 }
