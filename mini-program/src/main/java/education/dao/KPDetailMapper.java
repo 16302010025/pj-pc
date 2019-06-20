@@ -1,7 +1,10 @@
 package education.dao;
 
 import education.entity.KPDetail;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -62,9 +65,12 @@ public interface KPDetailMapper {
    */
   int updateByPrimaryKey(KPDetail record);
 
+  @Select("select * from kpdetail where id = #{detailID}")
   KPDetail findDetailByID(Integer detailID);
 
+  @Insert("insert into kpdetail values (#{kpID}, #{description})")
   int addDetail(@Param("kpID") Integer kpID, @Param("description") String description);
 
+  @Update("update kpdetail set description = #{description} where id = #{id}")
   int updateDetail(@Param("id") Integer detailID, @Param("description") String description);
 }

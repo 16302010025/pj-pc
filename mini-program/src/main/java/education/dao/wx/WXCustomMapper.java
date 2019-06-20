@@ -25,7 +25,7 @@ public interface WXCustomMapper {
   @Select("select exerciseID, description, correctOption, optionA, optionB, optionC, optionD from exercise natural join paper where courseID = #{courseID}")
   List<ExerciseWithBLOBs> getPaper(String courseID);
 
-  @Insert("insert into dopaper (#{studentID}, #{exerciseID}, #{paperID}, #{choose})")
+  @Insert("insert into dopaper values (#{studentID}, #{exerciseID}, #{paperID}, #{choose})")
   int insertDoPaper(@Param("studentID") String studentID, @Param("exerciseID") Integer exerciseID, @Param("paperID")Integer paperID , @Param("choose")Character choose);
 
 
