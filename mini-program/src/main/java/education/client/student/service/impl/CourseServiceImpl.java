@@ -51,21 +51,21 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-  public boolean addFav(String studentId, int chapterId) {
-    FavoriteKey favoriteKey = new FavoriteKey();
-    favoriteKey.setStudentid(studentId);
-    favoriteKey.setChapterid(chapterId);
-    if (favoriteMapper.insertSelective(favoriteKey) != 0) {
+  public boolean addFav(String studentId, int kpID) {
+    Favorite favorite = new Favorite();
+    favorite.setStudentid(studentId);
+    favorite.setKpid(kpID);
+    if (favoriteMapper.insertSelective(favorite) != 0) {
       return true;
     }
     return false;
   }
 
   @Override
-  public boolean delFav(String studentId, int chapterId) {
+  public boolean delFav(String studentId, int kpID) {
     FavoriteKey favoriteKey = new FavoriteKey();
     favoriteKey.setStudentid(studentId);
-    favoriteKey.setChapterid(chapterId);
+    favoriteKey.setKpid(kpID);
     if (favoriteMapper.deleteByPrimaryKey(favoriteKey) != 0) {
       return true;
     }
