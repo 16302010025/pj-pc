@@ -20,8 +20,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public String login(String code) {
-        String appId = "自己的appid";
-        String secretKey = "自己的appSecret";
+        String appId = "wxa4eea09957bbdc57\n";
+        String secretKey = "5b3986f5ce132d92da5348842d4b62ef\n";
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appId + "&secret="
                 + secretKey + "&js_code=" + code + "&grant_type=authorization_code";
 

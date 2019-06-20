@@ -44,11 +44,11 @@ public class StudentController {
     student.setStudentno(studentNo);
     Student checkedStudent = studentService.getStudentById(studentid);
     if (null == checkedStudent) {
-      jsonObject.put("flag", false);
+      jsonObject.put("status", false);
       return jsonObject.toJSONString();
     }
     studentService.update(student);
-    jsonObject.put("flag", true);
+    jsonObject.put("status", true);
     return jsonObject.toJSONString();
   }
 }
