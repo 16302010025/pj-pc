@@ -29,6 +29,7 @@ public class StudentServiceImpl implements StudentService {
         if (results.equals("")) {
             System.out.println("不存在");
         }
+        System.out.println(results);
         return results;
     }
 
