@@ -17,5 +17,5 @@ public interface WXCustomMapper {
 
   @Select("select * from chapter where chapterID = #{courseID}")
   List<Chapter> getAllChapterByCourseID(@Param("courseID") Integer courseID);
-  
+
 }
