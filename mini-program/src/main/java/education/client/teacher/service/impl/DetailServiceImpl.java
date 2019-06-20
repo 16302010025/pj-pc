@@ -39,7 +39,7 @@ public class DetailServiceImpl implements DetailService {
 
   @Override
   public boolean addDetail(int knowledgeID, String description) {
-    if (knowledgeID<0||description==null||description.equals("")||knowledgePointMapper.findKnowledgeByID(knowledgeID)){
+    if (knowledgeID<0||description==null||description.equals("")||knowledgePointMapper.findKnowledgeByID(knowledgeID)==null){
       return false;
     }else {
       kpDetailMapper.addDetail(knowledgeID,description);
@@ -50,7 +50,7 @@ public class DetailServiceImpl implements DetailService {
 
   @Override
   public boolean updateDetail(int detailID, String description) {
-    if (detailID<0||description==null||description.equals("")||kpDetailMapper.findDetailByID(detailID)){
+    if (detailID<0||description==null||description.equals("")||kpDetailMapper.findDetailByID(detailID)==null){
       return false;
     }else {
       kpDetailMapper.updateDetail(detailID,description);

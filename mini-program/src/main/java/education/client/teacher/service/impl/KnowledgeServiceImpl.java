@@ -43,7 +43,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
 
   @Override
   public boolean updateKnowledge(int knowledgeID, String knowledgeName) {
-    if (knowledgeID<0||knowledgeName==null||knowledgeName.equals("")||knowledgePointMapper.findKnowledgeByID(knowledgeID)){
+    if (knowledgeID<0||knowledgeName==null||knowledgeName.equals("")||knowledgePointMapper.findKnowledgeByID(knowledgeID)==null){
       return false;
     }else {
       knowledgePointMapper.updateKnowledge(knowledgeID,knowledgeName);

@@ -33,7 +33,7 @@ public class ChapterServiceImpl implements ChapterService {
 
   @Override
   public boolean addChapter(int courseID, String chapterName, String description) {
-    if (courseID<0||chapterName==null||chapterName.equals("")||description==null||description.equals("")||courseMapper.findCourseByID(courseID)){
+    if (courseID<0||chapterName==null||chapterName.equals("")||description==null||description.equals("")||courseMapper.findCourseByID(courseID)==null){
       return false;
     }else {
      chapterMapper.addChapter(courseID,chapterName,description);
@@ -43,7 +43,7 @@ public class ChapterServiceImpl implements ChapterService {
 
   @Override
   public boolean updateChapter(int chapterID, String chapterName, String description) {
-    if (chapterID<0||chapterName==null||chapterName.equals("")||description==null||description.equals("")||chapterMapper.findChapterByID(chapterID)){
+    if (chapterID<0||chapterName==null||chapterName.equals("")||description==null||description.equals("")||chapterMapper.findChapterByID(chapterID)==null){
       return false;
     }else {
       chapterMapper.updateChapter(chapterID,chapterName,description);
