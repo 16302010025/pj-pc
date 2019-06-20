@@ -58,15 +58,20 @@ public interface KnowledgePointMapper {
    */
   int updateByPrimaryKey(KnowledgePoint record);
 
+
+  //通过kpID获取一个具体的知识点记录项
   @Select("select * from knowledgepoint where kpID = #{kpID}")
   KnowledgePoint findKnowledgeByID(Integer kpID);
 
+  //通过kpID获取对应的kpDetail的所有相关的id
   @Select("select id from kpdetail where kpID = #{kpID}")
   List<Integer> findDetailIDByID(Integer kpID);
 
+  //向一个知识点表中插入一条新的数据
   @Insert("insert into knowledgepoint (chapterID, name)values (#{chapterID}, #{name})")
   int addKnowledge(@Param("chapterID") Integer chapterID, @Param("name") String knowledgeName);
 
+  //更新相关的记录项
   @Update("update knowledgepoint set name = #{name} where kpID = #{kpID}")
   int updateKnowledge(@Param("kpID") Integer knowledgeID, @Param("name") String knowledgeName);
 }

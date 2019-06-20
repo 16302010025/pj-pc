@@ -63,14 +63,18 @@ public interface TeacherMapper {
      */
     int updateByPrimaryKey(Teacher record);
 
+    //通过教师用户名获取教师的全部信息
     Teacher findTeacherByName(String username);
 
+    //通过教师ID获取教师记录项
     @Select("select * from teacher where teacherID = #{teacherID}")
     Teacher findTeacherByID(Integer teacherID);
 
 
+    //更新密码
     int updatePassword(@Param("name") String username, @Param("password") String password);
 
+    //通过tezcherID查询courseID
     @Select("select courseID from course where teacherID = #{teacherID}")
     List<Integer> findCourseIDByID(Integer teacherID);
 }

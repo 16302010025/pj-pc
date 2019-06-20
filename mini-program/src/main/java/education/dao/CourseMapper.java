@@ -66,18 +66,22 @@ public interface CourseMapper {
    */
   int updateByPrimaryKey(Course record);
 
+  //通过courseID获得一个一个course记录，对应Java对象
   @Select("select * from course where courseID = #{courseID}")
   Course findCourseByID(Integer courseID);
 
+  // 通过courseID查询所有与该course相关的chapterID
   @Select("select chapterID from chapter where courseID = #{courseID}")
   List<Integer> findChapterIDByID(Integer courseID);
 
+  //向course表中插入一个新的记录
   @Insert("insert into course (courseName, description, teacherID)values ( #{courseName}, #{description},#{teacherID})")
   int addCourse(@Param("teacherID") Integer teacherID, @Param("courseName") String courseName, @Param("description") String description);
 
+  //向course表中更新courseID对应的记录项
   @Update("update course set courseName = #{courseName}, description = #{description} where courseID = #{courseID}")
   int updateCourse(@Param("courseID") Integer courseID, @Param("courseName") String courseName, @Param("description") String description);
 
-
+  //获取所有的课程，联合查询表单，写在了对应的XML表中
   List<WXCourse> getAllCourse();
 }

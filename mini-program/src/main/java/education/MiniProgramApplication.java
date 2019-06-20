@@ -24,7 +24,7 @@ public class MiniProgramApplication {
   }
 
 //  @RequestMapping("/")
-//  public List<WXCourse> hello() {
-//    return wxCustomMapper.getAllCourse();
+//  public Object hello() {
+//    return wxCustomMapper.insertDoPaper("huang",2,1,'D');
 //  }
 }
