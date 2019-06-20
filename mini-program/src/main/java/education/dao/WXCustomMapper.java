@@ -1,10 +1,12 @@
 package education.dao;
 
-import education.entity.*;
+import education.entity.Chapter;
+import education.entity.ExerciseWithBLOBs;
+import education.entity.Favorite;
+import education.entity.KnowledgePoint;
 import education.entity.wx.WXCourse;
 import education.entity.wx.WXNote;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,7 +15,6 @@ import java.util.List;
 /**
  * 微信数据库的对应的操作
  * */
-@Mapper
 public interface WXCustomMapper {
 
   //查询所有的课程
@@ -35,7 +36,7 @@ public interface WXCustomMapper {
 
   //将学生所做了的题添加进去
   @Insert("insert into dopaper (studentID, exerciseID, paperID, choose)values (#{studentID}, #{exerciseID}, #{paperID}, #{choose})")
-  int insertDoPaper(@Param("studentID") String studentID, @Param("exerciseID") Integer exerciseID, @Param("paperID")Integer paperID , @Param("choose")Character choose);
+  int insertDoPaper(@Param("studentID") String studentID, @Param("exerciseID") Integer exerciseID, @Param("paperID") Integer paperID, @Param("choose") Character choose);
 
   //得到所有的笔记
   List<WXNote> getNote(String studentID);
