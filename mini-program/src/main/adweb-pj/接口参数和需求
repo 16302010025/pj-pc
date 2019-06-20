@@ -44,7 +44,7 @@
 
 3.5 添加笔记
 /course/addNote method = post
-发生参数： openid noteid
+发生参数： openid noteid notedetail
 功能需求：学生添加对应知识点笔记
 返回参数： status: success or fail
 
