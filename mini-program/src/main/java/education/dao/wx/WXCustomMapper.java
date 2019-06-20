@@ -1,6 +1,7 @@
 package education.dao.wx;
 
 import education.entity.Chapter;
+import education.entity.Favorite;
 import education.entity.Teacher;
 import education.entity.wx.WXCourse;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,7 @@ public interface WXCustomMapper {
   @Select("select * from chapter where chapterID = #{courseID}")
   List<Chapter> getAllChapterByCourseID(@Param("courseID") Integer courseID);
 
+  @Select("select * from favorite where studentID = #{studentID}")
+  List<Favorite> getFavorite(String studentID);
+  
 }
