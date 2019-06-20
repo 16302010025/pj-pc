@@ -1,6 +1,7 @@
 package education.dao;
 
 import education.entity.Teacher;
+import org.apache.ibatis.annotations.Param;
 
 public interface TeacherMapper {
     /**
@@ -58,4 +59,8 @@ public interface TeacherMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Teacher record);
+
+    Teacher   findTeacherByName(String username);
+
+    int updatePassword(@Param("name") String username, @Param("password") String password);
 }
