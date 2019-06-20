@@ -10,12 +10,12 @@
             <img src="../../static/add.jpg" alt="">
           </div>
         </div>
-        <div class="mysubjects" v-for="item in classes" :key="item" @click="details()">
+        <div class="mysubjects" v-for="(item,index) in classes" :key="index" @click="details(index)">
           <!-- 本地路径 -->
           <img id="pic" src="../../static/books.png" alt="">
           <div>
             <p class="name">{{item.courseName}}</p>
-            <p class="textcontent">学生数量：{{item.number}}</p>
+            <p class="textcontent">课程ID: {{item.courseID}}</p>
             <p class="textcontent">课程简介：{{item.discription}}</p>
           </div>
         </div>
@@ -38,8 +38,8 @@ export default {
       login: true,
       // 最后把假数据替换
       classes: [
-        { courseName: '计算机基础', number: 20, discription: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
-        { courseName: '多媒体' },
+        { courseName: '计算机基础', courseID: 3307268767668, discription: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
+        { courseName: '多媒体', courseID: 123454532617847 },
         { courseName: '计算机原理' },
         { courseName: '图形学' },
         { courseName: '网络技术' },
@@ -53,16 +53,15 @@ export default {
     issue() {
       this.$router.push('/newsubject' + "?username=" + this.username)
     },
-    details() {
-      alert("课程详情正在努力开发中")
+    details(index) {
+      this.$router.push('/mysubject/' + this.classes[index].courseID + '/' + this.classes[index].courseName + '/' + this.classes[index].discription)
     },
     getclasses() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
-        alert(this.username)
+        // alert(this.username)
         this.axios.post('/getclasses', {
           username: this.username
-          // password: this.pass
         })
           .then(function (response) {
             console.log(response);

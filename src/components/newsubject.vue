@@ -54,7 +54,7 @@ export default {
         })
           .then(function (response) {
             console.log(response);
-            this.$router.push('/mysubject' + "?subid=" + response.classID)
+            this.$router.push('/mysubject/' + response.courseID + '/' + this.sub_name + '/' + this.sub_brief)
           })
           .catch(function (error) {
             console.log(error);
