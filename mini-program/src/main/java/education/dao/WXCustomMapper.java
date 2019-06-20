@@ -21,7 +21,9 @@ public interface WXCustomMapper {
   @Select("select * from favorite where studentID = #{studentID}")
   List<Favorite> getFavorite(String studentID);
 
-  List<ExerciseWithBLOBs> getPaper(String courseID);
+  Integer getPaperID(Integer courseID);
+
+  List<ExerciseWithBLOBs> getPaper(Integer paperID);
 
   @Insert("insert into dopaper (studentID, exerciseID, paperID, choose)values (#{studentID}, #{exerciseID}, #{paperID}, #{choose})")
   int insertDoPaper(@Param("studentID") String studentID, @Param("exerciseID") Integer exerciseID, @Param("paperID")Integer paperID , @Param("choose")Character choose);

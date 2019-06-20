@@ -7,15 +7,28 @@
     (select teacherID, name from teacher) t
   </select>
 
-  <select id="getPaper" resultType="education.entity.ExerciseWithBLOBs">
-    select exerciseID, description, correctOption, optionA, optionB, optionC, optionD
-    from exercise natural join paper
+  <select id="getPaperID" resultType="java.lang.Integer">
+    select paperID
+    from paper
     where courseID = #{courseID}
+  </select>
+
+  <select id="getPaper" resultType="education.entity.ExerciseWithBLOBs">
+    select exerciseID, description, optionA, optionB, optionC, optionD, correctOption
+    from exercise
+    where paperID = #{paperID}
   </select>
 
   <select id="getNote" resultType="education.entity.wx.WXNote">
     select kpID, name as kpName, memoID as noteID, description
     from memo natural join knowledgepoint
     where studentID = #{studentID}
+  </select>
+
+  <select id="getStudentCourse" resultType="education.entity.wx.WXStudentCourse">
+    select courseID, courseName, c.name as teacher
+    from (select courseID from choosecourse where studentID = #{studentID}) t
+    natural join course
+    natural join (select teacherID, name from teacher) c
   </select>
 </mapper>
