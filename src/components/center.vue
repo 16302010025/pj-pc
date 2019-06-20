@@ -2,7 +2,7 @@
   <div id="center">
     <!-- 做一个是否登录的验证 -->
     <div v-if="this.login === true">
-      <p class="title">我的课程</p>
+      <p class="ctitle">我的课程</p>
       <div class="allclass">
         <div class="add" @click="issue()">
           <div>
@@ -23,7 +23,7 @@
     </div>
 
     <div v-if="this.login === false">
-      <p class="title">请先登录</p>
+      <p class="ctitle">请先登录</p>
     </div>
   </div>
 </template>
@@ -81,9 +81,9 @@ export default {
 </script>
 
 <style lang="less">
-.title {
+.ctitle {
   font-size: 30px;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-bottom: -5px;
 
   text-align: center;

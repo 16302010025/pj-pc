@@ -1,10 +1,16 @@
 <template>
   <div id="mysubject">
-    <div>
-      <p class="title">我的课程</p>
+    <el-button type="danger" @click="goback()">返回</el-button>
+    <p class="title">我的课程</p>
+    <div class="body">
+      <div class="course_info">
+        <p class="course_name">{{courseName}}</p>
+        <p class="course_disc">{{discription}}</p>
+      </div>
       <div class="details">
-        <p class="course_name">{{this.courseName}}</p>
-        <p class="course_disc">{{this.discription}}</p>
+        <div v-for="(item,index) in chapters" :key="index" @click="details(index)">
+          <p class="mychapters">{{item.chapterName}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -20,7 +26,16 @@ export default {
       discription: this.$route.params.discription,
       chapters: [
         {
-          chapterName: '',
+          chapterName: '第一章',
+          chapterID: '12345'
+        },
+        {
+          chapterName: '第二章',
+          chapterID: 'qqqqq'
+        },
+        {
+          chapterName: '补充小结',
+          chapterID: '65443'
         }
       ]
     }
@@ -29,6 +44,13 @@ export default {
     this.getDetails();
   },
   methods: {
+    details(index) {
+      // alert(this.chapters[index].chapterName)
+      this.$router.push('/chapter/' + this.chapters[index].chapterName + '/' + this.chapters[index].chapterID)
+    },
+    goback() {
+      this.$router.go(-1)
+    },
     getDetails() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
@@ -59,7 +81,6 @@ export default {
   font-size: 30px;
   margin-top: 15px;
   margin-bottom: -5px;
-
   text-align: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;
@@ -74,8 +95,21 @@ export default {
 .course_disc {
   color: rgb(119, 119, 119);
 }
-.details {
+.course_info {
   border: solid 1px black;
   width: 450px;
+  margin-left: 75px;
+}
+.details {
+  border: solid 1px red;
+  width: 500px;
+  margin-left: 100px;
+}
+.body {
+  display: flex;
+  margin-top: 30px;
+}
+.mychapters {
+  cursor: pointer;
 }
 </style>

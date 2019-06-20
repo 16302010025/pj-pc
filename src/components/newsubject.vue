@@ -1,7 +1,7 @@
 <template>
   <div id="newsubject">
     <div class="bg">
-      <p class="title">新建课程</p>
+      <p class="nstitle">新建课程</p>
       <div class="main_body">
         <div class="input_body">
           <span class="text">新建课程</span>
@@ -77,7 +77,7 @@ export default {
   box-shadow: 10px 10px 5px #888888;
 }
 
-.title {
+.nstitle {
   font-size: 30px;
   margin-top: 55px;
   margin-bottom: -5px;
