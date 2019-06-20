@@ -4,10 +4,12 @@ import education.client.teacher.service.DetailService;
 import education.dao.KPDetailMapper;
 import education.dao.KnowledgePointMapper;
 import education.entity.KPDetail;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class DetailServiceImpl implements DetailService {
   @Resource
   KPDetailMapper kpDetailMapper;
