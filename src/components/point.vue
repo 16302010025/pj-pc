@@ -1,15 +1,21 @@
 <template>
   <div id="point">
-    <el-button type="danger" plain @click="goback()">返回</el-button>
-    <div>
-      <el-input placeholder="新知识点名称" v-model="point_name"></el-input>
-      <div class="new_point_content" v-for="(detail,index) in point_details" :key="index">
-        <el-input placeholder="新知识点内容" v-model="detail.point_text"></el-input>
-        <el-button type="danger" plain @click="remove(index)">删除</el-button>
+    <el-button type="danger"  @click="goback()">返回</el-button>
+    <div class="point_bg">
+      <div>
+        <div class="point_title">
+          <span>知识点名称：</span>
+          <el-input placeholder="新知识点名称" v-model="point_name"></el-input>
+        </div>
+        <div class="new_point_content" v-for="(detail,index) in point_details" :key="index">
+          <span>知识点细节：</span>
+          <el-input placeholder="新知识点内容" v-model="detail.point_text"></el-input>
+          <el-button type="danger"  @click="remove(index)">删除</el-button>
+        </div>
+        <el-button class="button-bottom" type="info"  @click="adddet()">新加知识点细节</el-button>
       </div>
-      <el-button type="info" plain @click="adddet()">添加</el-button>
+      <el-button class="button-bottom" type="success"  @click="submit()">提交</el-button>
     </div>
-    <el-button type="success" plain @click="submit()">提交</el-button>
   </div>
 </template>
 
@@ -86,5 +92,37 @@ export default {
 <style lang="less">
 .new_point_content {
   display: flex;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: start;
+  .el-input {
+    margin-right: 20px;
+  }
+  span {
+    width: 150px;
+  }
+}
+.button-bottom {
+    margin-top: 10px;
+}
+.point_bg {
+  margin-top: 20px;
+  padding: 30px;
+  width: 85vw;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 0.1px rgb(238, 238, 238);
+  box-shadow: 10px 10px 5px #888888;
+}
+.point_title {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  span {
+    width: 150px;
+  }
+  .el-input {
+    width: 300px;
+  }
 }
 </style>

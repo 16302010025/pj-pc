@@ -1,14 +1,8 @@
 <template>
-  <div id="mysubject">
+  <div id="questionnaire">
     <el-button type="danger" @click="goback()">返回</el-button>
-     <el-button class="quesbutton" type="warning" @click="question()">发布课程问卷</el-button>
-    <p class="title">我的课程</p>
-    <div class="body">
-      <div class="course_info">
-        <p class="course_name">{{courseName}}</p>
-        <p class="course_disc">{{discription}}</p>
-      </div>
-      <div class="sub-details">
+    <p class="title">发布课程问卷</p>
+      <div class="details">
         <div class="addcha">
           <el-input placeholder="新建章节名称" v-model="cha_name"></el-input>
           <el-button type="warning" @click="addchapter()">添加章节</el-button>
@@ -17,13 +11,12 @@
           <p class="mychapters">{{item.chapterName}}</p>
         </div>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'mysubject',
+  name: 'questionnaire',
   data() {
     return {
       cha_name: '',
@@ -62,9 +55,6 @@ export default {
     this.getDetails();
   },
   methods: {
-    question(){
-      this.$router.push('/questionnaire/' + this.$route.params.id)
-    },
     addchapter() {
       if (this.cha_name != '') {
         this.axios.post('/addchapter', {
@@ -127,7 +117,6 @@ export default {
 .course_name {
   font-size: 36px;
 }
-
 .course_disc {
   color: rgb(119, 119, 119);
 }
@@ -138,10 +127,12 @@ export default {
   border: solid 0.1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
-.sub-details {
+.details {
   padding: 20px;
-  width: 500px;
-  margin-left: 100px;
+  width: 800px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
   border: solid 0.1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }

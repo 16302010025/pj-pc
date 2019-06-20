@@ -39,10 +39,10 @@ export default {
       // 最后把假数据替换
       classes: [
         { courseName: '计算机基础', courseID: 3307268767668, discription: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
-        { courseName: '多媒体', courseID: 123454532617847 },
-        { courseName: '计算机原理' },
-        { courseName: '图形学' },
-        { courseName: '网络技术' },
+        { courseName: '多媒体', courseID: 123454532617847, discription: '12' },
+        { courseName: '计算机原理',courseID: 8888, discription: '1rj2' },
+        { courseName: '图形学',courseID: 2333, discription: '1sad2' },
+        { courseName: '网络技术',courseID: 90904, discription: 'asc' },
       ]
     }
   },

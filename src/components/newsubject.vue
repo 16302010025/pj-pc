@@ -12,8 +12,8 @@
           <el-input placeholder="课程简介" v-model="sub_brief" clearable></el-input>
         </div>
         <div class="buttons">
-          <el-button type="danger" plain @click="cancel()">取消新建</el-button>
-          <el-button type="success" plain @click="newsub()">新建课程</el-button>
+          <el-button type="danger"  @click="cancel()">取消新建</el-button>
+          <el-button type="success"  @click="newsub()">新建课程</el-button>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@ export default {
       sub_name: '',
       username: '',
       sub_brief: '',
-
+      info_empty: false
     }
   },
   mounted: function () {
@@ -36,31 +36,44 @@ export default {
   },
   methods: {
     islogin() {
-      if (this.$cookies.get("username") == undefined){
+      if (this.$cookies.get("username") == undefined) {
         this.$router.push('/')
       }
     },
     cancel() {
       this.$router.push('/home')
     },
-    newsub() {
-      if (this.$cookies.get("username") != undefined) {
-        this.username = this.$cookies.get("username")
-        alert(this.username)
-        this.axios.post('/newsubject', {
-          username: this.username,
-          sub_name: this.sub_name,
-          sub_brief: this.sub_brief,
-        })
-          .then(function (response) {
-            console.log(response);
-            this.$router.push('/mysubject/' + response.courseID + '/' + this.sub_name + '/' + this.sub_brief)
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+    isEmpty() {
+      if (this.sub_name.trim() == '' || this.sub_brief.trim() == '') {
+        this.info_empty = true;
       } else {
-        alert("请先登录")
+        this.info_empty = false;
+      }
+    },
+    newsub() {
+      this.isEmpty();
+      if (this.info_empty == true) {
+        alert("请完善信息")
+      } else {
+        if (this.$cookies.get("username") != undefined) {
+          this.username = this.$cookies.get("username")
+          // alert(this.info_empty + this.sub_name)
+          // alert(this.username)
+          this.axios.post('/newsubject', {
+            username: this.username,
+            sub_name: this.sub_name,
+            sub_brief: this.sub_brief,
+          })
+            .then(function (response) {
+              console.log(response);
+              this.$router.push('/mysubject/' + response.courseID + '/' + this.sub_name + '/' + this.sub_brief)
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else {
+          alert("请先登录")
+        }
       }
     }
   }
