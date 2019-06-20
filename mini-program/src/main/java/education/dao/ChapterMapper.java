@@ -1,6 +1,9 @@
 package education.dao;
 
 import education.entity.Chapter;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ChapterMapper {
     /**
@@ -58,4 +61,14 @@ public interface ChapterMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Chapter record);
+
+  Chapter findChapterByID(Integer chapterID);
+
+  int addChapter(@Param("courseID") Integer courseID, @Param("name") String name, @Param("description") String description);
+
+  int updateChapter(@Param("chapterID") Integer chapterID, @Param("name") String name, @Param("description") String description);
+
+  List<Integer> findKnowledgeIDByID(Integer chapterID);
+
+
 }

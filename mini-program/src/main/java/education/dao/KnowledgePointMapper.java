@@ -1,6 +1,9 @@
 package education.dao;
 
 import education.entity.KnowledgePoint;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface KnowledgePointMapper {
     /**
@@ -50,4 +53,12 @@ public interface KnowledgePointMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(KnowledgePoint record);
+
+    KnowledgePoint findKnowledgeByID(Integer kpID);
+
+    List<Integer> findDetailByID(Integer knowledgeID);
+
+  int addKnowledge(@Param("chapterID") Integer chapterID,@Param("name") String knowledgeName);
+
+  int updateKnowledge(@Param("kpID") Integer knowledgeID,@Param("name") String knowledgeName);
 }
