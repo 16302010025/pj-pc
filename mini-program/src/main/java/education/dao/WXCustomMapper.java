@@ -30,4 +30,6 @@ public interface WXCustomMapper {
 
   @Select("select kpID, name from knowledgepoint where chapterID = #{chapterID}")
   List<KnowledgePoint> getAllKnowledgePoint(Integer chapterID);
+
+  List<WXCourse> getStudentCourse(String studentID);
 }
