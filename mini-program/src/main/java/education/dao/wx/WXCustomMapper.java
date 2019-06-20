@@ -2,6 +2,7 @@ package education.dao.wx;
 
 import education.entity.*;
 import education.entity.wx.WXCourse;
+import education.entity.wx.WXNote;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,4 +27,8 @@ public interface WXCustomMapper {
 
   @Insert("insert into dopaper (#{studentID}, #{exerciseID}, #{paperID}, #{choose})")
   int insertDoPaper(@Param("studentID") String studentID, @Param("exerciseID") Integer exerciseID, @Param("paperID")Integer paperID , @Param("choose")Character choose);
+
+
+  @Select("select kpID, name as kpName, memoID as noteID, description from memo natural join knowledgepoint where studentID = #{studentID}")
+  List<WXNote> getNote(String studentID);
 }
