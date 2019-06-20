@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface WXCustomMapper {
 
-  @Select("select courseID, courseName, course.description as description, name as teacher (select teacherID, name from teacher)")
+  @Select("select courseID, courseName, description , name as teacher natural join (select teacherID, name from teacher)")
   List<WXCourse> getAllCourse();
 
   @Select("select * from chapter where chapterID = #{courseID}")
