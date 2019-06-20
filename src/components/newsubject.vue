@@ -11,7 +11,7 @@
           <span class="text">课程简介</span>
           <el-input placeholder="课程简介" v-model="sub_brief" clearable></el-input>
         </div>
-        <div class="buttons">
+        <div class="new_buttons">
           <el-button type="danger" @click="cancel()">取消新建</el-button>
           <el-button type="success" @click="newsub()">新建课程</el-button>
         </div>
@@ -119,7 +119,7 @@ export default {
 .text {
   width: 100px;
 }
-.buttons {
+.new_buttons {
   margin-top: 100px;
   margin-left: 200px;
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="questionnaire">
     <el-button type="danger" @click="goback()">返回</el-button>
-    <p class="title">发布课程问卷</p>
+    <p class="quetitle">发布课程问卷</p>
     <div class="papper">
       <el-input placeholder="输入问卷名" v-model="pappername"></el-input>
       <div class="main-ques" v-for="(question,index) in questions" :key="index">
@@ -134,7 +134,8 @@ export default {
     width: 205px;
   }
 }
-.title {
+.quetitle {
+  border-bottom: solid 1px #888888;
   font-size: 30px;
   margin-top: 15px;
   margin-bottom: -5px;

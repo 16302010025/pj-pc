@@ -1,8 +1,8 @@
 <template>
   <div id="mysubject">
     <el-button type="danger" @click="goback()">返回</el-button>
-     <el-button class="quesbutton" type="warning" @click="question()">发布课程问卷</el-button>
-     <el-button class="quesbutton" type="warning" plain @click="checkmyq()">查看发布的问卷</el-button>
+    <el-button class="quesbutton" type="warning" @click="question()">发布课程问卷</el-button>
+    <el-button class="quesbutton" type="warning" plain @click="checkmyq()">查看发布的问卷</el-button>
     <p class="title">我的课程</p>
     <div class="body">
       <div class="course_info">
@@ -14,7 +14,7 @@
           <el-input placeholder="新建章节名称" v-model="cha_name"></el-input>
           <el-button type="warning" @click="addchapter()">添加章节</el-button>
         </div>
-        <div v-for="(item,index) in chapters" :key="index" @click="details(index)">
+        <div class="boxcha" v-for="(item,index) in chapters" :key="index" @click="details(index)">
           <p class="mychapters">{{item.chapterName}}</p>
         </div>
       </div>
@@ -66,7 +66,7 @@ export default {
     checkmyq() {
       this.$router.push('/mypappers/' + this.$route.params.id)
     },
-    question(){
+    question() {
       this.$router.push('/questionnaire/' + this.$route.params.id)
     },
     addchapter() {
@@ -117,6 +117,7 @@ export default {
 
 <style lang="less">
 .title {
+  border-bottom:solid 1px #888888;
   font-size: 30px;
   margin-top: 15px;
   margin-bottom: -5px;
@@ -152,6 +153,10 @@ export default {
 .body {
   display: flex;
   margin-top: 30px;
+}
+.boxcha {
+  border: solid 0.1px rgb(238, 238, 238);
+  box-shadow: 3px 3px 5px #c7c7c7;
 }
 .mychapters {
   cursor: pointer;

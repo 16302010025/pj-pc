@@ -131,8 +131,9 @@ export default {
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
-  border: solid 0.1px rgb(238, 238, 238);
+  border: solid 0.5px rgb(200, 200, 200);
   box-shadow: 10px 10px 5px #888888;
+  border-radius: 10px;
 }
 .cha-name {
   font-size: 30px;
@@ -149,7 +150,7 @@ export default {
 .apoint {
   margin-top: 10px;
   border: solid 1px rgba(0, 0, 0, 0.315);
-  background-color: rgb(253, 246, 246);
+  background-color: rgba(253, 246, 246, 0.876);
   border-radius: 20px;
   padding: 20px;
 }

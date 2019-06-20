@@ -85,7 +85,7 @@ export default {
   font-size: 30px;
   margin-top: 25px;
   margin-bottom: -5px;
-
+  border-bottom:solid 1px #888888;
   text-align: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;

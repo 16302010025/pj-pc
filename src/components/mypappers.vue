@@ -2,9 +2,12 @@
   <div id="mypappers">
     <el-button type="danger" @click="goback()">返回</el-button>
     <p class="wdwenjuan">已发布的问卷</p>
-    <div>
-      <!-- <p>mypappers</p> -->
+    <div class="pappers">
+      <div class="card" v-for="(question,index) in questions" :key="index">
+        <p class="card-title">{{question.ques_title}}</p>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -15,14 +18,11 @@ export default {
     return {
       questions: [
         {
-          ques_title: '',
-          options: [
-            {
-              opt_txt: '',
-            }
-          ],
-          num: '',
-        }
+          ques_title: '问卷1',
+        },
+        {
+          ques_title: '期末考试',
+        },
       ]
     }
   },
@@ -50,7 +50,28 @@ export default {
 </script>
 
 <style lang="less">
+.card-title {
+  font-size: 20px;
+  margin-left: 20px;
+}
+.pappers {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.card {
+  margin-left: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: 3%;
+  width: 400px;
+  height: 250px;
+  margin-top: 20px;
+  display: flex;
+  cursor: pointer;
+}
 .wdwenjuan {
+  border-bottom: solid 1px #888888;
   font-size: 30px;
   margin-top: 15px;
   margin-bottom: -5px;
