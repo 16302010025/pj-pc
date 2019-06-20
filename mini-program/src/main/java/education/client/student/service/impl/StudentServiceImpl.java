@@ -38,11 +38,14 @@ public class StudentServiceImpl implements StudentService {
     if (results.equals("")) {
       System.out.println("不存在");
     }
+    System.out.print("results:");
     System.out.println(results);
     String openid = "";
     int len = results.indexOf("openid");
     //\"session_key\":\"0++DfHwrMHn6S5TDbTui3Q==\",\"openid\":\"ocfet1VAmStb_mBW-5SqUWDWmtXM\"
-    openid = results.substring(len + 6, results.length() - 3);
+    //code":40029,"errmsg":"invalid code, hints: [ req_id: 1lJCC0yFe-iE_vTa
+    openid = results.substring(len + 9, results.length() - 3);
+    System.out.print("openid:");
     System.out.println(openid);
     return openid;
   }
