@@ -1,4 +1,4 @@
-package education.client.teacher.response;
+package education.client.teacher.response.get;
 
 import education.entity.Course;
 
