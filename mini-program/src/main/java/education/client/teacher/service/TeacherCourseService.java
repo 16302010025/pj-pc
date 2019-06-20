@@ -4,7 +4,7 @@ import education.entity.Course;
 
 import java.util.List;
 
-public interface CourseService {
+public interface TeacherCourseService {
   /**
    *
    * @param courseID 课程ID

@@ -1,11 +1,9 @@
 package education.entity.wx;
 
-
-public class WXCourse {
+public class WXStudentCourse {
   private Integer courseID;
   private String courseName;
-  private String name;
-  private String description;
+  private String teacher;
 
   public Integer getCourseID() {
     return courseID;
@@ -23,19 +21,11 @@ public class WXCourse {
     this.courseName = courseName;
   }
 
-  public String getDescription() {
-    return description;
+  public String getTeacher() {
+    return teacher;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+  public void setTeacher(String teacher) {
+    this.teacher = teacher;
   }
 }

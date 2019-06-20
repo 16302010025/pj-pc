@@ -5,7 +5,7 @@ import education.entity.Chapter;
 import java.util.List;
 
 
-public interface ChapterService {
+public interface TeacherChapterService {
   /**
    *
    * @param chapterID 章节ID

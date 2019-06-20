@@ -65,15 +65,19 @@ public interface ChapterMapper {
    */
   int updateByPrimaryKey(Chapter record);
 
+  //通过chapterID获得具体的chapter对象，可为空，最多一个
   @Select("select * from chapter where chapterID = #{chapterID}")
   Chapter findChapterByID(Integer chapterID);
 
-  @Insert("insert into chapter values (#{courseID}, #{name}, #{description})")
+  //像chapter表格中新增数据
+  @Insert("insert into chapter (courseID, name, description)values (#{courseID}, #{name}, #{description})")
   int addChapter(@Param("courseID") Integer courseID, @Param("name") String name, @Param("description") String description);
 
+  //更新chapter表中的数据
   @Update("update chapter set name = #{name}, description = #{description} where chapterID = #{chapterID}")
   int updateChapter(@Param("chapterID") Integer chapterID, @Param("name") String name, @Param("description") String description);
 
+  //通过chapterID获得所有知识点的kpID
   @Select("select kpID from knowledgepoint where chapterID = #{chapterID}")
   List<Integer> findKnowledgeIDByID(Integer chapterID);
 

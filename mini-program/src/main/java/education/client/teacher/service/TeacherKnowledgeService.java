@@ -4,7 +4,7 @@ import education.entity.KnowledgePoint;
 
 import java.util.List;
 
-public interface KnowledgeService {
+public interface TeacherKnowledgeService {
   /**
    *
    * @param knowledgeID 知识点ID

@@ -4,7 +4,7 @@ import education.entity.KPDetail;
 
 import java.util.List;
 
-public interface DetailService {
+public interface TeacherDetailService {
   /**
    *
    * @param detailID 知识点细节ID

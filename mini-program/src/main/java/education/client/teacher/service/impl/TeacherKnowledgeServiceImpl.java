@@ -1,6 +1,6 @@
 package education.client.teacher.service.impl;
 
-import education.client.teacher.service.KnowledgeService;
+import education.client.teacher.service.TeacherKnowledgeService;
 import education.dao.ChapterMapper;
 import education.dao.KnowledgePointMapper;
 import education.entity.KnowledgePoint;
@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class KnowledgeServiceImpl implements KnowledgeService {
+public class TeacherKnowledgeServiceImpl implements TeacherKnowledgeService {
   @Resource
   KnowledgePointMapper knowledgePointMapper;
   @Resource

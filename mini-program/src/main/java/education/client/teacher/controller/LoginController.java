@@ -1,7 +1,6 @@
 package education.client.teacher.controller;
 
 import education.client.teacher.request.LoginRequest;
-import education.client.teacher.response.BooleanResponse;
 import education.client.teacher.response.LoginResponse;
 import education.client.teacher.service.TeacherService;
 import org.springframework.web.bind.annotation.*;

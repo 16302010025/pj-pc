@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="education.dao.WXCustomMapper">
+  <select id="getAllCourse" resultType="education.entity.wx.WXCourse">
+    select courseID, courseName, description, name
+    from course natural join
+    (select teacherID, name from teacher) t
+  </select>
+
+  <select id="getPaperID" resultType="java.lang.Integer">
+    select paperID
+    from paper
+    where courseID = #{courseID}
+  </select>
+
+  <select id="getPaper" resultType="education.entity.ExerciseWithBLOBs">
+    select exerciseID, description, optionA, optionB, optionC, optionD, correctOption
+    from exercise
+    where paperID = #{paperID}
+  </select>
+
+  <select id="getNote" resultType="education.entity.wx.WXNote">
+    select kpID, name as kpName, memoID as noteID, description
+    from memo natural join knowledgepoint
+    where studentID = #{studentID}
+  </select>
+
+  <select id="getStudentCourse" resultType="education.entity.wx.WXStudentCourse">
+    select courseID, courseName, c.name as teacher
+    from (select courseID from choosecourse where studentID = #{studentID}) t
+    natural join course
+    natural join (select teacherID, name from teacher) c
+  </select>
+</mapper>

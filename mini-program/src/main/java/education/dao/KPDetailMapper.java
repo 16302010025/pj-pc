@@ -65,12 +65,15 @@ public interface KPDetailMapper {
    */
   int updateByPrimaryKey(KPDetail record);
 
+  //通过detailID获取一个具体的kpdetail 项
   @Select("select * from kpdetail where id = #{detailID}")
   KPDetail findDetailByID(Integer detailID);
 
-  @Insert("insert into kpdetail values (#{kpID}, #{description})")
+  //添加一条记录
+  @Insert("insert into kpdetail (kpID, description)values (#{kpID}, #{description})")
   int addDetail(@Param("kpID") Integer kpID, @Param("description") String description);
 
+  //更新一条记录
   @Update("update kpdetail set description = #{description} where id = #{id}")
   int updateDetail(@Param("id") Integer detailID, @Param("description") String description);
 }

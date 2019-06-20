@@ -1,6 +1,6 @@
 package education.client.teacher.service.impl;
 
-import education.client.teacher.service.CourseService;
+import education.client.teacher.service.TeacherCourseService;
 import education.dao.CourseMapper;
 import education.dao.TeacherMapper;
 import education.entity.Course;
@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class CourseServiceImpl implements CourseService {
+public class TeacherCourseServiceImpl implements TeacherCourseService {
   @Resource
   CourseMapper courseMapper;
   @Resource
