@@ -1,7 +1,7 @@
-package education.client.teacher.controller;
+package education.client.teacher.controller.get;
 
-import education.client.teacher.request.GetKnowledgeRequest;
-import education.client.teacher.response.GetKnowledgeResponse;
+import education.client.teacher.request.get.GetKnowledgeRequest;
+import education.client.teacher.response.get.GetKnowledgeResponse;
 import education.client.teacher.service.TeacherKnowledgeService;
 import education.entity.KnowledgePoint;
 import org.springframework.web.bind.annotation.*;

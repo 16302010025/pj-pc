@@ -1,4 +1,4 @@
-package education.client.teacher.request;
+package education.client.teacher.request.get;
 
 public class GetKnowledgeRequest {
   private int chapterID;

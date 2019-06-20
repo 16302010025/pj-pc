@@ -1,7 +1,7 @@
-package education.client.teacher.controller;
+package education.client.teacher.controller.get;
 
-import education.client.teacher.request.GetChapterRequest;
-import education.client.teacher.response.GetChapterResponse;
+import education.client.teacher.request.get.GetChapterRequest;
+import education.client.teacher.response.get.GetChapterResponse;
 import education.client.teacher.service.TeacherChapterService;
 import education.entity.Chapter;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
-package education.client.teacher.controller;
+package education.client.teacher.controller.get;
 
-import education.client.teacher.request.GetClassesRequest;
-import education.client.teacher.response.GetClassesResponse;
+import education.client.teacher.request.get.GetClassesRequest;
+import education.client.teacher.response.get.GetClassesResponse;
 import education.client.teacher.service.TeacherCourseService;
 import education.entity.Course;
 import org.springframework.web.bind.annotation.*;
