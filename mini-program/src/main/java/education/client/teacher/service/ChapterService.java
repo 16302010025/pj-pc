@@ -4,6 +4,7 @@ import education.entity.Chapter;
 
 import java.util.List;
 
+
 public interface ChapterService {
   /**
    *
@@ -17,7 +18,9 @@ public interface ChapterService {
    * @param courseID 课程ID
    * @return 章节ID链表
    */
-  List<Integer> findChapterIDByName(int courseID);
+  List<Integer> findChapterIDByID(int courseID);
+
+
   /**
    *
    * @param courseID 课程ID
