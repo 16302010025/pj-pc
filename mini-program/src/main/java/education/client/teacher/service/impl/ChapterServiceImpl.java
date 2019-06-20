@@ -4,10 +4,12 @@ import education.client.teacher.service.ChapterService;
 import education.dao.ChapterMapper;
 import education.dao.CourseMapper;
 import education.entity.Chapter;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class ChapterServiceImpl implements ChapterService {
   @Resource
   ChapterMapper chapterMapper;

@@ -4,10 +4,12 @@ import education.client.teacher.service.KnowledgeService;
 import education.dao.ChapterMapper;
 import education.dao.KnowledgePointMapper;
 import education.entity.KnowledgePoint;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class KnowledgeServiceImpl implements KnowledgeService {
   @Resource
   KnowledgePointMapper knowledgePointMapper;
