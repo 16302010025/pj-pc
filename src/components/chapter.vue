@@ -4,7 +4,6 @@
     <div class="cha_bg">
       <div>
         <p class="cha-name">{{chapterName}} 的知识点</p>
-        <!-- <p style="color: red">这个是章节的id： {{chapterID}}（之后删除）</p> -->
       </div>
       <div class="apoint" v-for="(point,index) in points" :key="index">
         <div style="display: flex; align-items: center">
@@ -12,7 +11,6 @@
           <el-button type="info" @click="modify(index)">修改</el-button>
           <el-button type="danger" @click="remove(index)">删除</el-button>
         </div>
-        <!-- <p style="font-size: 13px; color: red">知识点的id： {{point.pointID}}</p> -->
         <div v-for="(content,index2) in points[index].contents" :key="index2">
           <p style="color: grey">{{content.con_det}}</p>
         </div>

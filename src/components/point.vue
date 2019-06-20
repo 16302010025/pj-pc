@@ -49,10 +49,8 @@ export default {
             console.log(response);
             this.point_name = response.point_name;
             this.point_details = response.point_details
-            //   this.points = response.points
           })
           .catch(function (error) {
-            // alert("非法请求")
             console.log(error);
           });
       }
