@@ -68,7 +68,7 @@ public interface KPDetailMapper {
   @Select("select * from kpdetail where id = #{detailID}")
   KPDetail findDetailByID(Integer detailID);
 
-  @Insert("insert into kpdetail values (#{kpID}, #{description})")
+  @Insert("insert into kpdetail (kpID, description)values (#{kpID}, #{description})")
   int addDetail(@Param("kpID") Integer kpID, @Param("description") String description);
 
   @Update("update kpdetail set description = #{description} where id = #{id}")

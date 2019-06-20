@@ -64,7 +64,7 @@ public interface KnowledgePointMapper {
   @Select("select id from kpdetail where kpID = #{kpID}")
   List<Integer> findDetailIDByID(Integer kpID);
 
-  @Insert("insert into knowledgepoint values (#{chapterID}, #{name})")
+  @Insert("insert into knowledgepoint (chapterID, name)values (#{chapterID}, #{name})")
   int addKnowledge(@Param("chapterID") Integer chapterID, @Param("name") String knowledgeName);
 
   @Update("update knowledgepoint set name = #{name} where kpID = #{kpID}")

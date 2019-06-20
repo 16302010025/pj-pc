@@ -68,7 +68,7 @@ public interface ChapterMapper {
   @Select("select * from chapter where chapterID = #{chapterID}")
   Chapter findChapterByID(Integer chapterID);
 
-  @Insert("insert into chapter values (#{courseID}, #{name}, #{description})")
+  @Insert("insert into chapter (courseID, name, description)values (#{courseID}, #{name}, #{description})")
   int addChapter(@Param("courseID") Integer courseID, @Param("name") String name, @Param("description") String description);
 
   @Update("update chapter set name = #{name}, description = #{description} where chapterID = #{chapterID}")
