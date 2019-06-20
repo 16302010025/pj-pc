@@ -2,6 +2,7 @@
   <div id="mysubject">
     <el-button type="danger" @click="goback()">返回</el-button>
      <el-button class="quesbutton" type="warning" @click="question()">发布课程问卷</el-button>
+     <el-button class="quesbutton" type="warning" plain @click="checkmyq()">查看发布的问卷</el-button>
     <p class="title">我的课程</p>
     <div class="body">
       <div class="course_info">
@@ -62,6 +63,9 @@ export default {
     this.getDetails();
   },
   methods: {
+    checkmyq() {
+      this.$router.push('/mypappers/' + this.$route.params.id)
+    },
     question(){
       this.$router.push('/questionnaire/' + this.$route.params.id)
     },

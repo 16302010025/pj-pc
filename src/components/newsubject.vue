@@ -12,8 +12,8 @@
           <el-input placeholder="课程简介" v-model="sub_brief" clearable></el-input>
         </div>
         <div class="buttons">
-          <el-button type="danger"  @click="cancel()">取消新建</el-button>
-          <el-button type="success"  @click="newsub()">新建课程</el-button>
+          <el-button type="danger" @click="cancel()">取消新建</el-button>
+          <el-button type="success" @click="newsub()">新建课程</el-button>
         </div>
       </div>
     </div>

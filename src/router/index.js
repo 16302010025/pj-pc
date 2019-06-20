@@ -53,6 +53,11 @@ var routes = [{
   name: 'questionnaire',
   component: resolve => require(['@/components/questionnaire'], resolve)
 },
+{
+  path: '/mypappers/:courseID',
+  name: 'mypappers',
+  component: resolve => require(['@/components/mypappers'], resolve)
+},
 ]
 
 var router = new Router({

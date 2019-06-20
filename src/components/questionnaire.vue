@@ -3,7 +3,7 @@
     <el-button type="danger" @click="goback()">返回</el-button>
     <p class="title">发布课程问卷</p>
     <div class="papper">
-
+      <el-input placeholder="输入问卷名" v-model="pappername"></el-input>
       <div class="main-ques" v-for="(question,index) in questions" :key="index">
         <div class="queslist">
           <span>问题：</span>
@@ -31,11 +31,13 @@
 </template>
 
 <script>
+import { all } from 'q';
 export default {
   name: 'questionnaire',
   data() {
     return {
-      radio: '',
+      pappername: '',
+      check_empty: false,
       questions: [
         {
           ques_title: '',
@@ -67,21 +69,51 @@ export default {
     },
     // 添加题目
     addques() {
-      this.questions.push({ ques_title: '', options: [{ opt_txt: '' }] });
+      this.questions.push({ ques_title: '', options: [{ opt_txt: '' }], num: '' });
+    },
+    checkPapper() {
+      if (this.pappername.trim() == '') {
+        this.check_empty = true;
+      }
+      this.questions.forEach(element => {
+        if (element.num.trim() == '') {
+          this.check_empty = true;
+        }
+      });
+      this.questions.forEach(element => {
+        if (element.ques_title.trim() == '') {
+          this.check_empty = true;
+        }
+      });
+      this.questions.forEach(element => {
+        element.options.forEach(e => {
+          if (e.opt_txt.trim() == '') {
+            this.check_empty = true;
+          }
+        })
+      });
     },
     submit() {
-      this.axios.post('/question', {
-        courseID: this.$route.params.courseID,
-        description: this.questions.ques_title,
-        option: this.questions.options,
-        correctchoose: this.questions.num,
-      })
-        .then(function (response) {
-          console.log(response);
+      this.check_empty = false;
+      this.checkPapper();
+      if (this.check_empty == true) {
+        alert('请先完善信息');
+      } else {
+        this.axios.post('/question', {
+          pappername: this.pappername,
+          courseID: this.$route.params.courseID,
+          description: this.questions.ques_title,
+          option: this.questions.options,
+          correctchoose: this.questions.num,
         })
-        .catch(function (error) {
-          console.log(error);
-        });
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
     },
     goback() {
       this.$router.go(-1)
