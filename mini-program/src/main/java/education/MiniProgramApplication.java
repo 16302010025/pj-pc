@@ -14,7 +14,7 @@ import java.util.List;
 
 @SpringBootApplication
 @MapperScan("education.dao")
-@RestController
+//@RestController
 public class MiniProgramApplication {
   @Resource
   WXCustomMapper wxCustomMapper;
@@ -23,8 +23,8 @@ public class MiniProgramApplication {
     SpringApplication.run(MiniProgramApplication.class, args);
   }
 
-  @RequestMapping("/")
-  public List<WXCourse> hello() {
-    return wxCustomMapper.getAllCourse();
-  }
+//  @RequestMapping("/")
+//  public List<WXCourse> hello() {
+//    return wxCustomMapper.getAllCourse();
+//  }
 }
