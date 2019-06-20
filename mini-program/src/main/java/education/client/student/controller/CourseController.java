@@ -54,17 +54,17 @@ public class CourseController {
 
   //3.2 添加收藏
   @PostMapping(value = "addFav")
-  public String addFav(@RequestParam String studentID, @RequestParam int chapterID) {
+  public String addFav(@RequestParam String studentID, @RequestParam int kpID) {
     JSONObject jsonObject = new JSONObject();
-    jsonObject.put("status", courseService.addFav(studentID, chapterID));
+    jsonObject.put("status", courseService.addFav(studentID, kpID));
     return jsonObject.toJSONString();
   }
 
   //3.3 删除收藏
   @PostMapping(value = "delFav")
-  public String delFav(@RequestParam String studentID, @RequestParam int chapterID) {
+  public String delFav(@RequestParam String studentID, @RequestParam int kpID) {
     JSONObject jsonObject = new JSONObject();
-    jsonObject.put("status", courseService.delFav(studentID, chapterID));
+    jsonObject.put("status", courseService.delFav(studentID, kpID));
     return jsonObject.toJSONString();
   }
 

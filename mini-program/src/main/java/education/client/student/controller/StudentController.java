@@ -18,6 +18,7 @@ public class StudentController {
   //登录
   @PostMapping(value = "loginAuth", produces = "application/json;UTF-8")
   public String login(@RequestParam() String code) {
+    System.out.println(code);
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("openid", studentService.login(code));
     return jsonObject.toJSONString();

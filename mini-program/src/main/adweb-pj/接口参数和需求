@@ -87,10 +87,15 @@
 5.测验相关
 5.1 /course/getPaper method = get
 发送参数： courseid
-功能需求：得到对应课程的测验题
-返回参数：exerciseID exercisedescription exerciseoptions exercisecorrectoption
+功能需求：得到对应课程的测验
+返回参数：paperid
 
-5.2 /course/submitPaper method = post
+5.2 /course/getExercise method = get
+发送参数： paperid
+功能需求：得到对应课程的测验题目
+返回参数：exerciseid ,desc,options,answer
+
+5.3 /course/submitPaper method = post
 发送参数：studentID exerciseID paperID choose
 功能需求：记录学生做得习题答案
 返回参数：status：success of fail
