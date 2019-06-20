@@ -2,15 +2,6 @@
   <div id="questionnaire">
     <el-button type="danger" @click="goback()">返回</el-button>
     <p class="title">发布课程问卷</p>
-      <div class="details">
-        <div class="addcha">
-          <el-input placeholder="新建章节名称" v-model="cha_name"></el-input>
-          <el-button type="warning" @click="addchapter()">添加章节</el-button>
-        </div>
-        <div v-for="(item,index) in chapters" :key="index" @click="details(index)">
-          <p class="mychapters">{{item.chapterName}}</p>
-        </div>
-      </div>
   </div>
 </template>
 
@@ -19,84 +10,15 @@ export default {
   name: 'questionnaire',
   data() {
     return {
-      cha_name: '',
-      username: '',
-      courseName: this.$route.params.courseName,
-      discription: this.$route.params.discription,
-      chapters: [
-        {
-          chapterName: '第一章',
-          chapterID: '12345'
-        },
-        {
-          chapterName: '第二章',
-          chapterID: 'qqqqq'
-        },
-        {
-          chapterName: '补充小结',
-          chapterID: '65443'
-        },
-        {
-          chapterName: '第三章',
-          chapterID: '12345'
-        },
-        {
-          chapterName: '第四章',
-          chapterID: 'qqqqq'
-        },
-        {
-          chapterName: '期末复习',
-          chapterID: '65443'
-        }
-      ]
     }
   },
   mounted: function () {
-    this.getDetails();
+   
   },
   methods: {
-    addchapter() {
-      if (this.cha_name != '') {
-        this.axios.post('/addchapter', {
-          courseID: this.$route.params.id
-        })
-          .then(function (response) {
-            console.log(response);
-            this.chapters = response.chapters
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      } else {
-        alert(this.$route.params.id + "请输入章节名称")
-      }
-    },
-    details(index) {
-      // alert(this.chapters[index].chapterName)
-      this.$router.push('/chapter/' + this.chapters[index].chapterName + '/' + this.chapters[index].chapterID)
-    },
     goback() {
       this.$router.go(-1)
     },
-    getDetails() {
-      if (this.$cookies.get("username") != undefined) {
-        this.username = this.$cookies.get("username")
-        this.axios.post('/getDetails', {
-          username: this.username,
-          courseID: this.$route.params.id
-        })
-          .then(function (response) {
-            console.log(response);
-            this.chapters = response.chapters
-          })
-          .catch(function (error) {
-            // alert("非法请求")
-            console.log(error);
-          });
-      } else {
-        alert("请先登录")
-      }
-    }
   }
 }
 </script>
