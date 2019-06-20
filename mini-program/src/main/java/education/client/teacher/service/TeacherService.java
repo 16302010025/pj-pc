@@ -10,4 +10,6 @@ public interface TeacherService {
   boolean addTeacher(String name,String password,boolean gender,String description);
 
   boolean updatePassword(String name,String newPassword);
+
+  Teacher findTeacherByID(int teacherID);
 }

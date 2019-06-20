@@ -51,7 +51,7 @@ public class TeacherServiceImpl implements TeacherService {
         addTeacher.setPassword(password);
         addTeacher.setGender(gender);
         addTeacher.setDescription(description);
-        teacherMapper.insert(addTeacher);
+        teacherMapper.insert(addTeacher);//不管数据库是否成功
         return true;
       }else {
         return false;
@@ -75,6 +75,16 @@ public class TeacherServiceImpl implements TeacherService {
       }
     }
   }
+
+  @Override
+  public Teacher findTeacherByID(int teacherID) {
+    if (teacherID>=0&&teacherMapper.findTeacherByID(teacherID)!=null){
+      return teacherMapper.findTeacherByID(teacherID);
+    }
+    return null;
+  }
+
+
 
 
 }

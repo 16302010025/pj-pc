@@ -2,6 +2,8 @@ package education.client.teacher.service;
 
 import education.entity.KPDetail;
 
+import java.util.List;
+
 public interface DetailService {
   /**
    *
@@ -16,6 +18,13 @@ public interface DetailService {
    * @return 描述
    */
   String gainDescriptionByID(int detailID);
+
+  /**
+   *
+   * @param knowledgeID 知识点ID
+   * @return 知识点细节ID
+   */
+  List<Integer> findDetailIDByID(int knowledgeID);
 
   /**
    *

@@ -14,10 +14,10 @@ public interface KnowledgeService {
 
   /**
    *
-   * @param knowledgeID 知识点ID
-   * @return 知识点细节ID
+   * @param chapterID 章节ID
+   * @return 知识点ID链表
    */
-  List<Integer> findDetailByID(int knowledgeID);
+  List<Integer> findKnowledgeIDByID(int chapterID);
 
   /**
    *

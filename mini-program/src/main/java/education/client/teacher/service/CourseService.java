@@ -10,14 +10,14 @@ public interface CourseService {
    * @param courseID 课程ID
    * @return 课程对象
    */
-  Course findCourseByName(int courseID);
+  Course findCourseByID(int courseID);
 
   /**
    *
-   * @param name 教师名
+   * @param teacherID 教师ID
    * @return 课程ID链表
    */
-  List<Integer> findCourseIDByName(String name);
+  List<Integer> findCourseIDByID(int teacherID);
 
  /**
    *
