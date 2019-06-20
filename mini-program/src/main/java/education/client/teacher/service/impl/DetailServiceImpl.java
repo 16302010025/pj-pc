@@ -32,7 +32,7 @@ public class DetailServiceImpl implements DetailService {
   @Override
   public List<Integer> findDetailIDByID(int knowledgeID) {
     if (knowledgeID>=0&&knowledgePointMapper.findKnowledgeByID(knowledgeID)!=null){
-      return knowledgePointMapper.findDetailByID(knowledgeID);
+      return knowledgePointMapper.findDetailIDByID(knowledgeID);
     }
     return null;
   }
