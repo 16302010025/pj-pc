@@ -77,13 +77,14 @@ export default {
 }
 .card {
   margin-left: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 1px 4px rgb(165, 141, 132), 0 0 6px rgb(197, 178, 124);
   border-radius: 3%;
   width: 400px;
   height: 250px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  background-color: rgb(230, 224, 212);
   cursor: pointer;
 }
 .wdwenjuan {
