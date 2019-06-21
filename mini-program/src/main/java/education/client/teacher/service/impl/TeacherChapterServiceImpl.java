@@ -38,8 +38,12 @@ public class TeacherChapterServiceImpl implements TeacherChapterService {
     if (courseID<0||chapterName==null||chapterName.equals("")||description==null||description.equals("")||courseMapper.findCourseByID(courseID)==null){
       return -1;
     }else {
-     int chapterID=chapterMapper.addChapter(courseID,chapterName,description);
-     return chapterID;
+      Chapter chapter=new Chapter();
+      chapter.setCourseid(courseID);
+      chapter.setName(chapterName);
+      chapter.setDescription(description);
+     chapterMapper.addChapter(chapter);
+     return chapter.getChapterid();
     }
   }
 

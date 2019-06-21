@@ -37,8 +37,11 @@ public class TeacherKnowledgeServiceImpl implements TeacherKnowledgeService {
     if (chapterID<0||knowledgeName==null||knowledgeName.equals("")||chapterMapper.findChapterByID(chapterID)==null){
       return -1;
     }else {
-      int knowledgeID=knowledgePointMapper.addKnowledge(chapterID,knowledgeName);
-      return knowledgeID;
+      KnowledgePoint knowledgePoint=new KnowledgePoint();
+      knowledgePoint.setChapterid(chapterID);
+      knowledgePoint.setName(knowledgeName);
+      knowledgePointMapper.addKnowledge(knowledgePoint);
+      return knowledgePoint.getKpid();
     }
 
   }

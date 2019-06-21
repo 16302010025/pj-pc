@@ -44,8 +44,11 @@ public class TeacherDetailServiceImpl implements TeacherDetailService {
     if (knowledgeID<0||description==null||description.equals("")||knowledgePointMapper.findKnowledgeByID(knowledgeID)==null){
       return -1;
     }else {
-      int detailID=kpDetailMapper.addDetail(knowledgeID,description);
-      return detailID;
+      KPDetail kpDetail=new KPDetail();
+      kpDetail.setKpid(knowledgeID);
+      kpDetail.setDescription(description);
+      kpDetailMapper.addDetail(kpDetail);
+      return kpDetail.getId();
     }
 
   }

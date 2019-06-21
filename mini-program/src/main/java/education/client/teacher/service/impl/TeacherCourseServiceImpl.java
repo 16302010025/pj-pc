@@ -40,8 +40,12 @@ public class TeacherCourseServiceImpl implements TeacherCourseService {
     if (teacherID<0||courseName==null||courseName.equals("")||description==null||description.equals("")||teacherMapper.findTeacherByID(teacherID)==null){
       return -1;
     }else {
-      int courseID=courseMapper.addCourse(teacherID,courseName,description);
-      return courseID;
+      Course course=new Course();
+      course.setTeacherid(teacherID);
+      course.setCoursename(courseName);
+      course.setDescription(description);
+      courseMapper.addCourse(course);
+      return course.getCourseid();
     }
   }
 
