@@ -46,7 +46,8 @@ export default {
       })
         .then(function (response) {
           console.log(response);
-          this.questions = response.questions;
+          this.questions = response.papperList;
+          this.studentnum = response.studentnum;
         })
         .catch(function (error) {
           console.log(error);

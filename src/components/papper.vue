@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       pappername: '期中小测',
+      finishnum: '77',
       questions: [
         {
           ques_title: 'qq',
@@ -59,7 +60,6 @@ export default {
           correctnum: '66'
         }
       ],
-      finishnum: '77',
     }
   },
   mounted: function () {
@@ -90,7 +90,6 @@ export default {
           this.pappername = response.pappername;
           this.questions = response.questions;
           this.finishnum = response.finishnum;
-          this.correctnum = response.correctnum;
         })
         .catch(function (error) {
           console.log(error);

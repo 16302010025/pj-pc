@@ -97,13 +97,10 @@ export default {
       if (this.check_empty == true) {
         alert('请先完善信息');
       } else {
-        this.axios.post('/question', {
+        this.axios.post('/addPapper', {
           pappername: this.pappername,
           courseID: this.$route.params.courseID,
           questions: this.questions,
-          // description: this.questions.ques_title,
-          // option: this.questions.options,
-          // correctchoose: this.questions.num,
         })
           .then(function (response) {
             console.log(response);
