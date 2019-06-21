@@ -40,9 +40,9 @@ export default {
       classes: [
         { courseName: '计算机基础', courseID: 3307268767668, discription: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃' },
         { courseName: '多媒体', courseID: 123454532617847, discription: '12' },
-        { courseName: '计算机原理',courseID: 8888, discription: '1rj2' },
-        { courseName: '图形学',courseID: 2333, discription: '1sad2' },
-        { courseName: '网络技术',courseID: 90904, discription: 'asc' },
+        { courseName: '计算机原理', courseID: 8888, discription: '1rj2' },
+        { courseName: '图形学', courseID: 2333, discription: '1sad2' },
+        { courseName: '网络技术', courseID: 90904, discription: 'asc' },
       ]
     }
   },
@@ -60,12 +60,12 @@ export default {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
         // alert(this.username)
-        this.axios.post('/getclasses', {
-          username: this.username
+        this.axios.post('/getClasses', {
+          teacherID: this.username
         })
           .then(function (response) {
             console.log(response);
-            this.classes = response.classes
+            this.classes = response.courseList
           })
           .catch(function (error) {
             // alert("请求失败")
@@ -85,7 +85,7 @@ export default {
   font-size: 30px;
   margin-top: 25px;
   margin-bottom: -5px;
-  border-bottom:solid 1px #888888;
+  border-bottom: solid 1px #888888;
   text-align: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;

@@ -35,26 +35,6 @@ export default {
         {
           chapterName: '第一章',
           chapterID: '12345'
-        },
-        {
-          chapterName: '第二章',
-          chapterID: 'qqqqq'
-        },
-        {
-          chapterName: '补充小结',
-          chapterID: '65443'
-        },
-        {
-          chapterName: '第三章',
-          chapterID: '12345'
-        },
-        {
-          chapterName: '第四章',
-          chapterID: 'qqqqq'
-        },
-        {
-          chapterName: '期末复习',
-          chapterID: '65443'
         }
       ]
     }
@@ -71,8 +51,10 @@ export default {
     },
     addchapter() {
       if (this.cha_name != '') {
-        this.axios.post('/addchapter', {
-          courseID: this.$route.params.id
+        this.axios.post('/addChapter', {
+          courseID: this.$route.params.id,
+          chapterName: this.cha_name,
+          // description: "..."
         })
           .then(function (response) {
             console.log(response);
@@ -95,8 +77,7 @@ export default {
     getDetails() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
-        this.axios.post('/getDetails', {
-          username: this.username,
+        this.axios.post('/getChapter', {
           courseID: this.$route.params.id
         })
           .then(function (response) {
