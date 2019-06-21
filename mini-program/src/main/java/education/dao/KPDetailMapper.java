@@ -70,8 +70,8 @@ public interface KPDetailMapper {
   KPDetail findDetailByID(Integer detailID);
 
   //添加一条记录
-  @Insert("insert into kpdetail (kpID, description)values (#{kpID}, #{description})")
-  int addDetail(@Param("kpID") Integer kpID, @Param("description") String description);
+ // @Insert("insert into kpdetail (kpID, description)values (#{kpID}, #{description})")
+  int addDetail(KPDetail kpDetail);
 
   //更新一条记录
   @Update("update kpdetail set description = #{description} where id = #{id}")

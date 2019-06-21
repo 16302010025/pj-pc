@@ -136,4 +136,9 @@
       name = #{name,jdbcType=VARCHAR}
     where chapterID = #{chapterid,jdbcType=INTEGER}
   </update>
+
+  <insert id="addChapter" useGeneratedKeys="true" keyProperty="chapterID">
+    insert into chapter (courseID, name, description)
+    values (#{courseid}, #{name}, #{description})
+  </insert>
 </mapper>

@@ -2,10 +2,11 @@ package education.dao;
 
 import education.entity.Chapter;
 import education.entity.ExerciseWithBLOBs;
-import education.entity.Favorite;
 import education.entity.KnowledgePoint;
 import education.entity.wx.WXCourse;
+import education.entity.wx.WXFavorite;
 import education.entity.wx.WXNote;
+import education.entity.wx.WXStudentCourse;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -25,8 +26,8 @@ public interface WXCustomMapper {
   List<Chapter> getAllChapterByCourseID(@Param("courseID") Integer courseID);
 
   //通过studentID获取收藏的
-  @Select("select * from favorite where studentID = #{studentID}")
-  List<Favorite> getFavorite(String studentID);
+  //@Select("select * from favorite where studentID = #{studentID}")
+  List<WXFavorite> getFavorite(String studentID);
 
   //得到一个课程对应的paper
   Integer getPaperID(Integer courseID);
@@ -46,5 +47,5 @@ public interface WXCustomMapper {
   List<KnowledgePoint> getAllKnowledgePoint(Integer chapterID);
 
   //通过studentID获取该学生的所有的课程
-  List<WXCourse> getStudentCourse(String studentID);
+  List<WXStudentCourse> getStudentCourse(String studentID);
 }

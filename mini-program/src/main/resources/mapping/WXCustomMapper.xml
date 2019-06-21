@@ -31,4 +31,13 @@
     natural join course
     natural join (select teacherID, name from teacher) c
   </select>
+
+  <select id="getFavorite" resultType="education.entity.wx.WXFavorite">
+    select kpName, chapterName, courseName
+    from (select kpID, studentID from favorite) f natural join
+    (select kpID, name as kpName, chapterID from knowledgepoint) k natural join
+    (select chapterID, name as chapterName, courseID from chapter) t natural join
+    (select courseID, courseName from course) m
+    where studentID = #{studentID}
+  </select>
 </mapper>

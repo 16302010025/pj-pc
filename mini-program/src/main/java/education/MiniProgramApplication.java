@@ -1,6 +1,8 @@
 package education;
 
+import education.dao.CourseMapper;
 import education.dao.WXCustomMapper;
+import education.entity.Course;
 import education.entity.wx.WXCourse;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +19,7 @@ import java.util.List;
 //@RestController
 public class MiniProgramApplication {
   @Resource
-  WXCustomMapper wxCustomMapper;
+  CourseMapper courseMapper;
 
   public static void main(String[] args) {
     SpringApplication.run(MiniProgramApplication.class, args);
@@ -25,6 +27,11 @@ public class MiniProgramApplication {
 
 //  @RequestMapping("/")
 //  public Object hello() {
-//    return wxCustomMapper.insertDoPaper("huang",2,1,'D');
+//    Course course = new Course();
+//    course.setCoursename("English");
+//    course.setTeacherid(6);
+//    course.setDescription("This an English course.");
+//    courseMapper.addCourse(course);
+//    return course.getCourseid();
 //  }
 }

@@ -70,8 +70,8 @@ public interface ChapterMapper {
   Chapter findChapterByID(Integer chapterID);
 
   //像chapter表格中新增数据
-  @Insert("insert into chapter (courseID, name, description)values (#{courseID}, #{name}, #{description})")
-  int addChapter(@Param("courseID") Integer courseID, @Param("name") String name, @Param("description") String description);
+//  @Insert("insert into chapter (courseID, name, description)values (#{courseID}, #{name}, #{description})")
+  int addChapter(Chapter chapter);
 
   //更新chapter表中的数据
   @Update("update chapter set name = #{name}, description = #{description} where chapterID = #{chapterID}")

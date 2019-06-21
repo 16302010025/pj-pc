@@ -1,46 +1,32 @@
 package education.dao;
 
 import education.entity.Exercise;
+import education.entity.ExerciseWithBLOBs;
 import education.entity.Paper;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface TeacherExamMapper {
   /**
    *
-   * @param teacherID 教师ID
-   * @param courseID 课程ID
+   * @param paper
    * @return paperID
    */
-  int addPaper(@Param("teacherID") Integer teacherID,@Param("courseID") int courseID);
+  int addPaper(Paper paper);
 
   /**
    *
-   * @param paperID 试题ID
-   * @param description 题干
-   * @param correct 正确选项
-   * @param a
-   * @param b
-   * @param c
-   * @param d
+   * @param exercise
    * @return 试题ID
    */
-  int addExercise(int paperID,String description,char correct,String a,String b,String c,String d);
+  int addExercise(ExerciseWithBLOBs exercise);
 
   /**
    *
-   * @param paperID 试题ID
-   * @param description 题干
-   * @param correct 正确选项
-   * @param a
-   * @param b
-   * @param c
-   * @param d
+   * @param exercise
    * @return 是否成功
    */
-  boolean updateExercise(int paperID,String description,char correct,String a,String b,String c,String d);
+  boolean updateExercise(ExerciseWithBLOBs exercise);
 
   /**
    *
@@ -52,28 +38,28 @@ public interface TeacherExamMapper {
   /**
    *
    * @param courseID 课程ID
-   * @return 试卷对象一一对应
+   * @return 所有该course的所有paper
    */
-  Paper findPaperByCourseID(int courseID);
+  List<Paper> findPaperByCourseID(int courseID);
 
   /**
    *
    * @param teacherID 教师ID
    * @return 该老师所有试卷
    */
-  List<Paper> findPAperByTeacherID(int teacherID);
+  List<Paper> findPaperByTeacherID(int teacherID);
 
   /**
    *
    * @param exercriseID 试题Id
    * @return 试题对象
    */
-  Exercise findExerciseByID(int exercriseID);
+  ExerciseWithBLOBs findExerciseByExerciseID(int exercriseID);
 
   /**
    *
    * @param paperID 试卷ID
-   * @return 所有题目的ID
+   * @return 所有题目
    */
-  List<Integer> findExerciseIDByID(int paperID);
+  List<ExerciseWithBLOBs> findExerciseByPaperID(int paperID);
 }
