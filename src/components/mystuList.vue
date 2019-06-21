@@ -19,7 +19,7 @@ export default {
   name: 'mystuList',
   data() {
     return {
-      myStu: [
+      myStus: [
         {
           name: '张三'
         },
@@ -43,7 +43,7 @@ export default {
       this.$router.go(-1)
     },
     getStuList() {
-      this.axios.post('/getPapList', {
+      this.axios.post('/getStuList', {
         courseID: this.$route.params.courseID,
       })
         .then(function (response) {

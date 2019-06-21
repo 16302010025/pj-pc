@@ -3,19 +3,19 @@
     <el-button type="danger" @click="goback()">返回</el-button>
     <!-- 已经完成的 -->
     <div class="stulistbox">
-    <div class="stulist">
-      <p>已提交的学生：</p>
-      <div class="stucard" v-for="(finishStu,index) in finishStus" :key="index">
-        <p>{{finishStu.name}}</p>
+      <div class="stulist">
+        <p>已提交的学生：</p>
+        <div class="stucard" v-for="(finishStu,index) in finishStus" :key="index">
+          <p>{{finishStu.name}}</p>
+        </div>
       </div>
-    </div>
-    <!-- 还没完成的 -->
-    <div class="stuList">
-      <p>未提交的学生：</p>
-      <div class="stucard" v-for="(unfinishStu,index) in unfinishStus" :key="index">
-        <p>{{unfinishStu.name}}</p>
+      <!-- 还没完成的 -->
+      <div class="stulist">
+        <p>未提交的学生：</p>
+        <div class="stucard" v-for="(unfinishStu,index) in unfinishStus" :key="index">
+          <p>{{unfinishStu.name}}</p>
+        </div>
       </div>
-    </div>
     </div>
 
   </div>
@@ -75,14 +75,14 @@ export default {
 
 <style lang="less">
 .stulistbox {
-    display: flex;
+  display: flex;
 }
 .stucard {
   margin-top: 10px;
   border: solid 0.1px rgb(238, 238, 238);
   box-shadow: 3px 3px 5px #c7c7c7;
   p {
-      margin-left: 30px;
+    margin-left: 30px;
   }
 }
 .stulist {
