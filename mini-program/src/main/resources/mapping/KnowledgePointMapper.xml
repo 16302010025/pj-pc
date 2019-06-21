@@ -100,4 +100,8 @@
       name = #{name,jdbcType=VARCHAR}
     where kpID = #{kpid,jdbcType=INTEGER}
   </update>
+  <insert id="addKnowledge" useGeneratedKeys="true" keyProperty="kpid">
+    insert into knowledgepoint (chapterID, name)
+    values (#{chapterid}, #{name})
+  </insert>
 </mapper>

@@ -68,8 +68,8 @@ public interface KnowledgePointMapper {
   List<Integer> findDetailIDByID(Integer kpID);
 
   //向一个知识点表中插入一条新的数据
-  @Insert("insert into knowledgepoint (chapterID, name)values (#{chapterID}, #{name})")
-  int addKnowledge(@Param("chapterID") Integer chapterID, @Param("name") String knowledgeName);
+ // @Insert("insert into knowledgepoint (chapterID, name)values (#{chapterID}, #{name})")
+  int addKnowledge(KnowledgePoint knowledgePoint);
 
   //更新相关的记录项
   @Update("update knowledgepoint set name = #{name} where kpID = #{kpID}")

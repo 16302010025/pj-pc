@@ -124,4 +124,9 @@
     set kpID = #{kpid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="addDetail" useGeneratedKeys="true" keyProperty="id">
+    insert into kpdetail (kpID, description)
+    values (#{kpid}, #{description})
+  </insert>
 </mapper>
