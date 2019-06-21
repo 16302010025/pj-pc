@@ -90,8 +90,8 @@ export default {
 .wdwenjuan {
   border-bottom: solid 1px #888888;
   font-size: 30px;
-  margin-top: 15px;
-  margin-bottom: -5px;
+  margin-top: -10px;
+  margin-bottom: 5px;
   text-align: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;
