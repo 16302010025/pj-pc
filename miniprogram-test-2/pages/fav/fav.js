@@ -16,22 +16,21 @@ Page({
   },
   delfav:function(e){
     let index = e.currentTarget.dataset.index;
-    this.fav.splice(index, 1)
-    // let api2 = new courseApi;
-    // api2.delfav(stdid, fav[index].kpID).then(data=>{
-    //   if(data.status){
-    //     wx.showToast({
-    //       title: '取消收藏成功',
-    //       duration: 1000
-    //     })
-    //     fav.splice(index, 1)
-    //   }else{
-    //     wx.showToast({
-    //       title: '取消收藏失败',
-    //       duration: 1000
-    //     })
-    //   }
-    // })
+    let api2 = new courseApi;
+    api2.delfav(stdid, fav[index].kpID).then(data=>{
+      if(data.status){
+        wx.showToast({
+          title: '取消收藏成功',
+          duration: 1000
+        })
+        fav.splice(index, 1)
+      }else{
+        wx.showToast({
+          title: '取消收藏失败',
+          duration: 1000
+        })
+      }
+    })
   },
   fresh: function(){
     let that = this;
@@ -39,12 +38,12 @@ Page({
     that.setData({
       stdid: stdid_temp
     })
-    // let api = new courseApi;
-    // api.getFav(stdid_temp).then(data=>{
-    //   that.setData({
-    //     fav: data
-    //   })
-    // })
+    let api = new courseApi;
+    api.getFav(stdid_temp).then(data=>{
+      that.setData({
+        fav: data
+      })
+    })
   },
 
   /**

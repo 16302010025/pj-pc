@@ -52,6 +52,7 @@ Page({
           'stdno': this.data.stdno
         }
       })
+      wx.setStorageSync('isexisted', true);
       wx.showToast({
         title: '保存成功',
         duration: 1000
