@@ -1,6 +1,7 @@
 package education.client.teacher.service;
 
 import education.entity.Exercise;
+import education.entity.ExerciseWithBLOBs;
 import education.entity.Paper;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public interface TeacherExamService {
 
   /**
    *
-   * @param paperID 试题ID
+   * @param exerciseID 试题ID
    * @param description 题干
    * @param correct 正确选项
    * @param a
@@ -38,7 +39,7 @@ public interface TeacherExamService {
    * @param d
    * @return 是否成功
    */
-  boolean updateExercise(int paperID,String description,char correct,String a,String b,String c,String d);
+  boolean updateExercise(int exerciseID,String description,char correct,String a,String b,String c,String d);
 
   /**
    *
@@ -52,28 +53,28 @@ public interface TeacherExamService {
    * @param courseID 课程ID
    * @return 试卷对象一一对应
    */
-  Paper findPaperByCourseID(int courseID);
+  List<Paper> findPaperByCourseID(int courseID);
 
   /**
    *
    * @param teacherID 教师ID
    * @return 该老师所有试卷
    */
-  List<Paper> findPAperByTeacherID(int teacherID);
+  List<Paper> findPaperByTeacherID(int teacherID);
 
   /**
    *
    * @param exercriseID 试题Id
    * @return 试题对象
    */
-  Exercise findExerciseByID(int exercriseID);
+  ExerciseWithBLOBs findExerciseByID(int exercriseID);
 
   /**
    *
    * @param paperID 试卷ID
    * @return 所有题目的ID
    */
-  List<Integer> findExerciseIDByID(int paperID);
+  List<ExerciseWithBLOBs> findExerciseIDByID(int paperID);
 
 
 }
