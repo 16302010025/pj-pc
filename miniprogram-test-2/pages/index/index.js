@@ -1,9 +1,8 @@
 Page({
   data: {
-    isAuthorized: ''
+    isAuthorized: true
   },
   onLoad: function() {
-    let that = this;
   },
   onShow: function(options) {
     this.getUserInfoFun()
@@ -17,7 +16,6 @@ Page({
             url: '../configinfo/configInfo',
           })
         } else {
-          wx.setStorageSync('isexisted', true)
           wx.navigateTo({
             url: '../perdetail/perdetail',
           })

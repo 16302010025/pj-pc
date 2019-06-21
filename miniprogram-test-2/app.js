@@ -7,32 +7,35 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    let stdid = 'huang'
-    wx.setStorageSync('stdid', stdid)
-    wx.setStorageSync('isexisted', false)
+    // let stdid = 'huang'
+    // wx.setStorageSync('stdid', stdid)
+    // wx.setStorageSync('isexisted', false)
     let api = new userApi;
 
 
     // 登录
     wx.login({
       success: res => {
-        //   console.log(res.code)
-        //   // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        //   api.login(res.code).then(datat => {
-        //     // wx.setStorageSync('openid', data)
-        //     console.log(data)
-        //   })
-        // api.getStd(stdid).then(data => {
-        //   wx.setStorage({
-        //     key: 'user',
-        //     data: {
-        //       'email': data.student.email,
-        //       'gender': data.student.genderindex == 0 ? false : true,
-        //       'name': data.student.name,
-        //       'stdno': data.student.studentno
-        //     }
-        //   })
-        // })
+        console.log(res.code)
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        api.login(res.code).then(datat => {
+          if (data.openid) {
+            wx.setStorageSync('stdid', data.openid)
+            wx.setStorageSync('isexisted', data.isExisted)
+            console.log(data)
+          }
+        })
+        api.getStd(stdid).then(data => {
+          wx.setStorage({
+            key: 'user',
+            data: {
+              'email': data.student.email,
+              'gender': data.student.gender,
+              'name': data.student.name,
+              'stdno': data.student.studentno
+            }
+          })
+        })
       }
     })
     // 获取用户信息

@@ -1,18 +1,48 @@
 // pages/fav/fav.js
+import courseApi from '../../apis/courseApi.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    course: '计算机网络',
-    chapter:'应用层',
-    kpname: 'http and https',
+    stdid: '',
+    fav: [{
+      coursename: 'sadas',
+      chaptername: 'das',
+      kpname: 'sda',
+      kpid: ''
+    }],
   },
   delfav:function(e){
-    wx.showToast({
-      title: '取消收藏成功',
-      duration: 1000
+    let index = e.currentTarget.dataset.index;
+    let api2 = new courseApi;
+    api2.delfav(stdid, fav[index].kpID).then(data=>{
+      if(data.status){
+        wx.showToast({
+          title: '取消收藏成功',
+          duration: 1000
+        })
+        fav.splice(index, 1)
+      }else{
+        wx.showToast({
+          title: '取消收藏失败',
+          duration: 1000
+        })
+      }
+    })
+  },
+  fresh: function(){
+    let that = this;
+    let stdid_temp = wx.getStorageSync(stdid);
+    that.setData({
+      stdid: stdid_temp
+    })
+    let api = new courseApi;
+    api.getFav(stdid_temp).then(data=>{
+      that.setData({
+        fav: data
+      })
     })
   },
 
