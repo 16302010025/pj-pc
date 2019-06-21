@@ -3,8 +3,10 @@
     <el-button type="danger" @click="goback()">返回</el-button>
     <p class="wdwenjuan">已发布的问卷</p>
     <div class="pappers">
-      <div class="card" v-for="(question,index) in questions" :key="index">
+      <div class="card" v-for="(question,index) in questions" :key="index" @click="details(index)">
         <p class="card-title">{{question.ques_title}}</p>
+        <p class="card-body">问卷id：{{question.papperId}}</p>
+        <p class="card-body">学生完成情况：{{question.finishnum}} / {{studentnum}}</p>
       </div>
     </div>
 
@@ -16,12 +18,17 @@ export default {
   name: 'mypappers',
   data() {
     return {
+      studentnum: '60',
       questions: [
         {
           ques_title: '问卷1',
+          papperId: '12345',
+          finishnum: '55'
         },
         {
           ques_title: '期末考试',
+          papperId: '987654',
+          finishnum: '32'
         },
       ]
     }
@@ -30,6 +37,9 @@ export default {
     this.getMyPapper();
   },
   methods: {
+    details(index) {
+      this.$router.push('/papper/' + this.$route.params.courseID + '/' + this.questions[index].papperId)
+    },
     getMyPapper() {
       this.axios.post('/getMyPappers', {
         courseID: this.$route.params.courseID,
@@ -54,6 +64,10 @@ export default {
   font-size: 20px;
   margin-left: 20px;
 }
+.card-body {
+  font-size: 15px;
+  margin-left: 20px;
+}
 .pappers {
   display: flex;
   flex-direction: row;
@@ -68,6 +82,7 @@ export default {
   height: 250px;
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   cursor: pointer;
 }
 .wdwenjuan {

@@ -150,7 +150,7 @@ export default {
 .apoint {
   margin-top: 10px;
   border: solid 1px rgba(0, 0, 0, 0.315);
-  background-color: rgba(253, 246, 246, 0.876);
+  background-color: #fafafa;
   border-radius: 20px;
   padding: 20px;
 }

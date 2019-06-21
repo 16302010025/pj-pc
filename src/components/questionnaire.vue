@@ -3,22 +3,33 @@
     <el-button type="danger" @click="goback()">返回</el-button>
     <p class="quetitle">发布课程问卷</p>
     <div class="papper">
-      <el-input placeholder="输入问卷名" v-model="pappername"></el-input>
+      <el-input class="pafirel" placeholder="输入问卷名" v-model="pappername"></el-input>
       <div class="main-ques" v-for="(question,index) in questions" :key="index">
         <div class="queslist">
           <span>问题：</span>
           <el-input placeholder="输入问题内容" v-model="question.ques_title"></el-input>
-          <el-button type="success" plain @click="addopt(index)">新加选项</el-button>
+          <!-- <el-button type="success" plain @click="addopt(index)">新加选项</el-button> -->
           <el-button type="danger" plain @click="delQues(index)">删除题目</el-button>
         </div>
-        <div class="optlist" v-for="(option,index2) in question.options" :key="index2">
-          <span>选项{{index2}}: </span>
-          <el-input placeholder="输入选项内容" v-model="option.opt_txt"></el-input>
-          <el-button type="danger" plain @click="delOpt(index,index2)">删除选项</el-button>
+        <div class="optlist">
+          <span>选项A: </span>
+          <el-input placeholder="输入选项内容" v-model="question.optionA"></el-input>
+        </div>
+        <div class="optlist">
+          <span>选项B: </span>
+          <el-input placeholder="输入选项内容" v-model="question.optionB"></el-input>
+        </div>
+        <div class="optlist">
+          <span>选项C: </span>
+          <el-input placeholder="输入选项内容" v-model="question.optionC"></el-input>
+        </div>
+        <div class="optlist">
+          <span>选项D: </span>
+          <el-input placeholder="输入选项内容" v-model="question.optionD"></el-input>
         </div>
         <div class="key">
           <span>答案: </span>
-          <el-input placeholder="输入答案（选项对应的数字）" v-model="question.num"></el-input>
+          <el-input placeholder="输入答案" v-model="question.num"></el-input>
         </div>
       </div>
       <div class="bot">
@@ -41,11 +52,10 @@ export default {
       questions: [
         {
           ques_title: '',
-          options: [
-            {
-              opt_txt: '',
-            }
-          ],
+          optionA: '',
+          optionB: '',
+          optionC: '',
+          optionD: '',
           num: '',
         }
       ]
@@ -56,41 +66,29 @@ export default {
   },
   methods: {
     //   添加选项
-    addopt(index) {
-      this.questions[index].options.push({ opt_txt: '' });
-    },
+    // addopt(index) {
+    //   this.questions[index].options.push({ opt_txt: '' });
+    // },
     // 删除题目
     delQues(index) {
       this.questions.splice(index, 1);
     },
     // 删除选项
-    delOpt(index, index2) {
-      this.questions[index].options.splice(index2, 1);
-    },
+    // delOpt(index, index2) {
+    //   this.questions[index].options.splice(index2, 1);
+    // },
     // 添加题目
     addques() {
-      this.questions.push({ ques_title: '', options: [{ opt_txt: '' }], num: '' });
+      this.questions.push({ ques_title: '', optionA: '', optionB: '', optionC: '', optionD: '', num: '' });
     },
     checkPapper() {
       if (this.pappername.trim() == '') {
         this.check_empty = true;
       }
       this.questions.forEach(element => {
-        if (element.num.trim() == '') {
+        if (element.num.trim() == '' || element.ques_title.trim() == '' || element.optionA.trim() == '' || element.optionB.trim() == '' || element.optionC.trim() == '' || element.optionD.trim() == '') {
           this.check_empty = true;
         }
-      });
-      this.questions.forEach(element => {
-        if (element.ques_title.trim() == '') {
-          this.check_empty = true;
-        }
-      });
-      this.questions.forEach(element => {
-        element.options.forEach(e => {
-          if (e.opt_txt.trim() == '') {
-            this.check_empty = true;
-          }
-        })
       });
     },
     submit() {
@@ -102,9 +100,10 @@ export default {
         this.axios.post('/question', {
           pappername: this.pappername,
           courseID: this.$route.params.courseID,
-          description: this.questions.ques_title,
-          option: this.questions.options,
-          correctchoose: this.questions.num,
+          questions: this.questions,
+          // description: this.questions.ques_title,
+          // option: this.questions.options,
+          // correctchoose: this.questions.num,
         })
           .then(function (response) {
             console.log(response);
@@ -128,7 +127,7 @@ export default {
   display: flex;
   align-items: center;
   span {
-    width: 50px;
+    width: 70px;
   }
   .el-input {
     width: 205px;
@@ -159,9 +158,10 @@ export default {
   display: flex;
   align-items: center;
   span {
-    width: 80px;
+    width: 70px;
   }
   .el-input {
+    width: 500px;
     margin-right: 10px;
   }
 }
@@ -174,6 +174,9 @@ export default {
   border: solid 0.1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
+.pafirel {
+  width: 800px;
+}
 .optlist {
   clear: both;
   margin-top: 10px;
@@ -181,9 +184,10 @@ export default {
   align-items: center;
   .el-input {
     margin-right: 10px;
+    width: 500px;
   }
   span {
-    width: 80px;
+    width: 70px;
   }
 }
 .bot {

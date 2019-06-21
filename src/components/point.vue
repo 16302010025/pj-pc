@@ -1,6 +1,6 @@
 <template>
   <div id="point">
-    <el-button type="danger"  @click="goback()">返回</el-button>
+    <el-button type="danger" @click="goback()">返回</el-button>
     <div class="point_bg">
       <div>
         <div class="point_title">
@@ -10,11 +10,14 @@
         <div class="new_point_content" v-for="(detail,index) in point_details" :key="index">
           <span>知识点细节：</span>
           <el-input placeholder="新知识点内容" v-model="detail.point_text"></el-input>
-          <el-button type="danger"  @click="remove(index)">删除</el-button>
+          <el-button type="danger" @click="remove(index)">删除</el-button>
         </div>
-        <el-button class="button-bottom" type="info"  @click="adddet()">新加知识点细节</el-button>
       </div>
-      <el-button class="button-bottom" type="success"  @click="submit()">提交</el-button>
+      <div class="new-poi-but">
+        <el-button class="button-bottom" type="info" @click="adddet()">新加知识点细节</el-button>
+        <el-button class="button-bottom" type="success" @click="submit()">提交</el-button>
+      </div>
+
     </div>
   </div>
 </template>
@@ -24,14 +27,11 @@ export default {
   name: 'point',
   data() {
     return {
-      point_name: 'jjjj',
+      point_name: '',
       pointID: this.$route.params.pointID,
       point_details: [
         {
-          point_text: 'asdnljabs'
-        },
-        {
-          point_text: 'aaa'
+          point_text: ''
         }
       ],
     }
@@ -88,6 +88,13 @@ export default {
 </script>
 
 <style lang="less">
+.new-poi-but {
+  margin-top: 10px;
+  margin-right: 48px;
+  display: flex;
+  justify-content: flex-end;
+
+}
 .new_point_content {
   display: flex;
   margin-top: 10px;
@@ -95,13 +102,14 @@ export default {
   justify-content: start;
   .el-input {
     margin-right: 20px;
+    width: 800px;
   }
   span {
     width: 150px;
   }
 }
 .button-bottom {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .point_bg {
   margin-top: 20px;
