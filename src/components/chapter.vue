@@ -15,7 +15,7 @@
           <p style="color: grey">{{content.con_det}}</p>
         </div>
       </div>
-      <div class="buttons"> 
+      <div class="buttons">
         <el-button type="success" @click="newpoint()">新建知识点</el-button>
         <el-button type="danger" @click="deleteChapter()">删除本章节</el-button>
       </div>
@@ -50,12 +50,12 @@ export default {
   methods: {
     deleteChapter() {
       alert('删除id为：' + this.chapterID + '的章节')
-      this.axios.post('/deleteChapter', {
+      this.axios.post('http://localhost:8080/deleteChapter', {
         chapterID: this.$routr.params.chapterID
       })
         .then(function (response) {
           console.log(response);
-        })
+        }.bind(this))
         .catch(function (error) {
           console.log(error);
         });
@@ -66,12 +66,12 @@ export default {
     remove(index) {
       alert('删除id为：' + this.points[index].pointID + '的point')
       this.points.splice(index, 1);
-      this.axios.post('/deletePoints', {
+      this.axios.post('http://localhost:8080/deletePoints', {
         pointID: this.points[index].pointID,
       })
         .then(function (response) {
           console.log(response);
-        })
+        }.bind(this))
         .catch(function (error) {
           console.log(error);
         });
@@ -82,15 +82,15 @@ export default {
     getDetails() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
-        this.axios.post('/getKnowledge', {
+        this.axios.post('http://localhost:8080/getKnowledge', {
           // username: this.username,
           chapterID: this.$routr.params.chapterID
         })
           .then(function (response) {
             console.log(response);
-            this.points = response.knowledgePoints
+            this.points = response.data.knowledgePoints
             // this.contents = response.contents
-          })
+          }.bind(this))
           .catch(function (error) {
             console.log(error);
           });

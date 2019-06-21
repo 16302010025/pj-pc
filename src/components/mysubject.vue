@@ -8,7 +8,7 @@
     <div class="body">
       <div class="course_info">
         <p class="course_name">{{courseName}}</p>
-        <p class="course_disc">课程简介： {{discription}}</p>
+        <p class="course_disc">课程简介： {{description}}</p>
       </div>
       <div class="sub-details">
         <div class="addcha">
@@ -31,7 +31,7 @@ export default {
       cha_name: '',
       username: '',
       courseName: this.$route.params.courseName,
-      discription: this.$route.params.discription,
+      description: this.$route.params.description,
       chapters: [
         {
           chapterName: '第一章',
@@ -55,15 +55,15 @@ export default {
     },
     addchapter() {
       if (this.cha_name != '') {
-        this.axios.post('/addChapter', {
+        this.axios.post('http://localhost:8080/addChapter', {
           courseID: this.$route.params.id,
           chapterName: this.cha_name,
           description: '.'
         })
           .then(function (response) {
             console.log(response);
-            this.chapters = response.chapters
-          })
+            this.chapters = response.data.chapters
+          }.bind(this))
           .catch(function (error) {
             console.log(error);
           });
@@ -81,13 +81,13 @@ export default {
     getDetails() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
-        this.axios.post('/getChapter', {
+        this.axios.post('http://localhost:8080/getChapter', {
           courseID: this.$route.params.id
         })
           .then(function (response) {
             console.log(response);
-            this.chapters = response.chapters
-          })
+            this.chapters = response.data.chapters
+          }.bind(this))
           .catch(function (error) {
             // alert("非法请求")
             console.log(error);

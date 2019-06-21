@@ -43,13 +43,13 @@ export default {
       this.$router.go(-1)
     },
     getStuList() {
-      this.axios.post('/getStuList', {
+      this.axios.post('http://localhost:8080/getStuList', {
         courseID: this.$route.params.courseID,
       })
         .then(function (response) {
           console.log(response);
-          this.myStus = response.myStus;
-        })
+          this.myStus = response.data.myStus;
+        }.bind(this))
         .catch(function (error) {
           console.log(error);
         });

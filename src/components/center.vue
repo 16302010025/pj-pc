@@ -7,16 +7,16 @@
         <div class="add" @click="issue()">
           <div>
             <p class="issue">发布新课程</p>
-            <img src="../assets/add.jpg" alt="">
+            <img src="../assets/add.jpg" alt>
           </div>
         </div>
-        <div class="mysubjects" v-for="(item,index) in classes" :key="index" @click="details(index)">
+        <div class="mysubjects" v-for="(coursesList,index) in coursesLists" :key="index" @click="details(index)">
           <!-- 本地路径 -->
-          <img id="pic" src="../assets/books.png" alt="">
+          <img id="pic" src="../assets/books.png" alt>
           <div>
-            <p class="name">{{item.courseName}}</p>
-            <p class="textcontent">选课人数: {{item.stunum}}</p>
-            <p class="textcontent">课程简介：{{item.discription}}</p>
+            <p class="name">{{coursesList.coursename}}</p>
+            <!-- <p class="textcontent">选课人数: {{item.stunum}}</p> -->
+            <p class="textcontent">课程简介：{{coursesList.description}}</p>
           </div>
         </div>
       </div>
@@ -29,57 +29,65 @@
 </template>
 
 <script>
-import { all } from 'q';
 export default {
-  name: 'center',
+  name: "center",
   data() {
     return {
-      username: '',
+      username: "",
       login: true,
       // 最后把假数据替换
-      classes: [
+      coursesLists: [
         {
-          courseName: '张一弛牛逼',
-          courseID: 10,
-          stunum: 10,
-          discription: '牛逼'
+          courseid: undefined,
+          coursename: '',
+          teacherid: '',
+          description: ''
         }
-
       ]
-    }
+    };
   },
   mounted: function () {
     this.getclasses();
   },
   methods: {
     issue() {
-      this.$router.push('/newsubject' + "?username=" + this.username)
+      this.$router.push("/newsubject" + "?username=" + this.username);
     },
     details(index) {
-      this.$router.push('/mysubject/' + this.classes[index].courseID + '/' + this.classes[index].courseName + '/' + this.classes[index].discription)
+      this.$router.push(
+        "/mysubject/" +
+        this.coursesLists[index].courseid +
+        "/" +
+        this.coursesLists[index].coursename +
+        "/" +
+        this.coursesLists[index].description
+      );
     },
     getclasses() {
       if (this.$cookies.get("username") != undefined) {
-        this.username = this.$cookies.get("username")
-        // alert(this.username)
-        this.axios.post('/getClasses', {
-          teacherID: this.username
-        })
-          .then(function (response) {
-            console.log(response);
-            this.classes = response.courseList
+        this.username = this.$cookies.get("username");
+        // alert(this.$cookies.get("username"))
+        this.axios
+          .post("http://localhost:8080/getClasses", {
+            teacherID: this.username
           })
+          .then(
+            function (response) {
+              this.coursesLists = Object.assign({}, response.data.courseList);
+              console.log("00" + response.data.courseList);
+            }.bind(this)
+          )
           .catch(function (error) {
             // alert("请求失败")
             console.log(error);
           });
       } else {
-        alert("no")
+        alert("no");
         this.login = false;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="less">

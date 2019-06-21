@@ -42,14 +42,14 @@ export default {
   methods: {
     getInfo() {
       if (this.$route.params.pointID != 'null') {
-        this.axios.post('/getKpDtails', {
+        this.axios.post('http://localhost:8080/getKpDtails', {
           knowledgeID: this.$route.params.pointID
         })
           .then(function (response) {
             console.log(response);
-            this.point_name = response.point_name;
-            this.point_details = response.point_details
-          })
+            this.point_name = response.data.point_name;
+            this.point_details = response.data.point_details
+          }.bind(this))
           .catch(function (error) {
             console.log(error);
           });
@@ -69,7 +69,7 @@ export default {
       if (this.$cookies.get("username") != undefined) {
         if (this.$route.params.pointID == 'null') {
           // 新建知识点
-          this.axios.post('/addKnowledge', {
+          this.axios.post('http://localhost:8080/addKnowledge', {
             // pointID: this.$route.params.pointID,
             knowledgeName: this.point_name,
             chapterID: this.$route.params.chapterID,
@@ -77,20 +77,20 @@ export default {
           })
             .then(function (response) {
               console.log(response);
-            })
+            }.bind(this))
             .catch(function (error) {
               console.log(error);
             });
         } else {
           // 修改知识点
-          this.axios.post('/modKnowledge', {
+          this.axios.post('http://localhost:8080/modKnowledge', {
             pointID: this.$route.params.pointID,
             knowledgeName: this.point_name,
             point_details: this.point_details
           })
             .then(function (response) {
               console.log(response);
-            })
+            }.bind(this))
             .catch(function (error) {
               console.log(error);
             });
