@@ -40,7 +40,7 @@ public interface TeacherExamMapper {
    * @param d
    * @return 是否成功
    */
-  boolean updateExercise(int paperID,String description,char correct,String a,String b,String c,String d);
+  boolean updateExercise(Exercise exercise);
 
   /**
    *
@@ -54,7 +54,7 @@ public interface TeacherExamMapper {
    * @param courseID 课程ID
    * @return 试卷对象一一对应
    */
-  Paper findPaperByCourseID(int courseID);
+  List<Paper> findPaperByCourseID(int courseID);
 
   /**
    *
@@ -68,12 +68,12 @@ public interface TeacherExamMapper {
    * @param exercriseID 试题Id
    * @return 试题对象
    */
-  Exercise findExerciseByID(int exercriseID);
+  Exercise findExerciseByExerciseID(int exercriseID);
 
   /**
    *
    * @param paperID 试卷ID
    * @return 所有题目的ID
    */
-  List<Integer> findExerciseIDByID(int paperID);
+  List<Exercise> findExerciseByPaperID(int paperID);
 }
