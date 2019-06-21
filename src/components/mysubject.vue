@@ -68,7 +68,7 @@ export default {
             console.log(error);
           });
       } else {
-        alert(this.$route.params.id + "请输入章节名称")
+        alert("请输入章节名称")
       }
     },
     details(index) {
