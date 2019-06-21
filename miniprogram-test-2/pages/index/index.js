@@ -2,8 +2,7 @@ Page({
   data: {
     isAuthorized: true
   },
-  onLoad: function() {
-  },
+  onLoad: function() {},
   onShow: function(options) {
     this.getUserInfoFun()
   },

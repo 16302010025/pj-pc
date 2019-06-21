@@ -3,76 +3,11 @@
   <text class="text-black text-bold">{{kpname}}</text>
 </view>
 <view class='cu-chat'>
-  <view class='cu-item'>
+  <view wx:for='{{records}}' class='cu-item'>
     <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
     <view class="main">
       <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
-      </view>
-    </view>
-  </view>
-  <view class='cu-item'>
-    <view class="cu-avatar radius" style="background-image:url(../../../static/images/avatar.jpg);"></view>
-    <view class="main">
-      <view class="content shadow">
-        <text>喵喵喵！喵喵喵！</text>
+        <text>{{item.kpdetail}}</text>
       </view>
     </view>
   </view>

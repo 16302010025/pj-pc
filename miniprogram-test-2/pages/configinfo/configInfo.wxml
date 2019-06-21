@@ -20,7 +20,6 @@
     </view>
   </view>
   <view class='cu-list grid col-3 other'>
-
     <view class="cu-item">
       <navigator url="../fav/fav" hover-class="none">
         <view class="cuIcon-favorfill text-orange">
@@ -28,7 +27,6 @@
         </view>
       </navigator>
     </view>
-
     <view class="cu-item">
       <navigator url="../note/note" hover-class="none">
         <view class="cuIcon-formfill text-orange">

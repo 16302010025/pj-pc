@@ -7,22 +7,17 @@ Page({
    */
   data: {
     courseid: '',
-    cname: '',
+    coursename: '',
     chapters: [{
         'chapterid': '12',
-        'chaptername': '应用层',
-        'desc': '电风扇电风扇'
+        'name': '应用层',
+        'description': '电风扇电风扇'
       },
       {
-        'chapterid': '13',
-        'chaptername': '传输层',
-        'desc': '空调空调'
-      },
-      {
-        'chapterid': '14',
-        'chaptername': '数据层',
-        'desc': '冰箱冰箱'
-      }
+        'chapterid': '12',
+        'name': '应用层',
+        'description': '电风扇电风扇'
+      }    
     ]
   },
 
@@ -33,10 +28,9 @@ Page({
     let that = this;
     let api = new courseApi;
     that.setData({
-      cname: options.cname,
+      coursename: options.cname,
       courseid: options.cid
     })
-    console.log(that.courseid);
     api.getChapter(that.courseid).then(data => {
       that.setData({
         chapters: data

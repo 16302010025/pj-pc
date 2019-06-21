@@ -1,4 +1,5 @@
 // pages/kpoint/kpdetail/kpdetail.js
+import courseApi from '../../../apis/courseApi.js'
 Page({
 
   /**
@@ -7,7 +8,18 @@ Page({
   data: {
     kpid: '',
     kpname: '',
-    records: [],
+    records: [{
+      kpdetail: '123'
+    }],
+  },
+  fres: function(){
+    let that = this;
+    let api = new courseApi;
+    api.getKpDetail(that.kpid).then(data=>{
+      that.setData({
+        records: data
+      })
+    })
   },
 
   /**
