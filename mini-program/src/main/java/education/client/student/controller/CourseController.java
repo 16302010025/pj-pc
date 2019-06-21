@@ -39,9 +39,9 @@ public class CourseController {
 
   //4.4 得到course所有章节id，name，decription    已测
   @RequestMapping(value = "getChapter")
-  public String getAllChapterByCourseId(@RequestParam int courseId) {
+  public String getAllChapterByCourseId(@RequestParam int courseid) {
     JSONObject jsonObject = new JSONObject();
-    jsonObject.put("list", courseService.getAllChapterByCourseId(courseId));
+    jsonObject.put("list", courseService.getAllChapterByCourseId(courseid));
     return jsonObject.toJSONString();
   }
 
@@ -69,9 +69,9 @@ public class CourseController {
   }
   //3.2 添加收藏  已测
   @PostMapping(value = "addFav")
-  public String addFav(@RequestParam String studentID, @RequestParam int kpID) {
+  public String addFav(@RequestParam String studentID, @RequestParam int kpID,@RequestParam String description) {
     JSONObject jsonObject = new JSONObject();
-    jsonObject.put("status", courseService.addFav(studentID, kpID));
+    jsonObject.put("status", courseService.addFav(studentID, kpID,description));
     return jsonObject.toJSONString();
   }
 
@@ -100,13 +100,13 @@ public class CourseController {
   }
   //3.6 删除笔记    已测
   @PostMapping(value = "delNote")
-  public String delNote(@RequestParam String studentID, @RequestParam int memoID) {
+  public String delNote(@RequestParam int memoID) {
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("status", courseService.delNote(memoID));
     return jsonObject.toJSONString();
   }
 
-  //5.1 得到对应课程的测验题
+  //5.1 得到对应课程的测验题  如果没有数据会报错
   @RequestMapping(value = "getPaper")
   public String getPaper(@RequestParam int courseid){
     JSONObject jsonObject = new JSONObject();
@@ -120,8 +120,8 @@ public class CourseController {
     jsonObject.put("list",courseService.getExercise(paperid));
     return jsonObject.toJSONString();
   }
-  //5.3 记录学生做得习题答案
-  @PostMapping(value = "submitPaper ")
+  //5.3 记录学生做得习题答案    不能插入数据表中已有的studentID-exerciseID-paperID
+  @PostMapping(value = "submitPaper")
   public String submitPaper(@RequestParam String studentID,@RequestParam int exerciseID,
                             @RequestParam int paperID,@RequestParam char choose){
     JSONObject jsonObject = new JSONObject();

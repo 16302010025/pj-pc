@@ -2,7 +2,9 @@ package education.client.student.service;
 
 import education.entity.*;
 import education.entity.wx.WXCourse;
+import education.entity.wx.WXFavorite;
 import education.entity.wx.WXNote;
+import education.entity.wx.WXStudentCourse;
 
 import java.util.List;
 
@@ -16,9 +18,9 @@ public interface CourseService {
 
   List<KnowledgePoint> getAllKnowledgePointByChapterId(int chapterId);
 
-  List<Favorite> getFav(String studentID);
+  List<WXFavorite> getFav(String studentID);
 
-  boolean addFav(String studentId, int chapterId);
+  boolean addFav(String studentId, int chapterId, String description);
 
   boolean delFav(String studentId, int chapterId);
 
@@ -28,7 +30,7 @@ public interface CourseService {
 
   boolean delNote(int memoID);
 
-  List<WXCourse> getCourse(String studentID);
+  List<WXStudentCourse> getCourse(String studentID);
 
   String getKpDetail(int kpID);
 

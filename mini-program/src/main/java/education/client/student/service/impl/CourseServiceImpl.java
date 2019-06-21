@@ -4,7 +4,9 @@ import education.client.student.service.CourseService;
 import education.dao.*;
 import education.entity.*;
 import education.entity.wx.WXCourse;
+import education.entity.wx.WXFavorite;
 import education.entity.wx.WXNote;
+import education.entity.wx.WXStudentCourse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,7 +34,7 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
   //4.1 通过studentID获取该学生的所有的课程
-  public List<WXCourse> getCourse(String studentID){
+  public List<WXStudentCourse> getCourse(String studentID){
     return wxCustomMapper.getStudentCourse(studentID);
   }
   @Override
@@ -75,16 +77,16 @@ public class CourseServiceImpl implements CourseService {
   }
   @Override
   //3.1 通过学生id查询到对应收藏的知识点
-  public  List<Favorite> getFav(String studentID){
+  public  List<WXFavorite> getFav(String studentID){
     return wxCustomMapper.getFavorite(studentID);
   }
   @Override
   //3.2 添加收藏
-  public boolean addFav(String studentId, int kpID) {
+  public boolean addFav(String studentId, int kpID ,String description) {
     Favorite favorite = new Favorite();
     favorite.setStudentid(studentId);
     favorite.setKpid(kpID);
-    favorite.setDescription(".");
+    favorite.setDescription(description);
     if (favoriteMapper.insertSelective(favorite) != 0) {
       return true;
     }
@@ -134,7 +136,6 @@ public class CourseServiceImpl implements CourseService {
   @Override
   //5.1 得到对应课程的测验题
   public int getPaper(int courseid){
-
     return wxCustomMapper.getPaperID(courseid);
   }
 
