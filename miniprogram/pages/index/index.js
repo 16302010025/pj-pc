@@ -40,7 +40,6 @@ Page({
             data: S.data.isedit,
           })
         }
-
       },
       fail: S.showPrePage
     })
