@@ -114,7 +114,9 @@ export default {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 15px;
-  border: solid 0.1px rgb(238, 238, 238);
+  border-radius: 10px;
+  background-color: rgb(246, 246, 246);
+  border: solid 1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
 .big-body {
@@ -125,7 +127,9 @@ export default {
   padding: 30px;
   padding-bottom: 100px;
   border: solid 0.1px rgb(238, 238, 238);
-  box-shadow: 10px 10px 5px #888888;
+  background-color: rgba(230, 224, 212, 0.527);
+  box-shadow: 3px 3px 1px 4px rgb(165, 141, 132), 0 0 6px rgb(197, 178, 124);
+  border-radius: 3%;
 }
 .pap-title {
   font-size: 30px;
@@ -154,7 +158,7 @@ export default {
     border-radius: 4px;
     background-color: #fafafa;
     p {
-        margin-left: 30px;
+      margin-left: 30px;
       color: #444444;
     }
   }
