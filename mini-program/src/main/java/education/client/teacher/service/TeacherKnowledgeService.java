@@ -23,9 +23,9 @@ public interface TeacherKnowledgeService {
    *
    * @param chapterID 章节ID
    * @param knowledgeName 知识点
-   * @return 是否成功
+   * @return 所添加知识点的ID
    */
-  boolean addKnowledge(int chapterID, String knowledgeName);
+  int addKnowledge(int chapterID, String knowledgeName);
 
   /**
    *

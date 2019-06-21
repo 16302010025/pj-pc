@@ -31,7 +31,7 @@ var routes = [{
 {
   path: '/mysubject/:id/:courseName/:discription',
   name: 'mysubject',
-  component: resolve => require(['@/components/subject'], resolve)
+  component: resolve => require(['@/components/mysubject'], resolve)
 },
 {
   path: '/chapter/:chapterName/:chapterID',
@@ -57,6 +57,21 @@ var routes = [{
   path: '/mypappers/:courseID',
   name: 'mypappers',
   component: resolve => require(['@/components/mypappers'], resolve)
+},
+{
+  path: '/papper/:courseID/:papperID',
+  name: 'papper',
+  component: resolve => require(['@/components/papper'], resolve)
+},
+{
+  path: '/stuList/:courseID/:papperID',
+  name: 'stuList',
+  component: resolve => require(['@/components/stuList'], resolve)
+},
+{
+  path: '/mystuList/:courseID',
+  name: 'mystuList',
+  component: resolve => require(['@/components/mystuList'], resolve)
 },
 ]
 

@@ -3,11 +3,12 @@
     <el-button type="danger" @click="goback()">返回</el-button>
     <el-button class="quesbutton" type="warning" @click="question()">发布课程问卷</el-button>
     <el-button class="quesbutton" type="warning" plain @click="checkmyq()">查看发布的问卷</el-button>
+    <el-button class="quesbutton" type="info" plain @click="getmyStu()">查看选课学生</el-button>
     <p class="title">我的课程</p>
     <div class="body">
       <div class="course_info">
         <p class="course_name">{{courseName}}</p>
-        <p class="course_disc">{{discription}}</p>
+        <p class="course_disc">课程简介： {{discription}}</p>
       </div>
       <div class="sub-details">
         <div class="addcha">
@@ -35,26 +36,6 @@ export default {
         {
           chapterName: '第一章',
           chapterID: '12345'
-        },
-        {
-          chapterName: '第二章',
-          chapterID: 'qqqqq'
-        },
-        {
-          chapterName: '补充小结',
-          chapterID: '65443'
-        },
-        {
-          chapterName: '第三章',
-          chapterID: '12345'
-        },
-        {
-          chapterName: '第四章',
-          chapterID: 'qqqqq'
-        },
-        {
-          chapterName: '期末复习',
-          chapterID: '65443'
         }
       ]
     }
@@ -63,6 +44,9 @@ export default {
     this.getDetails();
   },
   methods: {
+    getmyStu() {
+      this.$router.push('/mystuList/' + this.$route.params.id)
+    },
     checkmyq() {
       this.$router.push('/mypappers/' + this.$route.params.id)
     },
@@ -71,8 +55,10 @@ export default {
     },
     addchapter() {
       if (this.cha_name != '') {
-        this.axios.post('/addchapter', {
-          courseID: this.$route.params.id
+        this.axios.post('/addChapter', {
+          courseID: this.$route.params.id,
+          chapterName: this.cha_name,
+          description: '.'
         })
           .then(function (response) {
             console.log(response);
@@ -95,8 +81,7 @@ export default {
     getDetails() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
-        this.axios.post('/getDetails', {
-          username: this.username,
+        this.axios.post('/getChapter', {
           courseID: this.$route.params.id
         })
           .then(function (response) {
@@ -117,7 +102,7 @@ export default {
 
 <style lang="less">
 .title {
-  border-bottom:solid 1px #888888;
+  border-bottom: solid 1px #888888;
   font-size: 30px;
   margin-top: 15px;
   margin-bottom: -5px;
@@ -130,24 +115,31 @@ export default {
     1px -9px 8px #451b0e;
 }
 .course_name {
+  margin-top: 15px;
+  margin-left: 40px;
   font-size: 36px;
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .course_disc {
+  font-size: 18px;
   color: rgb(119, 119, 119);
 }
 .course_info {
   padding: 20px;
   width: 450px;
   margin-left: 75px;
-  border: solid 0.1px rgb(238, 238, 238);
+  border-radius: 10px;
+  border: solid 1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
 .sub-details {
   padding: 20px;
   width: 500px;
   margin-left: 100px;
-  border: solid 0.1px rgb(238, 238, 238);
+  border-radius: 10px;
+  border: solid 1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
 .body {
@@ -155,11 +147,13 @@ export default {
   margin-top: 30px;
 }
 .boxcha {
+  margin-top: 10px;
   border: solid 0.1px rgb(238, 238, 238);
   box-shadow: 3px 3px 5px #c7c7c7;
 }
 .mychapters {
   cursor: pointer;
+  margin-left: 30px;
 }
 .addcha {
   display: flex;

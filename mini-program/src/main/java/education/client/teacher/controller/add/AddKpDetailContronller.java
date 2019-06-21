@@ -2,6 +2,7 @@ package education.client.teacher.controller.add;
 
 import education.client.teacher.request.add.AddKpDetailRequest;
 import education.client.teacher.response.BooleanResponse;
+import education.client.teacher.response.IDResponse;
 import education.client.teacher.service.TeacherDetailService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,12 @@ public class AddKpDetailContronller {
 
   @RequestMapping(value = "/addKpDetail", method = RequestMethod.POST)
   public @ResponseBody
-  BooleanResponse addKpDetail(@RequestBody AddKpDetailRequest request) throws IOException {
-    boolean isSuccess = detailService.addDetail(request.getKnowledgeID(),request.getDescription());
-    return new BooleanResponse(isSuccess);
+  IDResponse addKpDetail(@RequestBody AddKpDetailRequest request) throws IOException {
+    int detailID = detailService.addDetail(request.getKnowledgeID(),request.getDescription());
+    if (detailID>=0){
+      return new IDResponse(true,detailID);
+    }else {
+      return new IDResponse(false,-1);
+    }
   }
 }

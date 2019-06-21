@@ -34,12 +34,16 @@ public class TeacherChapterServiceImpl implements TeacherChapterService {
   }
 
   @Override
-  public boolean addChapter(int courseID, String chapterName, String description) {
+  public int addChapter(int courseID, String chapterName, String description) {
     if (courseID<0||chapterName==null||chapterName.equals("")||description==null||description.equals("")||courseMapper.findCourseByID(courseID)==null){
-      return false;
+      return -1;
     }else {
-     chapterMapper.addChapter(courseID,chapterName,description);
-     return true;
+      Chapter chapter=new Chapter();
+      chapter.setCourseid(courseID);
+      chapter.setName(chapterName);
+      chapter.setDescription(description);
+     chapterMapper.addChapter(chapter);
+     return chapter.getChapterid();
     }
   }
 

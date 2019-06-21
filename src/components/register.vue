@@ -1,22 +1,24 @@
 <template>
   <div id="register">
-    <p>开始注册</p>
-
-    <div style="margin-top: 5px">
-      <label style="width:200px;" for>帐号:</label>
-      <el-input placeholder="用户名  (邮箱/手机号)" v-model="input" clearable onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"></el-input>
-      <!-- <el-button type="primary" round>点击验证</el-button> -->
-    </div>
-    <div style="margin-top: 5px">
-      <label for>密码:</label>
-      <el-input placeholder="请输入密码" v-model="pass" show-password></el-input>
-    </div>
-    <div style="margin-top: 5px">
-      <label for>再次输入密码:</label>
-      <el-input placeholder="请重复输入密码" v-model="checkpass" show-password></el-input>
-    </div>
-    <div style="margin-top: 5px">
-      <el-button style="width:200px;margin-top:30px;" type="primary" round @click="login()">注册</el-button>
+    <div class="reg">
+      <p class="regtitle">注册</p>
+      <div class="regbody">
+        <div class="regcard">
+          <span>帐号:</span>
+          <el-input placeholder="用户名  (邮箱/手机号)" v-model="input" clearable onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')"></el-input>
+        </div>
+        <div class="regcard">
+          <span>密码:</span>
+          <el-input placeholder="请输入密码" v-model="pass" show-password></el-input>
+        </div>
+        <div class="regcard">
+          <span>确认密码:</span>
+          <el-input placeholder="请再输入一次密码" v-model="checkpass" show-password></el-input>
+        </div>
+        <div style="margin-top: 5px">
+          <el-button style="width:200px;margin-top:30px;" type="primary" round @click="login()">注册</el-button>
+        </div>
+      </div>
 
     </div>
 
@@ -52,7 +54,7 @@ export default {
             if (response.isnew === true) {
               alert("注册成功，马上登录")
               this.$router.push('/')
-            }else {
+            } else {
               alert("用户名已存在")
             }
           })
@@ -67,19 +69,38 @@ export default {
 </script>
 
 <style lang="less">
-.el-input {
-  width: 250px;
+.regcard {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  span{
+    width: 100px;
+  }
+  .el-input {
+    width: 300px;
+  }
 }
-
-#register {
+.regbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.regtitle {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+}
+.reg {
   width: 50%;
   margin-top: 10%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: rgb(246, 246, 246);
+  border: solid 1px rgb(238, 238, 238);
+  box-shadow: 10px 10px 5px #888888;
   padding-bottom: 20px;
-  // margin-top: 10%;
-  // text-align: center;
 }
 </style>

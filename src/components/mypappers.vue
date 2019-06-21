@@ -4,7 +4,10 @@
     <p class="wdwenjuan">已发布的问卷</p>
     <div class="pappers">
       <div class="card" v-for="(question,index) in questions" :key="index">
-        <p class="card-title">{{question.ques_title}}</p>
+        <p @click="details(index)" class="card-title">{{question.ques_title}}</p>
+        <!-- <p class="card-body">问卷id：{{question.papperId}}</p> -->
+        <p @click="details(index)" class="card-body">学生完成情况：{{question.finishnum}} / {{studentnum}}</p>
+        <el-button type="warning" @click="getstuList(index)">查看学生完成情况</el-button>
       </div>
     </div>
 
@@ -16,12 +19,17 @@ export default {
   name: 'mypappers',
   data() {
     return {
+      studentnum: '60',
       questions: [
         {
           ques_title: '问卷1',
+          papperId: '12345',
+          finishnum: '55'
         },
         {
           ques_title: '期末考试',
+          papperId: '987654',
+          finishnum: '32'
         },
       ]
     }
@@ -30,13 +38,21 @@ export default {
     this.getMyPapper();
   },
   methods: {
+    getstuList(index) {
+      // alert("aa")
+      this.$router.push('/stuList/' + this.$route.params.courseID + '/' + this.questions[index].papperId)
+    },
+    details(index) {
+      this.$router.push('/papper/' + this.$route.params.courseID + '/' + this.questions[index].papperId)
+    },
     getMyPapper() {
       this.axios.post('/getMyPappers', {
         courseID: this.$route.params.courseID,
       })
         .then(function (response) {
           console.log(response);
-          this.questions = response.questions;
+          this.questions = response.papperList;
+          this.studentnum = response.studentnum;
         })
         .catch(function (error) {
           console.log(error);
@@ -52,6 +68,12 @@ export default {
 <style lang="less">
 .card-title {
   font-size: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.card-body {
+  font-size: 15px;
+  cursor: pointer;
   margin-left: 20px;
 }
 .pappers {
@@ -62,19 +84,27 @@ export default {
 }
 .card {
   margin-left: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 1px 4px rgb(165, 141, 132), 0 0 6px rgb(197, 178, 124);
   border-radius: 3%;
   width: 400px;
-  height: 250px;
+  height: 200px;
   margin-top: 20px;
   display: flex;
-  cursor: pointer;
+  flex-direction: column;
+  background-color: rgb(230, 224, 212);
+  .el-button {
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #451b0e;
+    background-color: #9e50363f;
+  }
 }
 .wdwenjuan {
   border-bottom: solid 1px #888888;
   font-size: 30px;
-  margin-top: 15px;
-  margin-bottom: -5px;
+  margin-top: -10px;
+  margin-bottom: 5px;
   text-align: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;

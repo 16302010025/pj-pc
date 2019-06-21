@@ -29,29 +29,15 @@ export default {
   name: 'chapter',
   data() {
     return {
-      //   point_name: '',
-      //   point_detail: '',
       chapterName: this.$route.params.chapterName,
       chapterID: this.$route.params.chapterID,
       points: [
         {
-          text: '如何让孩子爱上学习如何让孩子爱上学习如何让孩子爱上学习如何让孩子爱上学习如何让孩子爱上学习如何让孩子爱上学习',
-          pointID: '2345678',
+          text: '..',
+          pointID: '.',
           contents: [
             {
-              con_det: '丑八怪咿呀咿呀咿呀',
-            },
-            {
-              con_det: '要是能重来，我要选李白',
-            }
-          ]
-        },
-        {
-          text: '长得太丑学习就会差',
-          pointID: 'hbhgv bnb',
-          contents: [
-            {
-              con_det: '来更多的碰撞',
+              con_det: '..',
             }
           ]
         }
@@ -96,14 +82,14 @@ export default {
     getDetails() {
       if (this.$cookies.get("username") != undefined) {
         this.username = this.$cookies.get("username")
-        this.axios.post('/getPoints', {
-          username: this.username,
+        this.axios.post('/getKnowledge', {
+          // username: this.username,
           chapterID: this.$routr.params.chapterID
         })
           .then(function (response) {
             console.log(response);
-            this.points = response.points
-            this.contents = response.contents
+            this.points = response.knowledgePoints
+            // this.contents = response.contents
           })
           .catch(function (error) {
             console.log(error);
@@ -150,7 +136,7 @@ export default {
 .apoint {
   margin-top: 10px;
   border: solid 1px rgba(0, 0, 0, 0.315);
-  background-color: rgba(253, 246, 246, 0.876);
+  background-color: #fafafa;
   border-radius: 20px;
   padding: 20px;
 }

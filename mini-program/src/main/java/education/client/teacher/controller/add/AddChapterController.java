@@ -2,6 +2,7 @@ package education.client.teacher.controller.add;
 
 import education.client.teacher.request.add.AddChapterRequest;
 import education.client.teacher.response.BooleanResponse;
+import education.client.teacher.response.IDResponse;
 import education.client.teacher.service.TeacherChapterService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,12 @@ public class AddChapterController {
 
   @RequestMapping(value = "/addChapter", method = RequestMethod.POST)
   public @ResponseBody
-  BooleanResponse addCourse(@RequestBody AddChapterRequest request) throws IOException {
-    boolean isSuccess = chapterService.addChapter(request.getCourseID(),request.getChapterName(),request.getDescription());
-    return new BooleanResponse(isSuccess);
+  IDResponse addCourse(@RequestBody AddChapterRequest request) throws IOException {
+    int  chapterID = chapterService.addChapter(request.getCourseID(),request.getChapterName(),request.getDescription());
+    if (chapterID>=0){
+      return new IDResponse(true,chapterID);
+    }else {
+      return new IDResponse(false,-1);
+    }
   }
 }

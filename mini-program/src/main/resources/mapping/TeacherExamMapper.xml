@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="education.dao.TeacherExamMapper">
+  <insert id="addPaper" useGeneratedKeys="true" keyProperty="paperid" parameterType="education.entity.Paper">
+    insert into paper (teacherID, courseID) values (#{teacherid}, #{courseid})
+  </insert>
+
+  <insert id="addExercise" useGeneratedKeys="true" keyProperty="exerciseid" parameterType="education.entity.ExerciseWithBLOBs">
+    insert into exercise (description, correctOption, optionA, optionB, optionC, optionD, teacherID, paperID)
+    VALUES (#{desciption}, #{correcoption}, #{optiona}, #{optionb}, #{optionc}, #{optiond}, #{teacherid}, #{paperid})
+  </insert>
+
+  <update id="updateExercise" parameterType="education.entity.ExerciseWithBLOBs">
+    update exercise
+    set description = #{description}, correctOption = #{coorectoption}, optionA = #{optiona},
+    optionB = #{optionb}, optionC = #{optionc}, optionD = #{optiond}
+    where paperID = paperID
+  </update>
+  
+  <select id="findPaperByID" parameterType="java.lang.Integer" resultType="education.entity.Paper">
+    select * from paper where paperID = #{paperID}
+  </select>
+  
+  <select id="findPaperByCourseID" parameterType="java.lang.Integer" resultType="education.entity.Paper">
+    select * from paper where courseID = #{courseID}
+  </select>
+  
+  <select id="findPaperByTeacherID" parameterType="java.lang.Integer" resultType="education.entity.Paper">
+    select * from paper where teacherID = #{teacherID}
+  </select>
+  
+  <select id="findExerciseByExerciseID" parameterType="java.lang.Integer" resultType="education.entity.ExerciseWithBLOBs">
+    select * from exercise where exerciseID = #{exerciseID};
+  </select>
+  
+  <select id="findExerciseByPaperID" parameterType="java.lang.Integer" resultType="education.entity.ExerciseWithBLOBs">
+    select * from exercise where paperID = #{paperID}
+  </select>
+  
+</mapper>
