@@ -7,12 +7,12 @@
         <div class="add" @click="issue()">
           <div>
             <p class="issue">发布新课程</p>
-            <img src="../../static/add.jpg" alt="">
+            <img src="../assets/add.jpg" alt="">
           </div>
         </div>
         <div class="mysubjects" v-for="(item,index) in classes" :key="index" @click="details(index)">
           <!-- 本地路径 -->
-          <img id="pic" src="../../static/books.png" alt="">
+          <img id="pic" src="../assets/books.png" alt="">
           <div>
             <p class="name">{{item.courseName}}</p>
             <p class="textcontent">选课人数: {{item.stunum}}</p>
@@ -39,23 +39,11 @@ export default {
       // 最后把假数据替换
       classes: [
         {
-          courseName: '计算机基础',
-          courseID: 3307268767668,
-          stunum: 20,
-          discription: '计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃,计算机最基础的课程，从入门到放弃'
-        },
-        {
-          courseName: '多媒体',
-          courseID: 123454532617847,
-          stunum: 56,
-          discription: '多媒体技术，学了都说好'
-        },
-        {
-          courseName: '计算机原理',
-          courseID: 8888,
-          stunum: 31,
-          discription: '水课，欢迎选'
-        },
+          courseName: '',
+          courseID: 0,
+          stunum: 0,
+          discription: ''
+        }
 
       ]
     }
