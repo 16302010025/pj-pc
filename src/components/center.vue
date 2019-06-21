@@ -39,10 +39,10 @@ export default {
       // 最后把假数据替换
       classes: [
         {
-          courseName: '',
-          courseID: 0,
-          stunum: 0,
-          discription: ''
+          courseName: '张一弛牛逼',
+          courseID: 10,
+          stunum: 10,
+          discription: '牛逼'
         }
 
       ]
