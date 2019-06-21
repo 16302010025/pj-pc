@@ -31,7 +31,7 @@ var routes = [{
 {
   path: '/mysubject/:id/:courseName/:discription',
   name: 'mysubject',
-  component: resolve => require(['@/components/subject'], resolve)
+  component: resolve => require(['@/components/mysubject'], resolve)
 },
 {
   path: '/chapter/:chapterName/:chapterID',

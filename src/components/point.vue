@@ -42,8 +42,8 @@ export default {
   methods: {
     getInfo() {
       if (this.$route.params.pointID != 'null') {
-        this.axios.post('/getPoint', {
-          pointID: this.$route.params.pointID
+        this.axios.post('/getKpDtails', {
+          knowledgeID: this.$route.params.pointID
         })
           .then(function (response) {
             console.log(response);
@@ -65,19 +65,37 @@ export default {
       this.$router.go(-1)
     },
     submit() {
-      alert(this.$route.params.pointID)
+      // alert(this.$route.params.pointID)
       if (this.$cookies.get("username") != undefined) {
-        this.axios.post('/addPoint', {
-          pointID: this.$route.params.pointID,
-          point_name: this.point_name,
-          point_details: this.point_details
-        })
-          .then(function (response) {
-            console.log(response);
+        if (this.$route.params.pointID == 'null') {
+          // 新建知识点
+          this.axios.post('/addKnowledge', {
+            // pointID: this.$route.params.pointID,
+            knowledgeName: this.point_name,
+            chapterID: this.$route.params.chapterID,
+            knowledgePoints: this.point_details,
           })
-          .catch(function (error) {
-            console.log(error);
-          });
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else {
+          // 修改知识点
+          this.axios.post('/modKnowledge', {
+            pointID: this.$route.params.pointID,
+            knowledgeName: this.point_name,
+            point_details: this.point_details
+          })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+
       } else {
         alert("请先登录")
         this.router.push('/')
@@ -93,7 +111,6 @@ export default {
   margin-right: 48px;
   display: flex;
   justify-content: flex-end;
-
 }
 .new_point_content {
   display: flex;

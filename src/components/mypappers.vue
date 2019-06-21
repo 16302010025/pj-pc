@@ -46,7 +46,8 @@ export default {
       })
         .then(function (response) {
           console.log(response);
-          this.questions = response.questions;
+          this.questions = response.papperList;
+          this.studentnum = response.studentnum;
         })
         .catch(function (error) {
           console.log(error);
@@ -76,20 +77,21 @@ export default {
 }
 .card {
   margin-left: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 1px 4px rgb(165, 141, 132), 0 0 6px rgb(197, 178, 124);
   border-radius: 3%;
   width: 400px;
   height: 250px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  background-color: rgb(230, 224, 212);
   cursor: pointer;
 }
 .wdwenjuan {
   border-bottom: solid 1px #888888;
   font-size: 30px;
-  margin-top: 15px;
-  margin-bottom: -5px;
+  margin-top: -10px;
+  margin-bottom: 5px;
   text-align: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;

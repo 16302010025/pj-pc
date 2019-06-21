@@ -57,12 +57,11 @@ export default {
       } else {
         if (this.$cookies.get("username") != undefined) {
           this.username = this.$cookies.get("username")
-          // alert(this.info_empty + this.sub_name)
-          // alert(this.username)
-          this.axios.post('/newsubject', {
-            username: this.username,
-            sub_name: this.sub_name,
-            sub_brief: this.sub_brief,
+          this.axios.post('/addCourse', {
+            // 就是teacherID
+            teacherID: this.username,
+            courseName: this.sub_name,
+            discription: this.sub_brief,
           })
             .then(function (response) {
               console.log(response);

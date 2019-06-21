@@ -97,13 +97,10 @@ export default {
       if (this.check_empty == true) {
         alert('请先完善信息');
       } else {
-        this.axios.post('/question', {
+        this.axios.post('/addPapper', {
           pappername: this.pappername,
           courseID: this.$route.params.courseID,
           questions: this.questions,
-          // description: this.questions.ques_title,
-          // option: this.questions.options,
-          // correctchoose: this.questions.num,
         })
           .then(function (response) {
             console.log(response);
@@ -136,8 +133,8 @@ export default {
 .quetitle {
   border-bottom: solid 1px #888888;
   font-size: 30px;
-  margin-top: 15px;
-  margin-bottom: -5px;
+  margin-top: -15px;
+  margin-bottom: -8px;
   text-align: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;
@@ -168,11 +165,13 @@ export default {
 .papper {
   padding: 20px;
   width: 800px;
-  margin-top: 30px;
+  border-radius: 10px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   border: solid 0.1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
+  background-color: #eeffe9;
 }
 .pafirel {
   width: 800px;
