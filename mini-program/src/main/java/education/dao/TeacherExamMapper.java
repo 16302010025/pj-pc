@@ -1,6 +1,7 @@
 package education.dao;
 
 import education.entity.Exercise;
+import education.entity.ExerciseWithBLOBs;
 import education.entity.Paper;
 
 import java.util.List;
@@ -18,14 +19,14 @@ public interface TeacherExamMapper {
    * @param exercise
    * @return 试题ID
    */
-  int addExercise(Exercise exercise);
+  int addExercise(ExerciseWithBLOBs exercise);
 
   /**
    *
    * @param exercise
    * @return 是否成功
    */
-  boolean updateExercise(Exercise exercise);
+  boolean updateExercise(ExerciseWithBLOBs exercise);
 
   /**
    *
@@ -53,12 +54,12 @@ public interface TeacherExamMapper {
    * @param exercriseID 试题Id
    * @return 试题对象
    */
-  Exercise findExerciseByExerciseID(int exercriseID);
+  ExerciseWithBLOBs findExerciseByExerciseID(int exercriseID);
 
   /**
    *
    * @param paperID 试卷ID
    * @return 所有题目
    */
-  List<Exercise> findExerciseByPaperID(int paperID);
+  List<ExerciseWithBLOBs> findExerciseByPaperID(int paperID);
 }
