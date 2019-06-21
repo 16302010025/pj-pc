@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="education.dao.TeacherExamMapper">
-  <insert id="addPaper">
+  <insert id="addPaper" useGeneratedKeys="true" keyProperty="paperid">
+    insert into paper (teacherID, courseID) values (#{teacherid}, #{courseid})
+  </insert>
 
+  <insert id="addExercise" useGeneratedKeys="true" keyProperty="exerciseid">
+    insert into exercise (description, correctOption, optionA, optionB, optionC, optionD, teacherID, paperID)
+    VALUES (#{desciption}, #{correcoption}, #{optiona}, #{optionb}, #{optionc}, #{optiond}, #{teacherid}, #{paperid})
   </insert>
 </mapper>

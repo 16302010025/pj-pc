@@ -3,7 +3,7 @@ package education.dao;
 import education.entity.Exercise;
 import education.entity.Paper;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.web.servlet.tags.Param;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public interface TeacherExamMapper {
    * @param courseID 课程ID
    * @return paperID
    */
-  int addPaper(@Param("teacherID") Integer teacherID,@Param("courseID") int courseID);
+  int addPaper(Paper paper);
 
   /**
    *
@@ -27,7 +27,7 @@ public interface TeacherExamMapper {
    * @param d
    * @return 试题ID
    */
-  int addExercise(int paperID,String description,char correct,String a,String b,String c,String d);
+  int addExercise(Exercise exercise);
 
   /**
    *

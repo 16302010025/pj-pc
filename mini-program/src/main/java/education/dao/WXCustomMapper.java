@@ -6,6 +6,7 @@ import education.entity.KnowledgePoint;
 import education.entity.wx.WXCourse;
 import education.entity.wx.WXFavorite;
 import education.entity.wx.WXNote;
+import education.entity.wx.WXStudentCourse;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -46,5 +47,5 @@ public interface WXCustomMapper {
   List<KnowledgePoint> getAllKnowledgePoint(Integer chapterID);
 
   //通过studentID获取该学生的所有的课程
-  List<WXCourse> getStudentCourse(String studentID);
+  List<WXStudentCourse> getStudentCourse(String studentID);
 }
