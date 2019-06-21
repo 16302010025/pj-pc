@@ -36,12 +36,12 @@ public class TeacherCourseServiceImpl implements TeacherCourseService {
 
 
   @Override
-  public boolean addCourse(int teacherID, String courseName, String description) {
+  public int addCourse(int teacherID, String courseName, String description) {
     if (teacherID<0||courseName==null||courseName.equals("")||description==null||description.equals("")||teacherMapper.findTeacherByID(teacherID)==null){
-      return false;
+      return -1;
     }else {
-      courseMapper.addCourse(teacherID,courseName,description);
-      return true;
+      int courseID=courseMapper.addCourse(teacherID,courseName,description);
+      return courseID;
     }
   }
 
