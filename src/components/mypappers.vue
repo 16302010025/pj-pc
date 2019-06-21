@@ -3,10 +3,11 @@
     <el-button type="danger" @click="goback()">返回</el-button>
     <p class="wdwenjuan">已发布的问卷</p>
     <div class="pappers">
-      <div class="card" v-for="(question,index) in questions" :key="index" @click="details(index)">
-        <p class="card-title">{{question.ques_title}}</p>
-        <p class="card-body">问卷id：{{question.papperId}}</p>
-        <p class="card-body">学生完成情况：{{question.finishnum}} / {{studentnum}}</p>
+      <div class="card" v-for="(question,index) in questions" :key="index">
+        <p @click="details(index)" class="card-title">{{question.ques_title}}</p>
+        <!-- <p class="card-body">问卷id：{{question.papperId}}</p> -->
+        <p @click="details(index)" class="card-body">学生完成情况：{{question.finishnum}} / {{studentnum}}</p>
+        <el-button type="warning" @click="getstuList(index)">查看学生完成情况</el-button>
       </div>
     </div>
 
@@ -37,6 +38,10 @@ export default {
     this.getMyPapper();
   },
   methods: {
+    getstuList(index) {
+      // alert("aa")
+      this.$router.push('/stuList/' + this.$route.params.courseID + '/' + this.questions[index].papperId)
+    },
     details(index) {
       this.$router.push('/papper/' + this.$route.params.courseID + '/' + this.questions[index].papperId)
     },
@@ -63,10 +68,12 @@ export default {
 <style lang="less">
 .card-title {
   font-size: 20px;
+  cursor: pointer;
   margin-left: 20px;
 }
 .card-body {
   font-size: 15px;
+  cursor: pointer;
   margin-left: 20px;
 }
 .pappers {
@@ -80,12 +87,18 @@ export default {
   box-shadow: 3px 3px 1px 4px rgb(165, 141, 132), 0 0 6px rgb(197, 178, 124);
   border-radius: 3%;
   width: 400px;
-  height: 250px;
+  height: 200px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   background-color: rgb(230, 224, 212);
-  cursor: pointer;
+  .el-button {
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #451b0e;
+    background-color: #9e50363f;
+  }
 }
 .wdwenjuan {
   border-bottom: solid 1px #888888;

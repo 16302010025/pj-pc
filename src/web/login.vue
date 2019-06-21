@@ -31,28 +31,32 @@ export default {
   },
   methods: {
     login() {
-      if (this.input === '' || this.pass === '') {
-        alert("请完善信息")
-      } else {
-        // 需要写好url（对应到后端）
-        this.axios.post('/login', {
-          username: this.input,
-          password: this.pass
-        })
-          .then(function (response) {
-            console.log(response);
-            if (response.success === true) {
-              alert("登录成功")
-              this.$cookies.set("username", response.ID, 0)
-              this.$router.push('/home')
-            }
-          })
-          .catch(function (error) {
-            alert("服务出错")
-            console.log(error);
-          });
-      }
+      this.$cookies.set("username", this.input, 0)
+      this.$router.push('/home')
     },
+    // login() {
+    //   if (this.input === '' || this.pass === '') {
+    //     alert("请完善信息")
+    //   } else {
+    //     // 需要写好url（对应到后端）
+    //     this.axios.post('/login', {
+    //       username: this.input,
+    //       password: this.pass
+    //     })
+    //       .then(function (response) {
+    //         console.log(response);
+    //         if (response.success === true) {
+    //           alert("登录成功")
+    //           this.$cookies.set("username", response.ID, 0)
+    //           this.$router.push('/home')
+    //         }
+    //       })
+    //       .catch(function (error) {
+    //         alert("服务出错")
+    //         console.log(error);
+    //       });
+    //   }
+    // },
     register() {
       this.$router.push('/register')
     }

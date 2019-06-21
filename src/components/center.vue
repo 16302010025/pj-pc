@@ -15,6 +15,7 @@
           <img id="pic" src="../../static/books.png" alt="">
           <div>
             <p class="name">{{item.courseName}}</p>
+            <!-- <p class="textcontent">课程ID: {{item.courseID}}</p> -->
             <p class="textcontent">课程ID: {{item.courseID}}</p>
             <p class="textcontent">课程简介：{{item.discription}}</p>
           </div>

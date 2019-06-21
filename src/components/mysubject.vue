@@ -54,7 +54,7 @@ export default {
         this.axios.post('/addChapter', {
           courseID: this.$route.params.id,
           chapterName: this.cha_name,
-          // description: "..."
+          description: '.'
         })
           .then(function (response) {
             console.log(response);
