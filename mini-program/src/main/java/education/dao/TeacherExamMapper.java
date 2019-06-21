@@ -47,7 +47,7 @@ public interface TeacherExamMapper {
    * @param teacherID 教师ID
    * @return 该老师所有试卷
    */
-  List<Paper> findPAperByTeacherID(int teacherID);
+  List<Paper> findPaperByTeacherID(int teacherID);
 
   /**
    *
