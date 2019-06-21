@@ -98,7 +98,7 @@ export default {
 
 <style lang="less">
 .title {
-  border-bottom:solid 1px #888888;
+  border-bottom: solid 1px #888888;
   font-size: 30px;
   margin-top: 15px;
   margin-bottom: -5px;
@@ -111,10 +111,11 @@ export default {
     1px -9px 8px #451b0e;
 }
 .course_name {
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-left: 40px;
   font-size: 36px;
   font-weight: 600;
-  font-family: 'Courier New', Courier, monospace
+  font-family: "Courier New", Courier, monospace;
 }
 
 .course_disc {
@@ -125,14 +126,16 @@ export default {
   padding: 20px;
   width: 450px;
   margin-left: 75px;
-  border: solid 0.1px rgb(238, 238, 238);
+  border-radius: 10px;
+  border: solid 1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
 .sub-details {
   padding: 20px;
   width: 500px;
   margin-left: 100px;
-  border: solid 0.1px rgb(238, 238, 238);
+  border-radius: 10px;
+  border: solid 1px rgb(238, 238, 238);
   box-shadow: 10px 10px 5px #888888;
 }
 .body {
