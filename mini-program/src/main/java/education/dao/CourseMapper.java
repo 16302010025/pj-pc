@@ -75,9 +75,9 @@ public interface CourseMapper {
   List<Integer> findChapterIDByID(Integer courseID);
 
   //向course表中插入一个新的记录
-  @Insert("insert into course (courseName, description, teacherID)values ( #{courseName}, #{description},#{teacherID})")
-  int addCourse(@Param("teacherID") Integer teacherID, @Param("courseName") String courseName, @Param("description") String description);
-
+ // @Insert("insert into course (courseName, description, teacherID)values ( #{courseName}, #{description},#{teacherID})")
+//  int addCourse(@Param("teacherID") Integer teacherID, @Param("courseName") String courseName, @Param("description") String description);
+  int addCourse(Course course);
   //向course表中更新courseID对应的记录项
   @Update("update course set courseName = #{courseName}, description = #{description} where courseID = #{courseID}")
   int updateCourse(@Param("courseID") Integer courseID, @Param("courseName") String courseName, @Param("description") String description);
