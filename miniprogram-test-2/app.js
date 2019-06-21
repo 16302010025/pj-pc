@@ -9,7 +9,7 @@ App({
     wx.setStorageSync('logs', logs)
     // let stdid = 'huang'
     // wx.setStorageSync('stdid', stdid)
-    // wx.setStorageSync('isexisted', false)
+    wx.setStorageSync('isexisted', false)
     let api = new userApi;
 
 

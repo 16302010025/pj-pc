@@ -21,7 +21,7 @@ Page({
     let that = this;
     let idtemp = wx.getStorageSync('stdid');
     that.setData({
-      id: idtemp,
+      stdid: idtemp,
     })
     wx.getStorage({
       key: 'user',

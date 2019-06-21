@@ -140,16 +140,28 @@ class courseApi {
     return this._request.postRequest(this._baseUrl + '/addNote', data).then(res => res.data)
   }
   //删除笔记
-  delNote(stdid, kpid, key = null) {
+  delNote(noteid, key = null) {
     let data = key != null ? {
-      studentID: stdid,
-      kpid: kpid,
+      momoID: noteid,
       queryValue: key
     } : {
-      studentID: stdid,
-      kpid: kpid
+        noteID: noteid,
     }
     return this._request.postRequest(this._baseUrl + '/delNote', data).then(res => res.data)
   }
+
+  //更新笔记
+  updateNote(noteid, desc, key = null) {
+    let data = key != null ? {
+      momoID: noteid,
+      description: desc,
+      queryValue: key
+    } : {
+        noteID: noteid,
+        description: desc
+      }
+    return this._request.postRequest(this._baseUrl + '/updateNote', data).then(res => res.data)
+  }
+
 }
 export default courseApi

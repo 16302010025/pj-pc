@@ -7,7 +7,11 @@ Page({
    */
   data: {
     stdid: '',
-    courses: []
+    courses: [{
+      'courseName': '计算机',
+      'courseID': '计算机',
+      'teacher': '计算机'
+    }]
   },
   init: function() {
     let that = this;

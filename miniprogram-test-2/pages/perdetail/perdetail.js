@@ -20,7 +20,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    let idtemp = wx.getStorageSync('openid');
+    let idtemp = wx.getStorageSync('stdid');
     that.setData({
       id: idtemp
     });
@@ -37,6 +37,7 @@ Page({
     })
   },
   save: function(e) {
+    wx.setStorageSync('isexisted', true);
     let api = new userApi;
     let res = false;
     api.updateUser(this.id, this.email, this.name, this.gender, this.stdNo).then(data => {
@@ -52,7 +53,6 @@ Page({
           'stdno': this.data.stdno
         }
       })
-      wx.setStorageSync('isexisted', true);
       wx.showToast({
         title: '保存成功',
         duration: 1000
