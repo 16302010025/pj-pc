@@ -40,6 +40,15 @@ Page({
     wx.setStorageSync('isexisted', true);
     let api = new userApi;
     let res = false;
+    wx.setStorage({
+      key: 'user',
+      data: {
+        'email': this.data.email,
+        'gender': this.data.genderindex == 0 ? false : true,
+        'name': this.data.name,
+        'stdno': this.data.stdno
+      }
+    })
     api.updateUser(this.id, this.email, this.name, this.gender, this.stdNo).then(data => {
       res = data.status
     })

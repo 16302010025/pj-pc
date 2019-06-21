@@ -1,23 +1,40 @@
 // pages/paper/paper.js
+import courseApi from '../../apis/courseApi.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    stdid: '',
+    courseid: '',
+    paperid: '',
     cname:'',
-    desc: '请选择正确答案:',
-    choose: '',
-
+    showan: false,
+    paper: []
   },
-
+  fresh: function(){
+    let api = new courseApi;
+    api.getPaper(this.courseid).then(data=>{
+      that.setData({
+        paperid: data.paperid
+      })
+    })
+    api.getExercise(this.paperid).then(data => {
+      that.setData({
+        paper: data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this;
     that.setData({
-      cname: options.cname,
+      stdid: wx.getStorageSync('stdid'),
+      cname: options.coursename,
+      courseid: options.courseid
     })
   },
 

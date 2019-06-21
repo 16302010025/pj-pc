@@ -145,7 +145,7 @@ class courseApi {
       momoID: noteid,
       queryValue: key
     } : {
-        noteID: noteid,
+      noteID: noteid,
     }
     return this._request.postRequest(this._baseUrl + '/delNote', data).then(res => res.data)
   }
@@ -157,11 +157,33 @@ class courseApi {
       description: desc,
       queryValue: key
     } : {
-        noteID: noteid,
-        description: desc
-      }
+      noteID: noteid,
+      description: desc
+    }
     return this._request.postRequest(this._baseUrl + '/updateNote', data).then(res => res.data)
   }
+  //得到试卷
+  getPaper(courseid, key = null) {
+    let data = key != null ? {
+      courseid: courseid,
+      queryValue: key
+    } : {
+      courseid: courseid,
+    }
+    return this._request.getRequest(this._baseUrl + '/getPaper', data).then(res => res.data)
+  }
+
+  //得到试题
+  getExercise(paperid) {
+    let data = key != null ? {
+      paperid: paperid,
+      queryValue: key
+    } : {
+      paperid: paperid,
+    }
+    return this._request.getRequest(this._baseUrl + '/getExercise', data).then(res => res.data)
+  }
+
 
 }
 export default courseApi
