@@ -1,0 +1,82 @@
+<!--pages/paper/paper.wxml-->
+
+<view class="text-xxl padding bot">
+  <text class="text-black padding text-bold">{{cname}}课程测验:</text>
+</view>
+<view>
+  <view class='item'>
+    <view class='desc'>
+      <text class='text-xxl padding'>1.{{desc}}</text>
+    </view>
+    <radio-group class="block">
+      <view class="cu-form-group">
+        <view class="title">A.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">B.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">C.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">D.你是傻子</view>
+        <radio></radio>
+      </view>
+    </radio-group>
+  </view>
+  <view class='item'>
+    <view class='desc'>
+      <text class='text-xxl padding'>1.{{desc}}</text>
+    </view>
+    <radio-group class="block">
+      <view class="cu-form-group">
+        <view class="title">A.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">B.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">C.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">D.你是傻子</view>
+        <radio></radio>
+      </view>
+    </radio-group>
+  </view>
+  <view class='item'>
+    <view class='desc'>
+      <text class='text-xxl padding'>1.{{desc}}</text>
+    </view>
+    <radio-group class="block">
+      <view class="cu-form-group">
+        <view class="title">A.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">B.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">C.你是傻子</view>
+        <radio></radio>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">D.你是傻子</view>
+        <radio></radio>
+      </view>
+    </radio-group>
+  </view>
+</view>
+<view class='cu-bar foot cur padding flex flex-direction foot-test'>
+  <navigator class='nav-en' url='' hover-class="none">
+    <button class="cu-btn block line-orange lg test-btn">
+      <text class="cuIcon-writefill text-orange"></text>提交测验</button>
+  </navigator>
+</view>
