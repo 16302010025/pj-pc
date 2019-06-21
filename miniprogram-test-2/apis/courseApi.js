@@ -39,7 +39,7 @@ class courseApi {
   //添加课程到已选
   addCourse(openid, courseid, key = null) {
     let data = key != null ? {
-      openid: openid,
+      studentid: openid,
       courseid: courseid,
       queryValue: key
     } : {

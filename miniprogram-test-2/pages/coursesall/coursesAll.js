@@ -6,40 +6,59 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courses: [],
-    cname: '计算机网络',
-    tname: '陈荣华',
-    desc: '撒法国大使',
+    stdid: '',
+    allcourses: [],
+    index: '',
   },
   addcourse: function(options) {
-    wx.showToast({
-      title: '添加成功',
-      duration: 1000
+    let api2 = new coursesApi;
+    api2.addcourse(this.stdid, this.allcourses[index].courseID).then(data => {
+      if (data.status) {
+        wx.showToast({
+          title: '添加成功',
+          duration: 1000
+        })
+      } else {
+        wx.showToast({
+          title: '添加失败',
+          duration: 1000
+        })
+      }
     })
   },
   fresh: function() {
-
+    let that = this;
+    let stdidtemp = wx.getStorageSync('stdid');
+    that.setData({
+      stdid: stdidtemp
+    })
+    let api = new coursesApi;
+    api.getAllCourse().then(data => {
+      that.setData({
+        allcourses: data
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+    this.fresh();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.fresh();
   },
 
   /**

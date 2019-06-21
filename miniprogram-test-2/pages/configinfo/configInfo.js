@@ -11,6 +11,7 @@ Page({
     stdid: '',
     name: '',
     stdno: '',
+    gender: '',
     note_image: '../../static/images/note.png',
     fav_image: '../../static/images/fav.png',
     conf_image: '../../static/images/per.png'
@@ -27,7 +28,8 @@ Page({
       success: function(res) {
         that.setData({
           name: res.data.name,
-          stdno: res.data.stdno
+          stdno: res.data.stdno,
+          gender: res.data.gender
         })
       },
     })

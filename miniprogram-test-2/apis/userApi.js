@@ -33,7 +33,7 @@ class userApi {
       studentid: openid,
       queryValue: key
     } : {
-        studentid: openid
+      studentid: openid
     }
     return this._request.getRequest(this._baseUrl + '/getStu', data).then(res => res.data)
   }
@@ -45,14 +45,14 @@ class userApi {
       email: email,
       name: name,
       gender: gender,
-      stdno: stdNo,
+      studentNo: stdNo,
       queryValue: key
     } : {
-      studentID: openid,
+      studentid: openid,
       email: email,
       name: name,
       gender: gender,
-      stdNo: stdNo,
+      studentNo: stdNo,
     }
     return this._request.postRequest(this._baseUrl + '/updateStu', data).then(res => res.data)
   }

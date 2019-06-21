@@ -38,20 +38,30 @@ Page({
   },
   save: function(e) {
     let api = new userApi;
-    // api.updateUser(this.id, this.email, this.name, this.gender, this.stdNo);
-    wx.setStorage({
-      key: 'user',
-      data: {
-        'email': this.data.email,
-        'gender': this.data.genderindex == 0 ? false : true,
-        'name': this.data.name,
-        'stdno': this.data.stdno
-      }
+    let res = false;
+    api.updateUser(this.id, this.email, this.name, this.gender, this.stdNo).then(data => {
+      res = data.status
     })
-    wx.showToast({
-      title: '保存成功',
-      duration: 1000
-    })
+    if (res) {
+      wx.setStorage({
+        key: 'user',
+        data: {
+          'email': this.data.email,
+          'gender': this.data.genderindex == 0 ? false : true,
+          'name': this.data.name,
+          'stdno': this.data.stdno
+        }
+      })
+      wx.showToast({
+        title: '保存成功',
+        duration: 1000
+      })
+    } else {
+      wx.showToast({
+        title: '保存失败',
+        duration: 1000
+      })
+    }
     wx.navigateBack({
 
     })
