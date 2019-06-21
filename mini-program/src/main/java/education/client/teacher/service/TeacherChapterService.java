@@ -26,9 +26,9 @@ public interface TeacherChapterService {
    * @param courseID 课程ID
    * @param chapterName 章节名
    * @param description 描述
-   * @return 是否成功
+   * @return 所添加章节的ID
    */
-  boolean addChapter(int courseID, String chapterName, String description);
+  int addChapter(int courseID, String chapterName, String description);
 
   /**
    *

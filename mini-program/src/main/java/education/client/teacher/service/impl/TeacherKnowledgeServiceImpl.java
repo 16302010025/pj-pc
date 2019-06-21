@@ -33,12 +33,12 @@ public class TeacherKnowledgeServiceImpl implements TeacherKnowledgeService {
   }
 
   @Override
-  public boolean addKnowledge(int chapterID, String knowledgeName) {
+  public int addKnowledge(int chapterID, String knowledgeName) {
     if (chapterID<0||knowledgeName==null||knowledgeName.equals("")||chapterMapper.findChapterByID(chapterID)==null){
-      return false;
+      return -1;
     }else {
-      knowledgePointMapper.addKnowledge(chapterID,knowledgeName);
-      return true;
+      int knowledgeID=knowledgePointMapper.addKnowledge(chapterID,knowledgeName);
+      return knowledgeID;
     }
 
   }

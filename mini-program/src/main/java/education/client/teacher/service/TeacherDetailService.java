@@ -30,9 +30,9 @@ public interface TeacherDetailService {
    *
    * @param knowledgeID 知识点ID
    * @param description 描述
-   * @return 是否成功
+   * @return 所添加知识点细节的ID
    */
-  boolean addDetail(int knowledgeID, String description);
+  int  addDetail(int knowledgeID, String description);
 
   /**
    *

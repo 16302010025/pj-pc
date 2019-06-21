@@ -40,12 +40,12 @@ public class TeacherDetailServiceImpl implements TeacherDetailService {
   }
 
   @Override
-  public boolean addDetail(int knowledgeID, String description) {
+  public int addDetail(int knowledgeID, String description) {
     if (knowledgeID<0||description==null||description.equals("")||knowledgePointMapper.findKnowledgeByID(knowledgeID)==null){
-      return false;
+      return -1;
     }else {
-      kpDetailMapper.addDetail(knowledgeID,description);
-      return true;
+      int detailID=kpDetailMapper.addDetail(knowledgeID,description);
+      return detailID;
     }
 
   }

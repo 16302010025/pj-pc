@@ -24,9 +24,9 @@ public interface TeacherCourseService {
    * @param teacherID 教师ID
    * @param courseName 课程名
    * @param description 描述
-   * @return 是否成功
+   * @return 所添加课程的ID
    */
-  boolean addCourse(int teacherID, String courseName, String description);
+  int addCourse(int teacherID, String courseName, String description);
 
   /**
    *
