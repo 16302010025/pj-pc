@@ -57,16 +57,16 @@ export default {
       } else {
         if (this.$cookies.get("username") != undefined) {
           this.username = this.$cookies.get("username")
-          this.axios.post('/addCourse', {
+          this.axios.post('http://localhost:8080/addCourse', {
             // 就是teacherID
             teacherID: this.username,
             courseName: this.sub_name,
-            discription: this.sub_brief,
+            description: this.sub_brief,
           })
             .then(function (response) {
               console.log(response);
-              this.$router.push('/mysubject/' + response.courseID + '/' + this.sub_name + '/' + this.sub_brief)
-            })
+              this.$router.push('/home')
+            }.bind(this))
             .catch(function (error) {
               console.log(error);
             });

@@ -56,15 +56,15 @@ export default {
       this.$router.go(-1)
     },
     getStuPapList() {
-      this.axios.post('/getStuPapList', {
+      this.axios.post('http://localhost:8080/getStuPapList', {
         courseID: this.$route.params.courseID,
         papperID: this.$route.params.papperID,
       })
         .then(function (response) {
           console.log(response);
-          this.finishStus = response.finishStus;
-          this.unfinishStus = response.unfinishStus;
-        })
+          this.finishStus = response.data.finishStus;
+          this.unfinishStus = response.data.unfinishStus;
+        }.bind(this))
         .catch(function (error) {
           console.log(error);
         });

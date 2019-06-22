@@ -97,14 +97,14 @@ export default {
       if (this.check_empty == true) {
         alert('请先完善信息');
       } else {
-        this.axios.post('/addPapper', {
+        this.axios.post('http://localhost:8080/addPapper', {
           pappername: this.pappername,
           courseID: this.$route.params.courseID,
           questions: this.questions,
         })
           .then(function (response) {
             console.log(response);
-          })
+          }.bind(this))
           .catch(function (error) {
             console.log(error);
           });

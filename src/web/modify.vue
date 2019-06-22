@@ -42,14 +42,14 @@ export default {
         alert("密码过短")
       } else {
         // 需要写好url（对应到后端）
-        this.axios.post('/login', {
+        this.axios.post('http://localhost:8080/login', {
           username: this.user,
           password: this.pass
         })
           .then(function (response) {
             console.log(response);
-            if (response.success === true) {
-              this.axios.post('/modify', {
+            if (response.data.success === true) {
+              this.axios.post('http://localhost:8080/modify', {
                 username: this.user,
                 password: this.newpass
               })
@@ -57,10 +57,10 @@ export default {
                   alert("修改成功,请重新登录")
                   this.$cookies.remove("username")
                   this.$router.push('/login')
-                })
+                }.bind(this))
                 .catch(function (err) {
-                    alert("修改失败")
-                    console.log(err)
+                  alert("修改失败")
+                  console.log(err)
                 })
             }
           })

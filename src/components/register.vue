@@ -45,19 +45,19 @@ export default {
         alert("密码不能过短")
       }
       else {
-        this.axios.post('/register', {
+        this.axios.post('http://localhost:8080/register', {
           username: this.input,
           password: this.pass
         })
           .then(function (response) {
             console.log(response);
-            if (response.isnew === true) {
+            if (response.data.isnew === true) {
               alert("注册成功，马上登录")
               this.$router.push('/')
             } else {
               alert("用户名已存在")
             }
-          })
+          }.bind(this))
           .catch(function (error) {
             alert("服务出错")
             console.log(error);
@@ -73,7 +73,7 @@ export default {
   margin-top: 10px;
   display: flex;
   align-items: center;
-  span{
+  span {
     width: 100px;
   }
   .el-input {

@@ -43,20 +43,20 @@ export default {
         alert("请完善信息")
       } else {
         // 需要写好url（对应到后端）
-        this.axios.post('/login', {
+        this.axios.post('http://localhost:8080/login', {
           username: this.input,
           password: this.pass
         })
           .then(function (response) {
             console.log(response);
-            if (response.success === true) {
+            if (response.data.success === true) {
               alert("登录成功")
-              this.$cookies.set("username", response.ID, 0)
+              this.$cookies.set("username", response.data.id, 0)
               this.$router.push('/home')
-            }else{
+            } else {
               alert("用户名密码错误！")
             }
-          })
+          }.bind(this))
           .catch(function (error) {
             alert("服务出错")
             console.log(error);

@@ -46,14 +46,14 @@ export default {
       this.$router.push('/papper/' + this.$route.params.courseID + '/' + this.questions[index].papperId)
     },
     getMyPapper() {
-      this.axios.post('/getMyPappers', {
+      this.axios.post('http://localhost:8080/getMyPappers', {
         courseID: this.$route.params.courseID,
       })
         .then(function (response) {
           console.log(response);
-          this.questions = response.papperList;
-          this.studentnum = response.studentnum;
-        })
+          this.questions = response.data.papperList;
+          this.studentnum = response.data.studentnum;
+        }.bind(this))
         .catch(function (error) {
           console.log(error);
         });

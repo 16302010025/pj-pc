@@ -70,27 +70,27 @@ export default {
       this.$router.go(-1)
     },
     delPapper() {
-      this.axios.post('/delPapper', {
+      this.axios.post('http://localhost:8080/delPapper', {
         papperID: this.$route.params.papperID,
       })
         .then(function (response) {
           console.log(response);
           this.$router.go(-1)
-        })
+        }.bind(this))
         .catch(function (error) {
           console.log(error);
         });
     },
     getPapperDetails() {
-      this.axios.post('/getPapperDet', {
+      this.axios.post('http://localhost:8080/getPapperDet', {
         papperID: this.$route.params.papperID,
       })
         .then(function (response) {
           console.log(response);
-          this.pappername = response.pappername;
-          this.questions = response.questions;
-          this.finishnum = response.finishnum;
-        })
+          this.pappername = response.data.pappername;
+          this.questions = response.data.questions;
+          this.finishnum = response.data.finishnum;
+        }.bind(this))
         .catch(function (error) {
           console.log(error);
         });
