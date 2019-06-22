@@ -24,7 +24,7 @@ public interface TeacherOtherService {
    * @param paperID 试卷ID
    * @return 没做的学生
    */
-  List<Student> findUnFinishByPaperID(int paperID);
+  List<Student> findUnFinishByPaperID(int courseID,int paperID);
 
 
 }

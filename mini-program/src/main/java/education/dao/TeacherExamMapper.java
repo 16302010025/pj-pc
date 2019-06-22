@@ -1,6 +1,5 @@
 package education.dao;
 
-import education.entity.Exercise;
 import education.entity.ExerciseWithBLOBs;
 import education.entity.Paper;
 

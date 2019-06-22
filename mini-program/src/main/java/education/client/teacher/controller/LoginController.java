@@ -18,6 +18,7 @@ public class LoginController {
   IDResponse login(@RequestBody LoginRequest request) throws IOException {
 
    if(teacherService.isPasswordMatch(request.getUsername(),request.getPassword())){
+     System.out.println("111111");
      return new IDResponse(true,teacherService.findTeacherByName(request.getUsername()).getTeacherid());
     }else {
      return new IDResponse(false,-1);//失败ID就是-1

@@ -70,14 +70,14 @@ public class ExamController {
   }
 
   //查看课程试卷
-  @RequestMapping(value = "/getCoursePaper", method = RequestMethod.POST)
+  @RequestMapping(value = "/getMyPapers", method = RequestMethod.POST)
   public @ResponseBody
   GetCoursePaperResponse getCoursePaper(@RequestBody GetCoursePaperRequest request) throws IOException {
     return new GetCoursePaperResponse(examService.findPaperByCourseID(request.getCourseID()));
   }
 
   //查看试卷题目
-  @RequestMapping(value = "/getPaperExercise", method = RequestMethod.POST)
+  @RequestMapping(value = "/getPaperDet", method = RequestMethod.POST)
   public @ResponseBody
   GetPaperExerciseResponse getPaperExercise(@RequestBody GetPaperExerciseRequest request) throws IOException {
     return new GetPaperExerciseResponse(examService.findExerciseIDByID(request.getPaperID()));
